@@ -326,6 +326,27 @@ friend17: [
        intro: "生而为爷 我很抱歉"
      },
 ]
+friend18: [
+ {
+       title: "Zhou'Blog",
+       href: "https://type.zhoublog.xyz/",
+       img: "https://cdn.jsdelivr.net/gh/Zhou216/Zhoublog/icons/MCGIF.gif",
+       intro: " 随缘更新"
+     },
+]
+friend19: [
+ {
+       title: "小理の小窝",
+       href: "https://www.v48v.cn/",
+       img: "https://anfangd.com/2020/09/706751558.jpeg",
+       intro: "生而为爷 我很抱歉"
+     },
+]
+
+
+
+
+
 threa: false
 #动态线条背景
 #bannerUrl: "/img/headimg/" + new Date().getDay() + '.jpg'
