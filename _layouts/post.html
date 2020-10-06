@@ -2,7 +2,7 @@
 layout: default
 ---
 <script src="/libs/jquery/jquery.min.js"></script>
-<script>
+<!--<script>
 	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张
 		var  a ="/img/banner/" + new Date().getDay() + '.jpg';
 		//$('.intro-header').css('background-image', 'url(' + bannerUrl + ')');
@@ -10,6 +10,12 @@ layout: default
 		var  kmj ="https://www.lianyiming.com" +a
 		console.log(kmj)
 	</script>
+	-->
+	<script>
+		// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张
+			var bannerUrl = "/img/banner/" + new Date().getDay() + '.jpg';
+			$('hearder.intro-header').css('background-image', 'url(' + bannerUrl + ')');
+		</script>
 <!-- Image to hack wechat
 --
 https://www.jianshu.com/p/65ea6a159959>
@@ -23,7 +29,7 @@ https://www.jianshu.com/p/65ea6a159959>
 <style type="text/css">
 	header.intro-header {
 		position: relative;
-		background-image: url('"https://www.lianyiming.com/img/banner/"+2+".jpg"');
+		background-image: 
 	}
 
 		{
@@ -48,11 +54,7 @@ https://www.jianshu.com/p/65ea6a159959>
 		% endif %
 	}
 </style>
-<script>
-	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张
-		var bannerUrl = "/img/banner/" + new Date().getDay() + '.jpg';
-		$('hearder.intro-header').css('background-image', 'url(' + bannerUrl + ')');
-	</script>
+
 <header class="intro-header">
 	<div class="header-mask"></div>
 	<div class="container">
