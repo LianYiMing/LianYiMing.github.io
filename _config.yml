@@ -4,10 +4,10 @@ SEOTitle: 廉一鸣的博客
 header-img: img/1.jpg
 email: AGZX_lym@163.com
 description:  "去他妈的真理无穷,进一步有一步的欢喜."
-keyword: "LY, LY Blog, 廉一鸣的博客, LianYiMing, 廉一鸣, lianyiming.com,lianyiming.github.io"
+keyword: "廉一鸣的博客, LianYiMing, 廉一鸣, lianyiming.com,lianyiming.github.io"
 #搜索引擎关键词
 url: "https://www.lianyiming.com/"          
-# your host, for absolute URLrss要用，所以是你的域名
+# your host, for absolute URL，rss要用，所以是你的域名
 baseurl: "https://www.lianyiming.com/"      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/LianYiMing/LianYiMing.github.io" # 你的github仓库
 
