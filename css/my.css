@@ -57,10 +57,10 @@
     }
 }
 *{
-    cursor: url("/medias/zhizhen1.ico"),auto!important;
+    cursor: url("/img/zhizhen1.ico"),auto!important;
 }
 :active{
-    cursor: url("/medias/zhizhen2.ico"),auto!important;
+    cursor: url("/img/zhizhen2.ico"),auto!important;
 }
 
   @media only screen and (max-width: 767px){
