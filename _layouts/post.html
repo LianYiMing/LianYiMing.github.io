@@ -3,7 +3,7 @@ layout: default
 ---
 <script>
 	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张
-		var  a ="./img/banner/" + String(new Date().getDay()) + ".jpg";
+		var  a ="./img/banner/" + new Date().getDate() + ".jpg";
 		//$('.intro-header').css('background-image', 'url(' + bannerUrl + ')');
 		console.log(a)
 	</script>
