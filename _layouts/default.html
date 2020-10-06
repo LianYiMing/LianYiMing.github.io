@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<link rel="stylesheet" type="text/css" href="/css/Load.css">
+	<link rel="stylesheet" type="text/css" href="/css/Load.css">
 	<script src="../js/love%20mouse.js"></script>
-			<script>
-				(function () {
-	    const loaded = function(){
-	       setTimeout(function(){
-	            const loader = document.getElementById("loading-container");
-	            loader.className="fadeout" ;//使用渐隐的方法淡出loading page
-	            // document.getElementById("body-wrap").style.display="flex";
-	            setTimeout(function(){
-	                loader.style.display="none";
-	            },1000); 
-	        },1000);//强制显示loading page 1s  
-	    };
-	    loaded();
-	})()
-	 </script>
-
-		<script type="text/javascript" src="\js\FunnyTitle.js"></script>
-<!--<script>
+	<script>
+		(function() {
+			const loaded = function() {
+				setTimeout(function() {
+					const loader = document.getElementById("loading-container");
+					loader.className = "fadeout"; //使用渐隐的方法淡出loading page
+					// document.getElementById("body-wrap").style.display="flex";
+					setTimeout(function() {
+						loader.style.display = "none";
+					}, 1000);
+				}, 1000); //强制显示loading page 1s  
+			};
+			loaded();
+		})()
+	</script>
+</script>
+	<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+	<!--<script>
 window.open("https://www.lianyiming.com");
 	</script>-->
-	
-		</head>
-	
-	
-		<div id="loading-container">
-			<p class="loading-text">Loaing......<p>
-			<div class="loading-image">
-				
-			</div>
-		</div>
-{% include head.html %}
 
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
-
-    {% include nav.html %}
-    {% include search.html %}
-
-    {{ content }}
-
-    {% include footer.html %}
+	</head>
 
 
-<!-- Image to hack wechat -->
-<img src="/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
-<script src="js/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
+	<div id="loading-container">
+		<p class="loading-text">Loaing......<p>
+				<div class="loading-image">
+
+				</div>
+	</div>
+	{% include head.html %}
+
+	<!-- hack iOS CSS :active style -->
+	<body ontouchstart="">
+
+		{% include nav.html %}
+		{% include search.html %}
+
+		{{ content }}
+
+		{% include footer.html %}
+
+
+		<!-- Image to hack wechat -->
+		<img src="/img/icon_wechat.png" width="0" height="0" />
+		<!-- Migrate from head to bottom, no longer block render and still work -->
+		<script src="js/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
 		<script>
 			L2Dwidget.init({
 				"pluginRootPath": "js/live2dw/",
@@ -71,7 +71,7 @@ window.open("https://www.lianyiming.com");
 				"log": false
 			});
 		</script>
-		
-</body>
+
+	</body>
 
 </html>
