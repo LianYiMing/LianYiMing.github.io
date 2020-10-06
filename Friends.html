@@ -27,7 +27,7 @@ layout: Friend
 
 		<script src="../js/jquery.min.js"></script>
 		<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-			<script src="../js/snow.js"></script> 
+		<script src="../js/snow.js"></script>
 	</head>
 
 	<body>
@@ -613,7 +613,7 @@ layout: Friend
 
 
 
-	<link rel="stylesheet" type="text/css" href="/css/vcomments.css">
+					<link rel="stylesheet" type="text/css" href="/css/vcomments.css">
 
 					<div class="card valine-card" data-aos="fade-up">
 						<div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
@@ -623,7 +623,7 @@ layout: Friend
 						<div id="vcomments" class="card-content" style="display: grid">
 						</div>
 					</div>
-{% if site.valine.enable %}
+					{% if site.valine.enable %}
 					<script src="/js/valine/av-min.js"></script>
 					<script src="/js/valine/Valine.min.js"></script>
 					<script>
@@ -638,7 +638,7 @@ layout: Friend
 							placeholder: '有朋自远方来不亦聊一聊乎~'
 						});
 					</script>
-{% endif %}
+					{% endif %}
 
 
 				</div>
