@@ -31,17 +31,20 @@ header-img: "img/2.jpg"
 	<p>冰冻三尺 非一日之寒<br>
 		积土成山 非斯须之作<br>
 
-		<a href="https://wzq.lianyiming.com/"><div id="div"></a>
-			<!--<a href="https://orxing.top/nav/"><img   src="/img/avatar-by.jpg" width="117" height="152" alt="Me!" ></a>-->
+		<a href="https://wzq.lianyiming.com/">
+			<div id="div">
+		</a>
+		<!--<a href="https://orxing.top/nav/"><img   src="/img/avatar-by.jpg" width="117" height="152" alt="Me!" ></a>-->
 		</div>
 		<div class="zh post-container">
 	</p>
 	<!--三个属性缺一不可，前边也需要一个斜杠-->
 	<blockquote>
 		<p>&nbsp Hey，我是<strong>廉一鸣</strong>，一只初四斜杠学生</p>
-		<strong>Ability</strong>: 本人擅长Ai、Fw、Fl、Br、Ae、Pr、Id、PS等软件的安装与卸载，精通CSS、JavaScript、PHP、C、C＋＋、java、Ruby、Perl、Lisp、python、Objective-C、ActionScript等单词的拼写，熟悉windows、Linux、Mac、Android、IOS等系统的开关机。<br>
+		<strong>Ability</strong>:
+		本人擅长Ai、Fw、Fl、Br、Ae、Pr、Id、PS等软件的安装与卸载，精通CSS、JavaScript、PHP、C、C＋＋、java、Ruby、Perl、Lisp、python、Objective-C、ActionScript等单词的拼写，熟悉windows、Linux、Mac、Android、IOS等系统的开关机。<br>
 		<strong>Achieve</strong>: 美国《时代》周刊2006年度人物，曾获2008年“感动中国”组委会特别大奖(哈哈哈是俩梗，大佬您阔以自行百度)<br>
-		<br /> 
+		<br />
 		<hr>
 		<p>感谢你来到这里吖(◍˃̶ᗜ˂̶◍)✩~
 
@@ -58,9 +61,9 @@ header-img: "img/2.jpg"
 			</blockquote>
 			<h6><strong>Dear 陌生人</strong>
 				<h6>
-			<h6>
-				见字如晤<br />
-				<hr>
+					<h6>
+						见字如晤<br />
+						<hr>
 	</blockquote>
 	</i>
 	这里是廉一鸣的の博客 <br />
@@ -81,23 +84,23 @@ header-img: "img/2.jpg"
 	https://wwe.lanzous.com/iIwtBh326pi <br />
 	</h6>
 	</div>
-				{% if site.valine.enable %}
-				<div id="vcomments"></div>
-				<script src="/js/valine/av-min.js"></script>
-				<script src="/js/valine/Valine.min.js"></script>
-				<script>
-					new Valine({
-						el: '#vcomments',
-						appId: '{{site.valine.appId}}',
-						appKey: '{{site.valine.appKey}}',
-						visitor: 'true' === 'true',
-						avatar: ' ',
-						pageSize: '10',
-						lang: 'en',
-						placeholder: '“我干了什么，究竟用时间换了什么”'
-					});
-				</script>
-				{% endif %}
+	{% if site.valine.enable %}
+	<div id="vcomments"></div>
+	<script src="/js/valine/av-min.js"></script>
+	<script src="/js/valine/Valine.min.js"></script>
+	<script>
+		new Valine({
+			el: '#vcomments',
+			appId: '{{site.valine.appId}}',
+			appKey: '{{site.valine.appKey}}',
+			visitor: 'true' === 'true',
+			avatar: ' ',
+			pageSize: '10',
+			lang: 'en',
+			placeholder: '“我干了什么，究竟用时间换了什么”'
+		});
+	</script>
+	{% endif %}
 	<!-- Gitalk 评论 start  -->
 	{% if site.gitalk.enable %}
 	<!-- Gitalk link  -->
