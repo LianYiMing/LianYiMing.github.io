@@ -351,3 +351,8 @@ threa: false
 #动态线条背景
 #bannerUrl: "/img/headimg/" + new Date().getDay() + '.jpg'
 lovemouse : true
+#全局鼠标爱心
+Load: true
+#全局页面加载动画
+FunnyTitle: true
+#全局跳出页面title自动显示已崩溃
