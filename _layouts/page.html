@@ -50,7 +50,7 @@ layout: default
 					{% endif %}
 				</div>
 			</section>
-			{% endif site.aboutSidebar == ture %}
+			{% elseif site.aboutSidebar == ture %}
 			<section>
 				<!-- no hr -->
 				<h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
