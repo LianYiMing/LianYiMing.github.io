@@ -360,4 +360,4 @@ FunnyTitle: true
 #全局跳出页面title自动显示已崩溃
 cat: true 
 #cat
-aboutSidebar: true
+aboutSidebar: false
