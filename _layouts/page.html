@@ -2,70 +2,83 @@
 layout: default
 ---
 <!-- Page Header -->
-		
-		
-	<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-					<div class="site-heading">
-						<h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-						<!--<hr class="small">-->
-						<span class="subheading">{{ page.description }}</span>
-					</div>
+
+
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+				<div class="site-heading">
+					<h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+					<!--<hr class="small">-->
+					<span class="subheading">{{ page.description }}</span>
 				</div>
 			</div>
 		</div>
-		<script src="../js/snow.js"></script> 
-	</header>
+	</div>
+	<script src="../js/snow.js"></script>
+</header>
 
-	<!-- Main Content -->
-	<div class="container">
+<!-- Main Content -->
+<div class="container">
 	<div class="row">
-			{% if site.sidebar == false %}
-			<!-- NO SIDEBAR -->
-			<!-- PostList Container -->
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 postlist-container">
-				{{ content }}
+		{% if site.sidebar == false %}
+		<!-- NO SIDEBAR -->
+		<!-- PostList Container -->
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 postlist-container">
+			{{ content }}
 
 
-			</div>
-			<!-- Sidebar Container -->
-			<div class="
+		</div>
+		<!-- Sidebar Container -->
+		<div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
-				<!-- Featured Tags -->
-				{% if site.featured-tags %}
-				<section>
-					<!-- no hr -->
-					<h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
-					<div class="tags">
-						{% for tag in site.tags %}
-						{% if tag[1].size > {{site.featured-condition-size}} %}
-						<a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-							{{ tag[0] }}
-						</a>
-						{% endif %}
-						{% endfor %}
-					</div>
-				</section>
-				{% endif %}
+			<!-- Featured Tags -->
+			{% if site.featured-tags %}
+			<section>
+				<!-- no hr -->
+				<h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+				<div class="tags">
+					{% for tag in site.tags %}
+					{% if tag[1].size > {{site.featured-condition-size}} %}
+					<a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+						{{ tag[0] }}
+					</a>
+					{% endif %}
+				</div>
+			</section>
+			{% endif site.aboutSidebar == ture %}
+			<section>
+				<!-- no hr -->
+				<h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+				<div class="tags">
+					{% for tag in site.tags %}
+					{% if tag[1].size > {{site.featured-condition-size}} %}
+					<a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+						{{ tag[0] }}
+					</a>
+					{% endif %}
+				</div>
+			</section>
+			{% elseif %}
+			{% endif %}
 
-				<!-- Friends Blog
+			<!-- Friends Blog
 				{% if site.friends %} -->
-				<hr>
-				<h5>FRIENDS</h5>
-				{% if site.friend1 %}
-				{% for friend in site.friend1 %}
-				
-				
-				
-				
-				{% endfor %}
-				{% endif %}
-				<!--<ul class="list-inline">
+			<hr>
+			<h5>FRIENDS</h5>
+			{% if site.friend1 %}
+			{% for friend in site.friend1 %}
+
+
+
+
+			{% endfor %}
+			{% endif %}
+			<!--<ul class="list-inline">
 					{% for friend in site.friends %}
 					<li>
 						</p><a href="{{friend.href}}">{{friend.title}}</a></li>
@@ -208,13 +221,13 @@ layout: default
 				<!-- Friends Blog -->
 				{% if site.friends %}
 				<hr>
-				
+
 				<h5>FRIENDS</h5>
 				<ol class="list-inline">
 					{% for friend in site.friends %}
-			
-						<li><a href="{{friend.href}}">~{{friend.title}}</a></li>
-		
+
+					<li><a href="{{friend.href}}">~{{friend.title}}</a></li>
+
 					{% endfor %}
 				</ol>
 				{% endif %}
@@ -222,5 +235,3 @@ layout: default
 			{% endif %}
 		</div>
 	</div>
-
-					
