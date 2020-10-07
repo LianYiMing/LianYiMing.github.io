@@ -1,11 +1,11 @@
 	L2Dwidget.init({
-				"pluginRootPath": "../js/live2dw/",
+				"pluginRootPath": "/js/live2dw/",
 				"pluginJsPath": "lib/",
 				"pluginModelPath": "assets/",
 				"tagMode": false,
 				"debug": false,
 				"model": {
-					"jsonPath": "../js/live2dw/assets/tororo.model.json"
+					"jsonPath": "/js/live2dw/assets/tororo.model.json"
 				},
 				"display": {
 					"position": "left",
