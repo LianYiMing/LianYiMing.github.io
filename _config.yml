@@ -350,3 +350,4 @@ friend19: [
 threa: false
 #动态线条背景
 #bannerUrl: "/img/headimg/" + new Date().getDay() + '.jpg'
+lovemouse :true
