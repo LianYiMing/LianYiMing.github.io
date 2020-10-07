@@ -346,7 +346,9 @@ friend19: [
 
 
 
-
+#页面的几个特效
+#boolean值，要用就true，不用就false呢，注意空格
+#
 threa: false
 #动态线条背景
 #bannerUrl: "/img/headimg/" + new Date().getDay() + '.jpg'
