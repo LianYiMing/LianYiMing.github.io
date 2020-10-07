@@ -6,9 +6,24 @@
 	{% if site.FunnyTitle.enable%}
 	<script src="../js/FunnyTitle.js"></script>
 	{% endif %}
-   <!-- {% if site.Load.enable %}-->
+   <!-- {% if site.Load.enable %}
 	<script src="../js/Load.js"></script>
 	<!--{% endif %}-->
+	<script>	
+	(function() {
+			const loaded = function() {
+				setTimeout(function() {
+					const loader = document.getElementById("loading-container");
+					loader.className = "fadeout"; //使用渐隐的方法淡出loading page
+					// document.getElementById("body-wrap").style.display="flex";
+					setTimeout(function() {
+						loader.style.display = "none";
+					}, 1000);
+				}, 1000); //强制显示loading page 1s  
+			};
+			loaded();
+		})()
+		</script>
 	<script src="../js/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
 	<script src="../js/cat.js "></script>
 	<!--引用外部悬浮小猫js-->
