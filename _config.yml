@@ -8,7 +8,7 @@ keyword: "廉一鸣的博客, LianYiMing, 廉一鸣, lianyiming.com,lianyiming.g
 #搜索引擎关键词
 url: "https://www.lianyiming.com/"          
 # your host, for absolute URL，rss要用，所以是你的域名
-baseurl: "https://www.lianyiming.com"      # for example, '/blog' if your blog hosted on 'host/blog'
+baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'如果是www.linyiming.com就不用。这种情况是为了应对github创建第二个page
 github_repo: "https://github.com/LianYiMing/LianYiMing.github.io" # 你的github仓库
 
 # Sidebar settings
