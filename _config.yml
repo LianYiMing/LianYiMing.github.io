@@ -13,6 +13,7 @@ github_repo: "https://github.com/LianYiMing/LianYiMing.github.io" # 你的github
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
+aboutSidebar: true
 sidebar-about-description: "Live a life you will remember"
 sidebar-avatar: /img/about-BY-gentle.jpg      # 用绝对URL地址,也就是要在前面加上/
 
@@ -360,4 +361,3 @@ FunnyTitle: true
 #全局跳出页面title自动显示已崩溃
 cat: true 
 #cat
-aboutSidebar: false
