@@ -65,7 +65,7 @@
 					</script>
 
 					<br>
-					<span id="year"></span>
+				
 	<span id="sitetime">  </span>
 										<script>
 											function siteTime() {
@@ -98,11 +98,10 @@
 										var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
 											diffMinutes * minutes) / seconds);
 										if(startYear == todayYear) {
-											document.getElementById("year").innerHTML = todayYear;
 											document.getElementById("sitetime").innerHTML = "本站已在各种风波中苟活 " + diffDays + " 天 " + diffHours +
 												" 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
 										} else {
-											document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+										
 											document.getElementById("sitetime").innerHTML = "本站已在各种风波中苟活 " + diffYears + " 年 " + diffDays +
 												" 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
 										}
