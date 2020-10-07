@@ -6,9 +6,7 @@
 	{% if site.FunnyTitle %}
 	<script src="../js/FunnyTitle.js"></script>
 	{% endif %}
-    {% if site.Load %}
-	<script src="../js/Load.js"></script>
-	{% endif %}
+   
 {% if site.cat %}	
 	<script src="../js/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
 	<script src="../js/cat.js "></script>
@@ -21,13 +19,16 @@ window.open("https://www.lianyiming.com");
 
 	</head>
 
-
+ {% if site.Load %}
+	<script src="../js/Load.js"></script>
 	<div id="loading-container">
 		<p class="loading-text">Loaing......<p>
 				<div class="loading-image">
-
 				</div>
 	</div>
+	{% endif %}
+	<!--写一起，不然没淡出。就会一直卡着-->
+
 	{% include head.html %}
 
 	<!-- hack iOS CSS :active style -->

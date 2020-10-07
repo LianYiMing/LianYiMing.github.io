@@ -6,7 +6,7 @@
 					// document.getElementById("body-wrap").style.display="flex";
 					setTimeout(function() {
 						loader.style.display = "none";
-					}, 1000);
+					}, 2000);
 				}, 1000); //强制显示loading page 1s  
 			};
 			loaded();
