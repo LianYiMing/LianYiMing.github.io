@@ -4,17 +4,12 @@ layout: default
 <!--<script>
 	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张
 		var  a ="/img/banner/" + new Date().getDay() + '.jpg';
-		//$('.intro-header').css('background-image', 'url(' + bannerUrl + ')');
+		//$('hearder.intro-header').css('background-image', 'url(' + bannerUrl + ')');
 		console.log(a)
 		var  kmj ="https://www.lianyiming.com" +a
 		console.log(kmj)
 	</script>
 	-->
-<script>
-	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张
-			var bannerUrl = "../img/banner/" + new Date().getDay() + '.jpg';
-			$('hearder.intro-header').css('background-image', 'url(' + bannerUrl + ')');
-		</script>
 <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0">
