@@ -280,7 +280,7 @@ mark {
 
 .bg-color {
 	opacity: 0.8;
-	background-image: linear-gradient( to right, #ABCFF2 0%,#459EF3 100%); //修改成自己喜欢的颜色值
+	background-image: linear-gradient( to right, #ABCFF2 0%,#E0ECF7 100%); //修改成自己喜欢的颜色值
 	//透明效果 值范围 0~1，看情况自己修改
 }
 
