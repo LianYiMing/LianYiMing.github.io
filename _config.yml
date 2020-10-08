@@ -126,18 +126,18 @@ ga_track_id: 'UA-176698352-1'            # Format: UA-xxxxxx-xx
 ga_domain: www.lianyiming.com               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成autoL
 
 
-#webpush: false
+webpush: false
 #网页通知
-#webpushkey: 'BNQ6NiuLHsmWrATJNAyeF_V9zguy7g4GJFtGv2G1D5b2j5xbhkmkxApQtk6RxsMAzKf7X_IDThjM7tAi_gFKdek'
+webpushkey: 'BNQ6NiuLHsmWrATJNAyeF_V9zguy7g4GJFtGv2G1D5b2j5xbhkmkxApQtk6RxsMAzKf7X_IDThjM7tAi_gFKdek'
 #也就是这里的key 
 #https://app.webpushr.com/dashboard/geo-report
 
 #页脚footer网站运行时间，这里填入大佬您贵站的生日
-#siteYear: 2020
-#siteMonth: 7
-#siteHour: 30
-#siteMinute: 0
-#siteSecond: 0
+siteYear: 2020
+siteMonth: 7
+siteHour: 30
+siteMinute: 0
+siteSecond: 0
 
 # Featured Tags
 featured-tags: true                     # 是否使用首页标签

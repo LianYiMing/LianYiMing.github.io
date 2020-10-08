@@ -11,6 +11,6 @@
 			fjs.parentNode.appendChild(js);
 		}(window, document, 'script', 'webpushr-jssdk'));
 		webpushr('setup', {
-			'key': {% site.webpushkey %},
+			'key': '{% site.webpushkey %}',
 			'integration': 'popup'
 		});
