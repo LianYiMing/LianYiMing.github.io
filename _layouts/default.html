@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+	<!-- start webpushr code -->
+	<script>
+		(function(w, d, s, id) {
+			if (typeof(w.webpushr) !== 'undefined') return;
+			w.webpushr = w.webpushr || function() {
+				(w.webpushr.q = w.webpushr.q || []).push(arguments)
+			};
+			var js, fjs = d.getElementsByTagName(s)[0];
+			js = d.createElement(s);
+			js.id = id;
+			js.async = 1;
+			js.src = "https://cdn.webpushr.com/app.min.js";
+			fjs.parentNode.appendChild(js);
+		}(window, document, 'script', 'webpushr-jssdk'));
+		webpushr('setup', {
+			'key': 'BNQ6NiuLHsmWrATJNAyeF_V9zguy7g4GJFtGv2G1D5b2j5xbhkmkxApQtk6RxsMAzKf7X_IDThjM7tAi_gFKdek',
+			'integration': 'popup'
+		});
+	</script><!-- end webpushr code -->
 	{% if site.lovemouse %}
 	<script src="/js/love%20mouse.js"> </script>
-	{% endif  %}   
+	{% endif %}
 	{% if site.FunnyTitle %}
 	<script src="/js/FunnyTitle.js"></script>
 	{% endif %}
-{% if site.cat %}	
+	{% if site.cat %}
 	<script src="/js/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
 	<script src="/js/cat.js "></script>
-{% endif %}
-<!--引用外部悬浮小猫js-->
-		{% if site.player %}
-		<script src="/libs/aplayer/APlayer.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 	{% endif %}
-{% if site.cute %}	
-<script src="https://cdn.jsdelivr.net/gh/LianYiMing/live2d-widget@latest/autoload.js"></script>
-<script>
-	console.log(`
+	<!--引用外部悬浮小猫js-->
+	{% if site.player %}
+	<script src="/libs/aplayer/APlayer.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+	{% endif %}
+	{% if site.cute %}
+	<script src="https://cdn.jsdelivr.net/gh/LianYiMing/live2d-widget@latest/autoload.js"></script>
+	<script>
+		console.log(
+			`
 	
 	く__,.ヘヽ.        /  ,ー､ 〉
            ＼ ', !-─‐-i  /  /´
@@ -38,23 +58,23 @@
                   ﾄ-,/  |___./
                   'ｰ'    !_,.:
 				 
-				  `)
-  
-</script>
-{% endif %}
+				  `
+		)
+	</script>
+	{% endif %}
 	<!--<script>
 window.open("https://www.lianyiming.com");
 	</script>-->
 
 	</head>
 
- {% if site.Load %}
+	{% if site.Load %}
 	<script src="/js/Load.js"></script>
 	<div id="loading-container">
 		<noscript>没有JS加载不粗来呢。。。</noscript>
 		<!--禁用了js后会显示-->
 		<p class="loading-text">Loaing......<p>
-		
+
 				<div class="loading-image">
 				</div>
 	</div>
@@ -78,7 +98,7 @@ window.open("https://www.lianyiming.com");
 		<img src="/img/icon_wechat.png" width="0" height="0" />
 		<!-- Migrate from head to bottom, no longer block render and still work -->
 
-	
+
 
 	</body>
 
