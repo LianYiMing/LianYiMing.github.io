@@ -8,7 +8,12 @@
 				{% include sns-links.html center=true %}
 				{% endif %}
 				<p class="copyright text-muted">
-					&copy; {{ site.time | date: '%Y' }} ❤ LYM
+					&copy; {{ site.time | date: '%Y' }} ❤ LianYiMing	
+					{% if page.title != 'Friends'  %}
+					<a href="https://www.kifroom.icu/#" target="_blank">
+						| kif
+					</a>
+					{% endif %}
 					<br>
 					<audio preload id='music' align="center">
 						<source src="/music/烤面筋.mp3"></audio>
