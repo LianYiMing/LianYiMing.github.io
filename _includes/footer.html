@@ -4,7 +4,9 @@
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 				<!-- SNS Link -->
+				{% if page.title != 'Friends'  %}
 				{% include sns-links.html center=true %}
+				{% endif %}
 				<p class="copyright text-muted">
 					&copy; {{ site.time | date: '%Y' }} ❤ LYM
 					<br>
