@@ -1,3 +1,5 @@
+window.onload=function(){ 
+	//为了避免报错
 function playPause() {
 	var music = document.getElementById('music');
 	var music_btn = document.getElementById('music-btn');
@@ -231,4 +233,5 @@ window.onload = function() {
 
 	}, 1000);
 
+}
 }
