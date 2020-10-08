@@ -658,7 +658,7 @@ layout: Friend
 
 
 
-		<!--
+
 		<footer class="page-footer bg-color">
 
 
@@ -675,121 +675,12 @@ layout: Friend
 				<div class="col s12 m8 l8 copy-right">
 					Copyright&nbsp;&copy;
 					<span id="year">2020</span>
-					｜Fork From
 					<a href="https://www.kifroom.icu/#" target="_blank">
 						kif
 					</a>
-
-					<br>
-					&nbsp;
-					<i class="fas fa-chart-area"></i>&nbsp;破站有:&nbsp;<span class="white-color">?</span>&nbsp;字
-
-
-
-
-
-
-					<span id="busuanzi_container_site_pv">
-						|&nbsp;<i class="far fa-eye"></i>&nbsp;访问量有:&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次
-					</span>
-
-
-					<span id="busuanzi_container_site_uv">
-						|&nbsp;<i class="fas fa-users"></i>&nbsp;访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人
-					</span>
-
-					<br>
-
-					<span id="sitetime">载入运行时间...</span>
-					<script>
-						function siteTime() {
-					var seconds = 1000;
-					var minutes = seconds * 60;
-					var hours = minutes * 60;
-					var days = hours * 24;
-					var years = days * 365;
-					var today = new Date();
-					var startYear = "2020";
-					var startMonth = "7";
-					var startDate = "30";
-					var startHour = "0";
-					var startMinute = "0";
-					var startSecond = "0";
-					var todayYear = today.getFullYear();
-					var todayMonth = today.getMonth() + 1;
-					var todayDate = today.getDate();
-					var todayHour = today.getHours();
-					var todayMinute = today.getMinutes();
-					var todaySecond = today.getSeconds();
-					var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-					var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-					var diff = t2 - t1;
-					var diffYears = Math.floor(diff / years);
-					var diffDays = Math.floor((diff / days) - diffYears * 365);
-					var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-					var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-						minutes);
-					var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-						diffMinutes * minutes) / seconds);
-					if(startYear == todayYear) {
-						document.getElementById("year").innerHTML = todayYear;
-						document.getElementById("sitetime").innerHTML = "本站已在各种风波中苟活 " + diffDays + " 天 " + diffHours +
-							" 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-					} else {
-						document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-						document.getElementById("sitetime").innerHTML = "本站已在各种风波中苟活 " + diffYears + " 年 " + diffDays +
-							" 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-					}
-				}
-				setInterval(siteTime, 1000);
-			</script>
-
-					<br>
-
-				</div>
-				<div class="col s12 m4 l4 social-link social-statis">
-
-					<a href="https://github.com/lianyiming" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top"
-					 data-delay="50">
-						<i class="fab fa-github"></i>
-					</a>
-
-
-
-					<a href="AGZX_lym@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-						<i class="fas fa-envelope-open"></i>
-					</a>
-
-
-
-
-
-
 					
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1825565000" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1825565000" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-    <a href="https://weibo.com/u/7186433481" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/u/7186433481" data-position="top" data-delay="50">
-        <i class="fab fa-weibo"></i>
-    </a>
-    <a href="https://www.zhihu.com/people/8140bfec20d15be81cf41c6169d8efbc" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/8140bfec20d15be81cf41c6169d8efbc" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">知</i>
-    </a>
-
-
-					<a href="/feed.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-						<i class="fas fa-rss"></i>
-					</a>
-
-
-				</div>
-
-			</div>
-
-
-
 		</footer>
--->
+
 		<!-- 回到顶部按钮 -->
 		<div id="backTop" class="top-scroll">
 
