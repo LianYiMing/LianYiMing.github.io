@@ -34,12 +34,12 @@
 		var days = hours * 24;
 		var years = days * 365;
 		var today = new Date();
-		var startYear = "{% site.siteYear %}";
-		var startMonth = "{% site.siteMonth %}";
-		var startDate = "{% site.siteDate %}";
-		var startHour = "{% site.siteHour %}";
-		var startMinute = "{% site.siteMinute %}";
-		var startSecond = "{% site.siteSecond %}";
+		var startYear = {% site.siteYear %};
+		var startMonth = {% site.siteMonth %};
+		var startDate = {% site.siteDate %};
+		var startHour = {% site.siteHour %};
+		var startMinute = {% site.siteMinute %};
+		var startSecond = {% site.siteSecond %};
 	};
 	var todayYear = today.getFullYear();
 	var todayMonth = today.getMonth() + 1;
