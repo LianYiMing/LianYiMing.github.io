@@ -60,9 +60,9 @@ window.open("https://www.lianyiming.com");
 	</div>
 	{% endif %}
 	<!--写一起，不然没淡出。就会一直卡着.....-->
-
+{% if page.layout == 'page' || page.layout == 'post'  %}
 	{% include head.html %}
-
+{% endif %}
 	<!-- hack iOS CSS :active style -->
 	<body ontouchstart="">
 
