@@ -28,7 +28,7 @@
 	</div>
 
 </footer>
-
+{% if page.title != 'Friends'  %}
 <!-- jQuery -->
 <script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
 
@@ -353,3 +353,5 @@
 		});
 	});
 </script>
+{% endif %}
+<!--是friend的endif-->
