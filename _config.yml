@@ -68,7 +68,7 @@ cat: true
 #cat
 cute: true
 #看板娘
-
+player: true
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0

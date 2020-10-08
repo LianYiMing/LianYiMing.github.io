@@ -10,8 +10,12 @@
 	<script src="/js/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script>
 	<script src="/js/cat.js "></script>
 {% endif %}
-	{% if site.cute %}
 <!--引用外部悬浮小猫js-->
+		{% if site.player %}
+		<script src="/libs/aplayer/APlayer.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+	{% endif %}
+
 <script src="https://cdn.jsdelivr.net/gh/LianYiMing/live2d-widget@latest/autoload.js"></script>
 <script>
 	console.log(`
