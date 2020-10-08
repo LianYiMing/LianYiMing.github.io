@@ -52,6 +52,23 @@ exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
 
+#页面的几个特效
+#boolean值，要用就true，不用就false呢，注意空格
+#
+threa: false
+#动态线条背景
+#bannerUrl: "/img/headimg/" + new Date().getDay() + '.jpg'
+lovemouse : true
+#全局鼠标爱心
+Load: true
+#全局页面加载动画
+FunnyTitle: true
+#全局跳出页面title自动显示已崩溃
+cat: true 
+#cat
+cute: true
+#看板娘
+
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
@@ -347,18 +364,3 @@ friend19: [
 
 
 
-#页面的几个特效
-#boolean值，要用就true，不用就false呢，注意空格
-#
-threa: false
-#动态线条背景
-#bannerUrl: "/img/headimg/" + new Date().getDay() + '.jpg'
-lovemouse : true
-#全局鼠标爱心
-Load: true
-#全局页面加载动画
-FunnyTitle: true
-#全局跳出页面title自动显示已崩溃
-cat: true 
-#cat
-#
