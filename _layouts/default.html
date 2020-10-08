@@ -3,25 +3,9 @@
 	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 	</script>
 	<!--卜算子统计-->
-	<!-- start webpushr code -->
-	<script>
-		(function(w, d, s, id) {
-			if (typeof(w.webpushr) !== 'undefined') return;
-			w.webpushr = w.webpushr || function() {
-				(w.webpushr.q = w.webpushr.q || []).push(arguments)
-			};
-			var js, fjs = d.getElementsByTagName(s)[0];
-			js = d.createElement(s);
-			js.id = id;
-			js.async = 1;
-			js.src = "https://cdn.webpushr.com/app.min.js";
-			fjs.parentNode.appendChild(js);
-		}(window, document, 'script', 'webpushr-jssdk'));
-		webpushr('setup', {
-			'key': 'BNQ6NiuLHsmWrATJNAyeF_V9zguy7g4GJFtGv2G1D5b2j5xbhkmkxApQtk6RxsMAzKf7X_IDThjM7tAi_gFKdek',
-			'integration': 'popup'
-		});
-	</script><!-- end webpushr code -->
+	{% if site.webpush %
+	<script src="/js/tongzhi.js"></script>
+	{% endif %}
 	{% if site.thread %}
 		<script type="text/javascript" src="/js/ribbon-dynamic.js" async="async"></script>
 		{% endif %}
