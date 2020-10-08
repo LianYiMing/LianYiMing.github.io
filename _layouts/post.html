@@ -2,11 +2,16 @@
 layout: default
 ---
 <script>
-	function myFunction()
-	{
+	var  a ='/img/banner'+ new Date().getDay() + '.jpg';
+	function myFunction() {
+	    var x = document.getElementsByClassName("intro-header");
+	    var i;
+	    for (i = 0; i < x.length; i++) {
+	        x[i].style.background-image = a;
+	    }
+	}
 	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张/img/headimg/18.jpg
-		var  a ='/img/banner'+ new Date().getDay() + '.jpg';
-		}
+
 		//$('hearder.intro-header').css('background-image', 'url(' + bannerUrl + ')');
 		console.log(a)
 //	document.getElementsByClassName("intro-header").background-Image="a";
