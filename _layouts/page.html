@@ -24,7 +24,8 @@ layout: default
 	<!-- Main Content -->
 	<div class="container">
 	<div class="row">
-			{% if site.sidebar == false or page.sidebar == false %}
+			{% if site.sidebar == false || page.sidebar == 'false' %}
+			<!--要加单引号，如果用page的话-->
 			<!-- NO SIDEBAR -->
 			<!-- PostList Container -->
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 postlist-container">
