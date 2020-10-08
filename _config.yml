@@ -91,7 +91,7 @@ kramdown:
   input: GFM                            # use Github Flavored Markdown !important
 
 
-
+#liquid语法不能作用于外部js
 # 评论系统(不要加引号，要空一格子再输入值，前面要有两个空格，否则github会报错：在第2行有问题)
 #vaLINE
 valine:
