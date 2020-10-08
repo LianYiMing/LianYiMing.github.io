@@ -70,7 +70,7 @@ window.open("https://www.lianyiming.com");
 		{% include search.html %}
 
 		{{ content }}
-{% if page.layout == 'page' %}
+{% if page.layout == 'page' || page.layout == 'post'  %}
 		{% include footer.html %}
 {% endif %}
 
