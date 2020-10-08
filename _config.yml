@@ -128,7 +128,7 @@ ga_domain: www.lianyiming.com               # 默认的是 auto, 这里我是自
 
 webpush: false
 #网页通知
-webpushkey: 'BNQ6NiuLHsmWrATJNAyeF_V9zguy7g4GJFtGv2G1D5b2j5xbhkmkxApQtk6RxsMAzKf7X_IDThjM7tAi_gFKdek'
+webpushkey: BNQ6NiuLHsmWrATJNAyeF_V9zguy7g4GJFtGv2G1D5b2j5xbhkmkxApQtk6RxsMAzKf7X_IDThjM7tAi_gFKdek
 #也就是这里的key 
 #https://app.webpushr.com/dashboard/geo-report
 
