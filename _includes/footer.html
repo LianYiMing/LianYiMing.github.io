@@ -53,7 +53,7 @@
 <script src="{{ "/js/snackbar.js " | prepend: site.baseurl }}"></script>
 <script src="{{ "/js/sw-registration.js " | prepend: site.baseurl }}"></script>
 {% endif %}
-
+{% if page.title != 'Friends'  %}
 <!-- async load function -->
 <script>
 	function async (u, c) {
@@ -128,7 +128,8 @@
 </script>
 <script src='{{ "/js/archive.js " | prepend: site.baseurl }}'></script>
 {% endif %}
-{% if page.title != 'Friends'  %}
+{% endif %}
+
 <!--fastClick.js -->
 <script>
 	async ("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function() {
@@ -359,5 +360,5 @@
 		});
 	});
 </script>
-{% endif %}
+
 <!--是friend的endif-->
