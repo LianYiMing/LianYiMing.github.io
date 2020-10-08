@@ -2,11 +2,14 @@
 layout: default
 ---
 <script>
+	function myFunction()
+	{
 	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张/img/headimg/18.jpg
 		var  a ='/img/banner'+ new Date().getDay() + '.jpg';
+		}
 		//$('hearder.intro-header').css('background-image', 'url(' + bannerUrl + ')');
 		console.log(a)
-	
+//	document.getElementsByClassName("intro-header").background-Image="a";
 	</script>
 <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
@@ -18,7 +21,7 @@ layout: default
 <style type="text/css">
 	header.intro-header {
 		position: relative;
-		background-image: url('a')
+		background-image: url(a)
 	}
 
 		{
