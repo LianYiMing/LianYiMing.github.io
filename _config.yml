@@ -133,11 +133,11 @@ webpushkey: BNQ6NiuLHsmWrATJNAyeF_V9zguy7g4GJFtGv2G1D5b2j5xbhkmkxApQtk6RxsMAzKf7
 #https://app.webpushr.com/dashboard/geo-report
 
 #页脚footer网站运行时间，这里填入大佬您贵站的生日
-siteYear: "2020"
-siteMonth: "7"
-siteHour: "30"
-siteMinute: "0"
-siteSecond: "0"
+siteYear: 2020
+siteMonth: 7
+siteHour: 30
+siteMinute: 0
+siteSecond: 0
 
 # Featured Tags
 featured-tags: true                     # 是否使用首页标签
