@@ -3,10 +3,10 @@ layout: default
 ---
 <script>
 	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张/img/headimg/18.jpg
-		var  a =''/img/banner' + new Date().getDay() + '.jpg'';
+		var  a ='"'+/img/banner' + new Date().getDay() + '.jpg'+'"';
 		//$('hearder.intro-header').css('background-image', 'url(' + bannerUrl + ')');
 		console.log(a)
-		var  kmj ="https://www.lianyiming.com" +a
+		var  kmj =a
 		console.log(kmj)
 	</script>
 <!-- Image to hack wechat -->
