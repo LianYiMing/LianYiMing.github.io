@@ -45,105 +45,12 @@
 }
 
 body {
-	background-image: linear-gradient(#E0ECF7, #E0ECF7);
+	background-image: linear-gradient(#ffffff, #ffffff);
 	margin: 0;
 	color: #34495e;
 }
 
-h1 {
-	margin: 48px 0 22px -5px;
-	font-size: 2.0rem;
-	font-weight: bold;
-	line-height: 2.0rem;
-}
 
-h2 {
-	margin: 42px 0 18px -5px;
-	font-size: 1.8rem;
-	font-weight: bold;
-	line-height: 1.8rem;
-}
-
-h3 {
-	margin: 38px 0 15px -4px;
-	font-size: 1.6rem;
-	font-weight: bold;
-	line-height: 1.7rem;
-}
-
-h4 {
-	margin: 32px 0 12px -4px;
-	font-size: 1.45rem;
-	font-weight: bold;
-	line-height: 1.45rem;
-}
-
-h5 {
-	margin: 28px 0 8px -4px;
-	font-size: 1.2rem;
-	font-weight: bold;
-	line-height: 1.2rem;
-}
-
-h6 {
-	margin: 22px 0 4px -4px;
-	font-size: 1.1rem;
-	line-height: 1.1rem;
-}
-
-p {
-	font-size: 1rem;
-	line-height: 1.5rem;
-}
-
-hr {
-	margin: 20px 0;
-	border: 0;
-	border-top: 1px solid #ccc;
-}
-
-blockquote {
-	border-left: 5px solid #42b983;
-	padding: 1rem 0.8rem 0.2rem 0.8rem;
-	color: #666;
-	background-color: rgba(66, 185, 131, .1);
-}
-
-.line-numbers-rows {
-	border-right-width: 0px !important;
-}
-
-.line-numbers {
-	padding: 1.5rem 1.5rem 1.5rem 3.5rem !important;
-	margin: 1rem 0 !important;
-	background: #272822;
-	overflow: auto;
-	border-radius: 0.35rem;
-	tab-size: 4;
-}
-
-pre {
-	padding: 2.5rem 1.5rem 1.5rem 1.5rem !important;
-	margin: 1rem 0 !important;
-	background: #272822;
-	overflow: auto;
-	border-radius: 0.35rem;
-	tab-size: 4;
-}
-
-.code-area::after {
-	content: " ";
-	position: absolute;
-	border-radius: 50%;
-	background: #ff5f56;
-	width: 12px;
-	height: 12px;
-	top: 0;
-	left: 12px;
-	margin-top: 12px;
-	-webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-	box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-}
 
 code {
 	padding: 1px 5px;
@@ -226,42 +133,6 @@ pre[class*="language-"] {
 
 /* 键盘 kbd 标签样式 */
 
-kbd {
-	margin: 0 3px;
-	padding: 3px 5px;
-	border-radius: 3px;
-	border: 1px solid #b4b4b4;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 2px 1px 0 rgba(255, 255, 255, 0.6) inset;
-	font-family: 'Menlo';
-	font-size: 0.9rem;
-	font-weight: 600;
-	background-color: #f8f8f8;
-	color: #34495e;
-	line-height: 1.8rem;
-	white-space: nowrap;
-}
-
-b,
-strong {
-	font-weight: bold;
-}
-
-dfn {
-	font-style: italic;
-}
-
-small {
-	font-size: 85%;
-}
-
-cite {
-	font-style: normal;
-}
-
-mark {
-	background-color: #fcf8e3;
-	padding: .2em;
-}
 
 .card {
 	border-radius: 10px;
