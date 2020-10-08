@@ -24,7 +24,7 @@ layout: default
 	<!-- Main Content -->
 	<div class="container">
 	<div class="row">
-			{% if site.sidebar == false %}
+			{% if site.sidebar == false || page.sidebar == false %}
 			<!-- NO SIDEBAR -->
 			<!-- PostList Container -->
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 postlist-container">
@@ -55,19 +55,12 @@ layout: default
 				</section>
 				{% endif %}
 
-				<!-- Friends Blog
-				{% if site.friends %} -->
+				<!-- Friends Blog-->
+				{% if site.friends %} 
 				<hr>
 				<h5>FRIENDS</h5>
-				{% if site.friend1 %}
-				{% for friend in site.friend1 %}
-				
-				
-				
-				
-				{% endfor %}
-				{% endif %}
-				<!--<ul class="list-inline">
+			
+				<ul class="list-inline">
 					{% for friend in site.friends %}
 					<li>
 						</p><a href="{{friend.href}}">{{friend.title}}</a></li>
@@ -75,6 +68,7 @@ layout: default
 				</ul>
 				{% endif %}
 			</div>
+			<!--这个else是上边的sidebr==的内个if的else嵌套-->
 			{% else %}
 
 			<!-- USE SIDEBAR -->
