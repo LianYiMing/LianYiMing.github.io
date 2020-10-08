@@ -4,13 +4,13 @@
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 				<!-- SNS Link -->
-				{% if page.title != 'Friends'  %}
+				{% if page.title != 'Friends' %}
 				{% include sns-links.html center=true %}
 				{% endif %}
 				<p class="copyright text-muted">
-					&copy; {{ site.time | date: '%Y' }} ❤ Lian Yi Ming	
-					{% if page.title == 'Friends'  %}
-					
+					&copy; {{ site.time | date: '%Y' }} ❤ Lian Yi Ming
+					{% if page.title == 'Friends' %}
+
 					| <a href="https://www.kifroom.icu/#" target="_blank">
 						Kif
 					</a>
@@ -28,13 +28,16 @@
 			</div>
 			</aside>
 			<br>
-
+			<span id="busuanzi_container_site_pv">
+				本站总访问量<span id="busuanzi_value_site_pv"></span>次
+			</span>
+			<br>
 		</div>
 	</div>
 	</div>
 
 </footer>
-{% if page.title != 'Friends'  %}
+{% if page.title != 'Friends' %}
 <!-- jQuery -->
 <script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
 
