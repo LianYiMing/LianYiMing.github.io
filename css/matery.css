@@ -478,7 +478,7 @@ mark {
 
 .bg-cover .container {
 	position: relative;
-	color: #b8b8b8;
+	color: #fff;
 	z-index: 2;
 }
 
@@ -493,7 +493,7 @@ mark {
 	font-weight: 300;
 	font-size: 1.25rem;
 	line-height: 1.4em;
-	color: #474747;
+	color: #eee;
 }
 
 .bg-cover .post-title {
