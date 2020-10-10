@@ -53,9 +53,9 @@
 	{% if page.title != 'Friends' %}
 	<link rel="stylesheet" href="{{ "/css/blog.min.css" | prepend: site.baseurl }}">
 	{% endif %}
-{% if page.title == 'Friends' %}
+	{% if page.title == 'Friends' %}
 	<link rel="stylesheet" href="{{ "/css/friend.css" | prepend: site.baseurl }}">
-{% endif %}
+	{% endif %}
 	<!-- Custom Fonts -->
 	<!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
 	<!--  change font-awesome CDN to qiniu -->
@@ -70,5 +70,5 @@
     <![endif]-->
 
 	<!-- ga & ba script hoook -->
-	
+
 </head>
