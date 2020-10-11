@@ -73,6 +73,8 @@ player: true
 #音乐
 snow: true
 #除了friend页面的全局头图下雪
+flower: false
+#页面下樱花
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
