@@ -54,7 +54,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 
 #页面的几个特效
-#boolean值，要用就true，不用就false呢，注意空格
+#boolean值，要用就true，不用就false，注意空格
 #
 threa: false #文章动态粗线条背景
 thread: false #文章动态线条+颗粒背景
