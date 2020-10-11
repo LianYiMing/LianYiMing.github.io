@@ -82,7 +82,7 @@
 }
 
 .aplayer.aplayer-fixed .aplayer-list {
-	margin-bottom: 565px;
+	margin-bottom: 0px;
 	border: 1px solid #eee;
 	border-bottom: none
 }
@@ -103,7 +103,7 @@
 .aplayer.aplayer-fixed .aplayer-lrc {
 	display: block;
 	position: fixed;
-	bottom: 510px;
+	bottom: 10px;
 	left: 0;
 	right: 0;
 	margin: 0;
