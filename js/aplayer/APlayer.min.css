@@ -89,7 +89,7 @@
 
 .aplayer.aplayer-fixed .aplayer-body {
 	position: fixed;
-	bottom: 2;
+	bottom: 10px;
 	left: 0;
 	right: 0;
 	margin: 0;
