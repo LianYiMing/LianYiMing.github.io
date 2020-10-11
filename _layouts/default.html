@@ -3,21 +3,21 @@
 	{% if site.webpush %}
 	<script>
 		(function(w, d, s, id) {
-				if (typeof(w.webpushr) !== 'undefined') return;
-				w.webpushr = w.webpushr || function() {
-					(w.webpushr.q = w.webpushr.q || []).push(arguments)
-				};
-				var js, fjs = d.getElementsByTagName(s)[0];
-				js = d.createElement(s);
-				js.id = id;
-				js.async = 1;
-				js.src = "https://cdn.webpushr.com/app.min.js";
-				fjs.parentNode.appendChild(js);
-			}(window, document, 'script', 'webpushr-jssdk'));
-			webpushr('setup', {
-				'key': "{{ site.webpushkey }}",
-				'integration': 'popup'
-			});
+			if (typeof(w.webpushr) !== 'undefined') return;
+			w.webpushr = w.webpushr || function() {
+				(w.webpushr.q = w.webpushr.q || []).push(arguments)
+			};
+			var js, fjs = d.getElementsByTagName(s)[0];
+			js = d.createElement(s);
+			js.id = id;
+			js.async = 1;
+			js.src = "https://cdn.webpushr.com/app.min.js";
+			fjs.parentNode.appendChild(js);
+		}(window, document, 'script', 'webpushr-jssdk'));
+		webpushr('setup', {
+			'key': "{{ site.webpushkey }}",
+			'integration': 'popup'
+		});
 	</script>
 	{% endif %}
 	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -28,11 +28,11 @@
 	{% endif %}
 	{% if site.flower %}
 	<script src="https://cdn.jsdelivr.net/gh/10963273/iuiu@master/js/yinghua.js"></script>
-		{% endif %}
-	
+	{% endif %}
+
 	{% if site.thread %}
-		<script type="text/javascript" src="/js/ribbon-dynamic.js" async="async"></script>
-		{% endif %}
+	<script type="text/javascript" src="/js/ribbon-dynamic.js" async="async"></script>
+	{% endif %}
 	{% if site.lovemouse %}
 	<script src="/js/love%20mouse.js"> </script>
 	{% endif %}
@@ -102,18 +102,13 @@ window.open("https://www.lianyiming.com");
 
 		{% include nav.html %}
 		{% include search.html %}
-<div class="music-player">
-
-
-
-			<div class="row">
-				<meting-js class="col l8 offset-l2 m10 offset-m1 s12" server="netease" type="playlist" id="5108936342" fixed='against'
-				 autoplay='false' theme='#42b983' loop='all' order='random' preload='auto' volume='0.7' list-folded='true'>
-				</meting-js>
-			</div>
-		</div>
+	
 		{{ content }}
-
+	<div class="music-player">
+			<meting-js class="col l8 offset-l2 m10 offset-m1 s12" server="netease" type="playlist" id="5108936342" fixed='against'
+			 autoplay='false' theme='#42b983' loop='all' order='random' preload='auto' volume='0.7' list-folded='true'>
+			</meting-js>
+		</div>
 		{% include footer.html %}
 
 
