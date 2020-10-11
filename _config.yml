@@ -69,7 +69,7 @@ cat: true
 #全局左下角cat
 cute: true
 #全局左下角看板娘
-aplayer: true
+#aplayer: true
 #音乐
 snow: true
 #除了friend页面的全局头图下雪
