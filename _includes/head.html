@@ -36,7 +36,6 @@
 	<link rel="stylesheet" type="text/css" href="/css/Load.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/js/aplayer/APlayer.min.css">
 	<!-- Web App Manifest -->
 	<link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
 
@@ -55,6 +54,10 @@
 	{% endif %}
 	{% if page.title == 'Friends' %}
 	<link rel="stylesheet" href="{{ "/css/friend.css" | prepend: site.baseurl }}">
+	{% endif %}
+	{% if site.aplayer %}
+	<link rel="stylesheet" href="{{ "/css/aplayer.css" | prepend: site.baseurl }}">
+	<link rel="stylesheet" href="/js/aplayer/APlayer.min.css">
 	{% endif %}
 	<!-- Custom Fonts -->
 	<!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
