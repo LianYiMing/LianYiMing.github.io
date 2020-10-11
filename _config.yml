@@ -103,6 +103,7 @@ valine:
 # Disqus（https://disqus.com/）
 disqus_username:  
 #LianYiMing （也就是你的用户名）
+#{{}}和{%%}完全不一样
 
 # Gitalk
 gitalk:
@@ -114,6 +115,10 @@ gitalk:
   admin: LianYiMing
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
+webpush: false
+#网页通知
+key: BNQ6NiuLHsmWrATJNAyeF_V9zguy7g4GJFtGv2G1D5b2j5xbhkmkxApQtk6RxsMAzKf7X_IDThjM7tAi_gFKdek
+#也就是这里的key (https://app.webpushr.com/dashboard/geo-report)
 
 # 统计
 
@@ -126,10 +131,6 @@ ga_track_id: 'UA-176698352-1'            # Format: UA-xxxxxx-xx
 ga_domain: www.lianyiming.com               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成autoL
 
 
-webpush: false
-#网页通知
-webpushkey: BNQ6NiuLHsmWrATJNAyeF_V9zguy7g4GJFtGv2G1D5b2j5xbhkmkxApQtk6RxsMAzKf7X_IDThjM7tAi_gFKdek
-#也就是这里的key (https://app.webpushr.com/dashboard/geo-report)
 
 #外部js貌似不行欸
 #页脚footer网站运行时间，这里填入大佬您贵站的生日（乱填会报错的说，，，，）
