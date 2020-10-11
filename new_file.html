@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>   .outline {
+				    width:900px;
+				    height:300px;
+				    background-color:#ffffff;
+				    top:50%;
+				    left:50%;
+				    position:absolute;
+				    margin-left: -450px; /*width的一半*/
+				    margin-top: -150px;  /*height的一半*/
+				    overflow:hidden;   
+			        }
+			       .insidecasing {
+			            height:260px;
+			            width:100%;
+			            margin-top:20px;
+			            border-bottom:#959393 solid 2px;
+			        }
+			        .Dinosaur {
+			            position:absolute;
+			            z-index:1000;
+			            margin-top:-38px;
+			            margin-left:40px;
+			            overflow:hidden;
+			            transition: margin-top 0.1s ease-in;
+			        }
+			        .Dinosaurpx {
+			            position:absolute;
+			            z-index:10000;
+			            margin-top:-24px;
+			            margin-left:40px;
+			            overflow:hidden;
+			            transition: display 1s linear;
+			            display:none;
+			        }
+			       .yun1 {
+			            position:absolute;
+			            z-index:10000;
+			            margin-top:-184px;
+			            margin-left:40px;
+			            overflow:hidden;
+			            margin-left:900px;
+			            transition: margin-left 15s linear;
+			        }
+			        .yun2 {
+			            position:absolute;
+			            z-index:10000;
+			            margin-top:-224px;
+			            margin-left:40px;
+			            overflow:hidden;
+			            margin-left:900px;
+			            transition: margin-left 15s linear;
+			        }
+			         .yun3 {
+			            position:absolute;
+			            z-index:10000;
+			            margin-top:-200px;
+			            margin-left:40px;
+			            overflow:hidden;
+			            margin-left:900px;
+			            transition: margin-left 15s linear;
+			        }
+			         .hinderdw0 {
+			            width:13px;
+			            height:40px;
+			            margin-top:220px;
+			            background-color:#000000;
+			            position:absolute;
+			            z-index:1000;
+			            margin-left:900px;
+			            transition: margin-left 12s linear;
+			        }
+			        .hinderdw2 {
+			            width:13px;
+			            height:28px;
+			            margin-top:232px;
+			            background-color:#000000;
+			            position:absolute;
+			            z-index:1000;
+			            margin-left:900px;
+			            transition: margin-left 12s linear;
+			        }
+			         .hinderdw4 {
+			            width:13px;
+			            height:15px;
+			            margin-top:245px;
+			            background-color:#000000;
+			            position:absolute;
+			            z-index:1000;
+			            margin-left:900px;
+			            transition: margin-left 12s linear;
+			        }
+			           .hinderdw6 {
+			            width:13px;
+			            height:15px;
+			            margin-top:208px;
+			            background-color:#000000;
+			            position:absolute;
+			            z-index:1000;
+			            margin-left:900px;
+			            transition: margin-left 12s linear;
+			        }
+			         #tq { /*恐龙跳起图*/        
+			              display:none;
+			              position:absolute;
+			              z-index:1000;
+			        }
+			        #zl1 {
+			            float:left;
+			            display:none;
+			            transition: display 1s linear;
+			        }
+			        #zl2 {
+			            float:left;
+			            display:block;
+			            transition: display 1s linear;
+			        }
+			        #px1 {
+			            float:left;
+			            display:none;
+			            transition: display 1s linear;
+			        }
+			        #px2 {
+			            float:left;
+			            display:block;
+			            transition: display 1s linear;
+			        }
+			         .hinderdwSE {
+			            width:13px;
+			            height:15px;
+			            margin-top:208px;
+			            background-color:#4cff00;
+			            border-radius:100px;
+			            position:absolute;
+			            z-index:1000;
+			            margin-left:900px;
+			            transition: margin-left 12s ease;
+			        }</style>
+			
+
+		<title></title>
+	</head>
+	<body>
+		<div class="outline">@*外面最大的框*@
+		     <div class="insidecasing">@*小框（内容在的框）*@
+		         <div class="hinderdw0" id="hinder0">
+		         </div>
+		         <div class="hinderdw2" id="hinder1">
+		         </div>
+		         <div class="hinderdw4" id="hinder2">
+		         </div>
+		         <div class="hinderdw6" id="hinder3">
+		         </div>
+		         <div class="hinderdwSE" id="hinder4">
+		         </div>
+		     </div>
+		    <div class="Dinosaur" id="dinosaur">
+		        <img id="zl1" src="/image/kl.png" />
+		        <img id="zl2" src="/image/Snipaste_2017-12-01_14-30-58.png" />
+		        <img id="tq" src="/image/T.png" /> 
+		    </div>
+		    <div class="Dinosaurpx" id="dinosaurpx">
+		        <img id="px1" src="/image/4.png" />
+		        <img id="px2" src="/image/2.png" />
+		    </div>
+		    <div class="yun1" id="yun1">
+		        <img src="/image/yun.png" />
+		    </div>
+		    <div class="yun2" id="yun2">
+		        <img src="/image/yun.png" />
+		    </div>
+		    <div class="yun3" id="yun3">
+		        <img src="/image/yun.png" />
+		    </div>
+		</div>
+		
+				
+	</body>
+</html>
+<script>
+			        var boji = 0;//补给内容
+			        collide(); //碰撞检测
+			        //setInterval("suiji();", 3000); //一直有东西出来
+			        window.setInterval(function () {
+			            zoulu1();
+			        }, 150);
+			        window.setInterval(function () {
+			            zoulu2();
+			        }, 300);
+			        window.setInterval(function () {
+			            zoulu1dx1();
+			        }, 150);
+			        window.setInterval(function () {
+			            zoulu1dx2();
+			        }, 300);
+			
+			        window.setInterval(function () {
+			            yundz1();
+			        }, 15000);
+			        window.setInterval(function () {
+			            yundz2();
+			        }, 15000);
+			        window.setInterval(function () {
+			            yundz3();
+			        }, 15000);
+			
+			        window.setInterval("suiji() ", 3000); //方块计时器
+			
+			        $("body").keydown(function () {//敲了回车
+			            if (event.keyCode == "13") {//keyCode=13是回车键
+			                topa();//恐龙动作
+			            }
+			        });
+			        $("body").keydown(function () {//敲了上
+			            if (event.keyCode == "38") {
+			                topa();//恐龙动作
+			            }
+			        });
+			        $("body").keydown(function () {//敲了空格
+			            if (event.keyCode == "32") {
+			                topa();//恐龙动作
+			            }
+			        });
+			        $("body").keydown(function () {//敲了下（按下）
+			            if (event.keyCode == "40") {
+			                dongxuo1();//恐龙动作
+			            }
+			        });
+			        $("body").keyup(function () {//敲了下(抬起)
+			            if (event.keyCode == "40") {
+			                dongxuo2();//恐龙动作
+			            }
+			        });
+			        function topa() //恐龙跳起
+			        {
+			            $("#tq").css('display', 'block').css('transition', 'display 0s linear');
+			            var y = $("#dinosaur").css('margin-top');
+			            $("#dinosaur").css('margin-top', '-133px').css('transition', 'margin-top 0.3s ease');
+			            setTimeout(function () { down() }, 260);//延时调用
+			        }
+			        function down() {
+			            var y = $("#dinosaur").css('margin-top');
+			            $("#dinosaur").css('margin-top', '-38px').css('transition', 'margin-top 0.3s linear');
+			            setTimeout(function () { luoxia() }, 400);//延时调用
+			        }
+			
+			        //碰撞~~~
+			       
+			        function collide()
+			        {
+			            var oDiv0 = document.getElementById('dinosaur');//恐龙（站立）
+			            var oDiv1 = document.getElementById('dinosaurpx');//恐龙（趴下）
+			            var oDiv2 = document.getElementById('hinder0');//方块0
+			            var oDiv3 = document.getElementById('hinder1');//方块1
+			            var oDiv4 = document.getElementById('hinder2');//方块2
+			            var oDiv5 = document.getElementById('hinder3');//方块3
+			            var oDiv6 = document.getElementById('hinder4');//方块4(补给)
+			            var disX = 0;  
+			            var disY = 0;  
+			 
+			            var tc = oDiv0.offsetTop;
+			            var lc = oDiv0.offsetLeft;
+			            var rc = oDiv0.offsetLeft + oDiv0.offsetWidth;
+			            var bc = oDiv0.offsetTop + oDiv0.offsetHeight;
+			
+			            var tb = oDiv1.offsetTop;
+			            var lv = oDiv1.offsetLeft;
+			            var rv = oDiv1.offsetLeft + oDiv1.offsetWidth;
+			            var bv = oDiv1.offsetTop + oDiv1.offsetHeight;
+			  
+			            var t0 = oDiv2.offsetTop;
+			            var l0 = oDiv2.offsetLeft;
+			            var r0 = oDiv2.offsetLeft + oDiv2.offsetWidth;
+			            var b0 = oDiv2.offsetTop + oDiv2.offsetHeight;
+			
+			            var t1 = oDiv3.offsetTop;
+			            var l1 = oDiv3.offsetLeft;
+			            var r1 = oDiv3.offsetLeft + oDiv3.offsetWidth;
+			            var b1 = oDiv3.offsetTop + oDiv3.offsetHeight;
+			
+			            var t2 = oDiv4.offsetTop;
+			            var l2 = oDiv4.offsetLeft;
+			            var r2 = oDiv4.offsetLeft + oDiv4.offsetWidth;
+			            var b2 = oDiv4.offsetTop + oDiv4.offsetHeight;
+			
+			            var t3 = oDiv5.offsetTop;
+			            var l3 = oDiv5.offsetLeft;
+			            var r3 = oDiv5.offsetLeft + oDiv5.offsetWidth;
+			            var b3 = oDiv5.offsetTop + oDiv5.offsetHeight;
+			             
+			            var t4 = oDiv6.offsetTop;
+			            var l4 = oDiv6.offsetLeft;
+			            var r4 = oDiv6.offsetLeft + oDiv6.offsetWidth;
+			            var b4 = oDiv6.offsetTop + oDiv6.offsetHeight;
+			            if(bc<t0 || lc>r0 || tc>b0 || rc <l0){// 表示没碰上 (站立)
+			                if (bc < t1 || lc > r1 || tc > b1 || rc < l1) {// 表示没碰上
+			                    if (bc < t2 || lc > r2 || tc > b2 || rc < l2) {// 表示没碰上
+			                        if (bc < t3 || lc > r3 || tc > b3 || rc < l3) {// 表示没碰上
+			                            if (bc < t4 || lc > r4 || tc > b4 || rc < l4) {// 表示没碰上（补给）
+			
+			                            }
+			                            else {//碰上（补给）
+			                                $("#hinder4").css('display', 'none').css('transition', 'display 0s linear');
+			                                boji++; //补给加1
+			                                setTimeout(function () { bujis() }, 2000);//延时调用
+			                            }
+			                        }
+			                        else
+			                        {//碰上
+			                            alert("碰到啦~~");
+			                        }
+			                    }
+			                    else
+			                    {//碰上
+			                        alert("碰到啦~~");
+			                    }
+			                }
+			                else
+			                {//碰上
+			                    alert("碰到啦~~");
+			                }
+			            }
+			            else { //表示碰上了
+			                alert("碰到啦~~");
+			            }
+			            if (tb < t0 || tb > r0 || tb > b0 || tb < l0) {// 表示没碰上 (趴下) 
+			                if (tb < t1 || tb > r1 || tb > b1 || tb < l1) {// 表示没碰上  
+			                    if (tb < t2 || tb > r2 || tb > b2 || tb < l2) {// 表示没碰上  
+			                        if (tb < t3 || tb > r3 || tb > b3 || tb < l3) {// 表示没碰上 
+			                            if (bc < t4 || lc > r4 || tc > b4 || rc < l4) {// 表示没碰上（补给）
+			
+			                            }
+			                            else {//碰上（补给）
+			                                $("#hinder4").css('display', 'none').css('transition', 'display 0s linear');
+			                                boji++; //补给加1
+			                                setTimeout(function () { bujis() }, 2000);//延时调用
+			                            }
+			                        }
+			                        else {//碰上
+			                            alert("碰到啦~~");
+			                        }
+			                    }
+			                    else {//碰上
+			                        alert("碰到啦~~");
+			                    }
+			                }
+			                else {//碰上
+			                    alert("碰到啦~~");
+			                }
+			            }
+			            else { //表示碰上了
+			                alert("碰到啦~~");
+			            }
+			            setTimeout(function () { collide() }, 10);//延时调用
+			        }  
+			        
+			        //end碰撞~~~
+			
+			        function suiji()
+			        {
+			            var timer0 = null;
+			            var numb = Math.floor(Math.random() * 5); //均衡获取0到4的随机整数。
+			            var shiyong = "hinder" + numb;
+			            $("#" + shiyong).css('margin-left', '900px').css('transition', 'margin-left 0s linear');
+			            $('#' + shiyong).css('margin-left', '-20px').css('transition', 'margin-left 3s linear');
+			        }
+			        function zoulu1() //假装走路1
+			        {
+			            $("#zl1").css('display', 'none').css('transition', 'display 0s linear');
+			            $("#zl2").css('display', 'block').css('transition', 'display 0s linear');
+			        }
+			        function zoulu2() //假装走路2
+			        {
+			            $("#zl1").css('display', 'block').css('transition', 'display 0s linear');
+			            $("#zl2").css('display', 'none').css('transition', 'display 0s linear');
+			        }
+			        function luoxia() //恐龙落下
+			        {
+			            $("#tq").css('display', 'none').css('transition', 'display 0s linear');
+			        }
+			        function zoulu1dx1() //假装走路1(趴下)
+			        {
+			            $("#px1").css('display', 'none').css('transition', 'display 0s linear');
+			            $("#px2").css('display', 'block').css('transition', 'display 0s linear');
+			        }
+			        function zoulu1dx2() //假装走路2(趴下)
+			        {
+			            $("#px1").css('display', 'block').css('transition', 'display 0s linear');
+			            $("#px2").css('display', 'none').css('transition', 'display 0s linear');
+			        }
+			        function dongxuo1() //趴下动作1
+			        {
+			            $("#dinosaurpx").css('display', 'block').css('transition', 'display 0s linear');
+			            $("#dinosaur").css('display', 'none').css('transition', 'display 0s linear');
+			        }
+			        function dongxuo2() //趴下动作2
+			        {
+			            $("#dinosaurpx").css('display', 'none').css('transition', 'display 0s linear');
+			            $("#dinosaur").css('display', 'block').css('transition', 'display 0s linear');
+			        }
+			        setTimeout(function () { yundz1() }, 1000);//延时调用云1
+			        setTimeout(function () { yundz2() }, 3000);//延时调用云2
+			        setTimeout(function () { yundz3() }, 3900);//延时调用云3
+			        function yundz1()//云1动作左
+			        {
+			            $("#yun1").css('margin-left', '1000px').css('transition', 'margin-left 0s linear');
+			            $("#yun1").css('margin-left', '-60px').css('transition', 'margin-left 12s linear');
+			        }
+			        function yundz2()//云2动作左
+			        {
+			            $("#yun2").css('margin-left', '1000px').css('transition', 'margin-left 0s linear');
+			            $("#yun2").css('margin-left', '-60px').css('transition', 'margin-left 11s linear');
+			        }
+			        function yundz3()//云3动作左
+			        {
+			            $("#yun3").css('margin-left', '1000px').css('transition', 'margin-left 0s linear');
+			            $("#yun3").css('margin-left', '-60px').css('transition', 'margin-left 15s linear');
+			        }
+			        function bujis()//补给框显示
+			        {
+			            $("#hinder4").css('display', 'block').css('transition', 'display 0s linear');
+			        }
+
+		</script>
