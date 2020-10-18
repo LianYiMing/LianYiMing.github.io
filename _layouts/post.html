@@ -1,16 +1,6 @@
 ---
 layout: default
 ---
-<script>
-	function myFunction() {
-	    var x = document.getElementsByClassName("header.intro-hearder");
-	    var i;
-	    for (i = 0; i < x.length; i++) {
-	        x[i].style.backgroundimage ( '/img/head-img'+ new Date().getDay() + '.jpg');
-	    }
-	}
-	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张/img/headimg/18.jpg
-	</script>
 <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0">
@@ -110,6 +100,16 @@ layout: default
 					</li>
 					{% endif %}
 				</ul>
+<script>
+	function myFunction() {
+	    var x = document.getElementsByClassName("header.intro-hearder");
+	    var i;
+	    for (i = 0; i < x.length; i++) {
+	        x[i].style.backgroundimage ( '/img/head-img'+ new Date().getDay() + '.jpg');
+	    }
+	}
+	// 每天切换 banner 图.  Switch banner image every day一个月三十天，所以三十张/img/headimg/18.jpg
+	</script>
 
 				{% if site.valine.enable %}
 				<div id="vcomments"></div>
