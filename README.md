@@ -5,7 +5,6 @@
 [![](https://img.shields.io/github/forks/lianyiming/lianyiming.github.io.svg?style=social&label=Fork)](https://github.com/lianyiming/lianyiming.github.io)
 [![Twitter](https://img.shields.io/twitter/follow/agzxlym.svg?style=social&label=Follow)](https://twitter.com/agzxlym)
  [![Contributors](https://camo.githubusercontent.com/b3541883c2eedc105a496d16712ccd91baad275a/68747470733a2f2f62616467656e2e6e65742f6769746875622f636f6e7472696275746f72732f616e7562686176737269766173746176612f617765736f6d652d75692d636f6d706f6e656e742d6c696272617279)](https://github.com/LianYiMing/lianyiming.github.io/graphs/contributors)
- [![Gitter](https://img.shields.io/gitter/room/lianyiming-github-io/main.svg)](https://gitter.im/lianyiming-github-io/community)
 [![Awesome](https://camo.githubusercontent.com/1997c7e760b163a61aba3a2c98f21be8c524be29/68747470733a2f2f617765736f6d652e72652f62616467652e737667)](https://awesome.re/)
 ![GitHub tag](https://img.shields.io/github/tag/meteor/meteor.svg)
 ![GitHub release](https://img.shields.io/github/release/facebook/react.svg) 
@@ -39,6 +38,7 @@
 
 ### 开始
 [![HitCount](http://hits.dwyl.com/lianyiming/lianyiminggithubio.svg)](http://hits.dwyl.com/lianyiming/lianyiminggithubio)
+
 修改 `_config.yml`来搭建自己的博客:
 
 ```
@@ -48,6 +48,7 @@ title:
 ```
 总之在这个文件里会有每一条详细的注释，根据它修改就可以了呢
 ### 写博文
+ [![Gitter](https://img.shields.io/gitter/room/lianyiming-github-io/main.svg)](https://gitter.im/lianyiming-github-io/community)
 
 要发表的文章一般以 **Markdown** 的格式放在`_posts/`文件夹里
 可以去学一学markdown的语法，但是会发现每一篇markdown上面还有几行这个↓
