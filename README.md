@@ -26,15 +26,7 @@
 	* [网站](#网站)
 	* [开始](#开始)
 	* [写博文](#写博文)
-* 组件
-	* [HTML5 演示文档布局](#keynote-layout)
-* 评论与 Google/Baidu Analytics
-	* [评论](#comment)
-	* [网站分析](#analytics) 
-* 高级部分
-	* [自定义](#customization)
-	* [标题底图](#header-image)
-	* [搜索展示标题-头文件](#seo-title)
+        * [HTML5 演示文档布局](#keynote-layout)
 
 
 
