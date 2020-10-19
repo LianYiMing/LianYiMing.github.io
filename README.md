@@ -78,41 +78,12 @@ tags:
 
 ```
 
-### 侧边栏
-
-看右边:
-![](https://raw.githubusercontent.com/lianyiming/lianyiming.github.io/master/img/readme-side.png)
-
-设置是在 `_config.yml`文件里面的`Sidebar settings`那块。
-
-```
-# Sidebar settings
-sidebar: true  #添加侧边栏
-sidebar-about-description: "简单的描述一下你自己"
-sidebar-avatar: /img/avatar-by.jpg     #你的大头贴，请使用绝对地址.注意：名字区分大小写！后缀名也是
-```
-
-侧边栏是响应式布局的，当屏幕尺寸小于992px的时候，侧边栏就会移动到底部。具体请见bootstrap栅格系统 <http://v3.bootcss.com/css/>
-
-
-### Mini About Me
-
-Mini-About-Me 这个模块将在你的头像下面，展示你所有的社交账号。这个也是响应式布局，当屏幕变小时候，会将其移动到页面底部，只不过会稍微有点小变化，具体请看代码。
 
 ### Featured Tags
 
 看到这个网站 [Medium](http://medium.com) 的推荐标签非常的炫酷，所以我将他加了进来。
 这个模块现在是独立的，可以呈现在所有页面，包括主页和发表的每一篇文章标题的头上。
 
-```
-# Featured Tags
-featured-tags: true  
-featured-condition-size: 1     # A tag will be featured if the size of it is more than this condition value
-```
-
-唯一需要注意的是`featured-condition-size`: 如果一个标签的 SIZE，也就是使用该标签的文章数大于上面设定的条件值，这个标签就会在首页上被推荐。
-
-内部有一个条件模板 `{% if tag[1].size > {{site.featured-condition-size}} %}` 是用来做筛选过滤的.
 
 ### Social-media Account
 
@@ -131,147 +102,6 @@ featured-condition-size: 1     # A tag will be featured if the size of it is mor
 
 ![](http://ww4.sinaimg.cn/large/006tKfTcgy1fgrgbgf77aj308i02v748.jpg)
 
-### Friends
-
-好友链接部分。这会在全部页面显示。
-
-设置是在 `_config.yml`文件里面的`Friends`那块，自己加吧。
-
-```
-# Friends
-friends: [
-    {
-        title: "LY Blog",
-        href: "https://lianyiming.github.io/"
-    },
-    {
-        title: "Apple",
-        href: "https://apple.com/"
-    }
-]
-```
-
-底下是friend页面的朋友
-
-​       title: "鲸一",——这是朋友的名字
-​       href: "https://www.saroin.com/",——这是朋友的URL
-​       img: "https://cdn.jsdelivr.net/gh/AJRECHO/WWW@master/uPic/user/ajrecho.jpg",——朋友的网站Logo
-​       intro: "不是忙着活，就是忙着累死"——网站介绍
-
-```
-friend1: [
- {
-       title: "鲸一",
-       href: "https://www.saroin.com/",
-       img: "https://cdn.jsdelivr.net/gh/AJRECHO/WWW@master/uPic/user/ajrecho.jpg",
-       intro: "不是忙着活，就是忙着累死"
-     },
-]
-friend2: [
- {
-       title: "XuYiyang",
-       href: "https://blog.xuyiyang.top/",
-       img: "https://www.lianyiming.com/img/Xu.jpg",
-       intro: "大佬还未给描述呢"
-     },
-]
-friend3: [
- {
-       title: "Kif Room",
-       href: "https://www.kifroom.icu/#",
-       img: "https://s1.ax1x.com/2020/06/23/NUr8pQ.jpg",
-       intro: "kif的树洞"
-     },
-]
-friend4: [
- {
-       title: "哎呦哎呦",
-       href: "https://iuiu.run/",
-       img: "https://q1.qlogo.cn/g?b=qq&nk=10963273&s=640",
-       intro: "哎呦哎呦是一个关注互联网和分享网站建设·记录生活的个人博客"
-     },
-]
-friend5: [
- {
-       title: "Astics的博客",
-       href: "https://astcs.gitee.io/",
-       img: "https://s1.ax1x.com/2020/09/07/wn5dU0.jpg",
-       intro: "一个简单的小白博客"
-     },
-]
-friend6: [
- {
-       title: "杏铃の小本",
-       href: "https://66ccff.work/",
-       img: "https://gitee.com/hshx123/picplus/raw/master/1595119088132.png",
-       intro: "一份分享教程&游戏的博客"
-     },
-]
-friend7: [
- {
-       title: "Deserts",
-       href: "https://deserts.io/",
-       img: "https://www.gravatar.com/avatar/f32fc1c3f6674bfb5621a60901b5f96c?s=250&d=mm&r=x",
-       intro: "大佬还未给描述呢"
-     },
-]
-friend8: [
- {
-       title: "今今今生",
-       href: "https://noheart.cn",
-       img: "https://noheart.cn/upload/mylife.jpg",
-       intro: "医不自医，人不渡己"
-     },
-]
-friend9: [
- {
-       title: "Eanraig",
-       href: "https://eanraig.top",
-       img: "https://cdn.jsdelivr.net/gh/eanraig/eanraig-storage/2020/09/avatar.jpg",
-       intro: "大佬还未给描述呢"
-     },
-]
-friend10: [
- {
-       title: "Liumang",
-       href: "https://blog.liumang.life/",
-       img: "https://img.yxyy.top/2020/09/0E049C08-5C8A-4B0E-B861-BC3258A2AC22.png",
-       intro: "Liumang's Blog"
-     },
-]
-friend11: [
- {
-       title: "小浣熊的技术小站",
-       href: "https://nimitiz.cn/",
-       img: "https://nimitiz.cn/images/avatar.gif",
-       intro: "生命不息，折腾不止"
-     },
-]
-friend12: [
- {
-       title: "独人欣赏",
-       href: "https://www.wangyusong.cn",
-       img: "https://www.lianyiming.com/img/head.jpg",
-       intro: "摆脱了十足乏味的交际，摆脱不了群居属性"
-     },
-]
-friend13: [
- {
-       title: "Alsaces",
-       href: "https://www.alsaces.cn",
-       img: "https://cdn.jsdelivr.net/gh/zhangfh-cq/images/second-blog/universal/avatar.png",
-       intro: "言必行，行必果"
-     },
-]
-friend14: [
- {
-       title: "从南小站",
-       href: "https://ouoo.fun/",
-       img: "http://cdn.mc.huluxia.net/g4/M01/51/FE/rBAAdl9njJyAWyVfAAAM7021VZU034.png",
-       intro: "致我逝去的青春"
-     },
-]
-```
 
 
 ### Keynote Layout
