@@ -5,7 +5,6 @@
 [![](https://img.shields.io/github/forks/lianyiming/lianyiming.github.io.svg?style=social&label=Fork)](https://github.com/lianyiming/lianyiming.github.io)
 [![Twitter](https://img.shields.io/twitter/follow/agzxlym.svg?style=social&label=Follow)](https://twitter.com/agzxlym)
  [![Contributors](https://camo.githubusercontent.com/b3541883c2eedc105a496d16712ccd91baad275a/68747470733a2f2f62616467656e2e6e65742f6769746875622f636f6e7472696275746f72732f616e7562686176737269766173746176612f617765736f6d652d75692d636f6d706f6e656e742d6c696272617279)](https://github.com/LianYiMing/lianyiming.github.io/graphs/contributors)
-[![HitCount](http://hits.dwyl.com/lianyiming/lianyiminggithubio.svg)](http://hits.dwyl.com/lianyiming/lianyiminggithubio)
  [![Gitter](https://img.shields.io/gitter/room/lianyiming-github-io/main.svg)](https://gitter.im/lianyiming-github-io/community)
 [![Awesome](https://camo.githubusercontent.com/1997c7e760b163a61aba3a2c98f21be8c524be29/68747470733a2f2f617765736f6d652e72652f62616467652e737667)](https://awesome.re/)
 ![GitHub tag](https://img.shields.io/github/tag/meteor/meteor.svg)
@@ -31,13 +30,15 @@
 
 ### 网站
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 介是一个高度集成的，统一控制的网站模板
-将源代码fork到你的仓库里，只用动一动config文件里的几个参数。
-就可以迅速自定义出你想要的博客了呢
+将源代码fork到你的仓库里
+只用动一动config文件里的几个参数。
+就可以迅速自定义出你想要的博客了呢 ฅ( ̳• ◡ • ̳)ฅ
 
 
 ### 开始
-
+[![HitCount](http://hits.dwyl.com/lianyiming/lianyiminggithubio.svg)](http://hits.dwyl.com/lianyiming/lianyiminggithubio)
 修改 `_config.yml`来搭建自己的博客:
 
 ```
