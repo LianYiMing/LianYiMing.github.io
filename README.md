@@ -27,10 +27,6 @@
 	* [开始](#开始)
 	* [写博文](#写博文)
 * 组件
-	* [侧边栏](#侧边栏)
-	* [迷你关于我](#mini-about-me)
-	* [推荐标签](#featured-tags)
-	* [好友链接](#friends)
 	* [HTML5 演示文档布局](#keynote-layout)
 * 评论与 Google/Baidu Analytics
 	* [评论](#comment)
@@ -84,26 +80,6 @@ tags:
 看到这个网站 [Medium](http://medium.com) 的推荐标签非常的炫酷，所以我将他加了进来。
 这个模块现在是独立的，可以呈现在所有页面，包括主页和发表的每一篇文章标题的头上。
 
-
-### Social-media Account
-
-在下面输入的社交账号，没有的添加的不会显示在侧边框中。如果哪个账号不想用直接在前面添加#注释掉就Ok
-
-	# SNS settings
-	RSS: false
-	jianshu_username: 	jianshu_id 
-	zhihu_username:     username
-	facebook_username:  username
-	github_username:    username
-	# weibo_username:   username
-
-
-​	
-
-![](http://ww4.sinaimg.cn/large/006tKfTcgy1fgrgbgf77aj308i02v748.jpg)
-
-
-
 ### Keynote Layout
 
 HTML5幻灯片的排版：
@@ -139,65 +115,6 @@ iframe在不同的设备中，将会自动的调整大小。保留内边距是�
 > 优点：国际比较流行，界面也很大气、简洁，如果有人评论，还能实时通知，直接回复通知的邮件就行了；
 >
 > 缺点：评论必须要去注册一个disqus账号，分享一般只有Facebook和Twitter，另外在墙内**不能访问！！！**
->
-> 想要知道长啥样，可以看以前的版本点[这里](http://brucezhaor.github.io/about.html) 最下面就可以看到
->
-> **使用：**
->
-> **首先**，你需要去注册一个Disqus帐号。**不要直接使用我的啊！**
->
-> **其次**，你只需要在下面的 yaml 头文件中设置一下就可以了。
->
-> ```
-> # 评论系统
-> # Disqus（https://disqus.com/）
-> disqus_username: lianyiming
-> ```
->
-> #### 
-
-
-
-> #### Gitalk
->
-> 优点：界面干净简洁，利用 Github issue API 做的评论插件，使用 Github 帐号进行登录和评论，最喜欢的支持 Markdown 语法，对于程序员来说真是太 cool 了。
->
-> 缺点：配置比较繁琐，每篇文章的评论都需要初始化。
->
-> **使用：**
->
-> 参考我的这篇文章：[《为博客添加 Gitalk 评论插件》](http://lianyiming.top/2017/12/19/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0-Gitalk-%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/)
->
->
-> ### 
-
-
-
-
-### Analytics
-
-网站分析，现在支持百度统计和Google Analytics。需要去官方网站注册一下，然后将返回的code贴在下面：
-
-```
-# Baidu Analytics
-ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
-
-# Google Analytics
-ga_track_id: 'UA-49627206-1'            # 你用Google账号去注册一个就会给你一个这样的id
-ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto。
-```
-
-### Customization
-
-如果你喜欢折腾，你可以去自定义这个模板的 Code。
-
-**如果你可以理解 `_include/` 和 `_layouts/`文件夹下的代码（这里是整个界面布局的地方），你就可以使用 Jekyll 使用的模版引擎 [Liquid](https://github.com/Shopify/liquid/wiki)的语法直接修改/添加代码，来进行更有创意的自定义界面啦！**
-
-### Header Image
-
-博客每页的标题底图是可以自己选的，看看几篇示例post你就知道如何设置了。
-
-标题底图的选取完全是看个人的审美了。每一篇文章可以有不同的底图，你想放什么就放什么，最后宽度要够，大小不要太大，否则加载慢啊。
 
 > 上传的图片最好先压缩，这里推荐 imageOptim 图片压缩软件，让你的博客起飞。
 
@@ -205,7 +122,7 @@ ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名
 
 ### SEO Title
 
-我的博客标题是 **“LY Blog”** 但是我想要在搜索的时候显示 **“廉一鸣的博客 | LY Blog”** ，这个就需要 SEO Title 来定义了。
+我的博客标题是 **“廉一鸣的博客”** 但是我想要在搜索的时候显示 **“廉一鸣的博客 | LY Blog”** ，这个就需要 SEO Title 来定义了。
 
 其实这个 SEO Title 就是定义了<head><title>标题</title></head>这个里面的东西和多说分享的标题，你可以自行修改的。
 
