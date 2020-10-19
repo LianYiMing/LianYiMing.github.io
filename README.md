@@ -67,26 +67,6 @@ tags:
 
 ```
 
-### Keynote Layout
-
-HTML5幻灯片的排版：
-
-![](https://camo.githubusercontent.com/f30347a118171820b46befdf77e7b7c53a5641a9/687474703a2f2f6875616e677875616e2e6d652f696d672f626c6f672d6b65796e6f74652e6a7067)
-
-这部分是用于占用html格式的幻灯片的，一般用到的是 Reveal.js, Impress.js, Slides, Prezi 等等.我认为一个现代化的博客怎么能少了放html幻灯的功能呢~
-
-其主要原理是添加一个 `iframe`，在里面加入外部链接。你可以直接写到头文件里面去，详情请见下面的yaml头文件的写法。
-
-```
----
-layout:     keynote
-iframe:     "http://huangxuan.me/js-module-7day/"
----
-```
-
-iframe在不同的设备中，将会自动的调整大小。保留内边距是为了让手机用户可以向下滑动，以及添加更多的内容。
-
-
 ### Comment
 
 博客支持
@@ -107,8 +87,6 @@ iframe在不同的设备中，将会自动的调整大小。保留内边距是�
 但是需要注意的是本模板的标题是**白色**的，所以背景色要设置为**灰色**或者**黑色**，总之深色系就对了。当然你还可以自定义修改字体颜色，总之，用github pages就是可以完全的个性定制自己的博客。
 
 ### SEO Title
-
-我的博客标题是 **“廉一鸣的博客”** 但是我想要在搜索的时候显示 **“廉一鸣的博客 | LY Blog”** ，这个就需要 SEO Title 来定义了。
 
 其实这个 SEO Title 就是定义了<head><title>标题</title></head>这个里面的东西和多说分享的标题，你可以自行修改的。
 
