@@ -25,7 +25,7 @@
 * 介绍
 	* [网站](#网站)
 	* [开始](#开始)
-	* [撰写博文](#撰写博文)
+	* [写博文](#写博文)
 * 组件
 	* [侧边栏](#侧边栏)
 	* [迷你关于我](#mini-about-me)
@@ -55,37 +55,25 @@
 
 ```
 # Site settings
-title: BY Blog                    # 你的博客网站标题
-SEOTitle: lianyiming | LY Blog		# SEO 标题
-description: "Hey"	   	   # 随便说点，描述一下
-
-# SNS settings      
-github_username: lianyiming     # 你的github账号
-jianshu_username:   # 你的简书ID。
-
-# Build settings
-# paginate: 10              # 一页你准备放几篇文章
+title:
+等等等等....
 ```
+总之在这个文件里会有每一条详细的注释，根据它修改就可以了呢
+### 写博文
 
-Jekyll官方网站还有很多的参数可以调，比如设置文章的链接形式...网址在这里：[Jekyll - Official Site](http://jekyllrb.com/) 中文版的在这里：[Jekyll中文](http://jekyllcn.com/).
-
-### 撰写博文
-
-要发表的文章一般以 **Markdown** 的格式放在这里`_posts/`，你只要看看这篇模板里的文章你就立刻明白该如何设置。
-
-yaml 头文件长这样:
-
+要发表的文章一般以 **Markdown** 的格式放在`_posts/`文件夹里
+可以去学一学markdown的语法，但是会发现每一篇markdown上面还有几行这个↓
 ```
 ---
-layout:     post
-title:      这是题目
-subtitle:   副标题
-date:       日期
-author:     LYM
-header-img: img/post-bg-ios9-web.jpg这是头图，输入绝对地址
-catalog: 	 true
+layout:     post //不能动
+title:      //文章的标题
+subtitle:   //文章的副标题
+date:      //文章的日期格式一般是2020-10-1
+author:     //作者名
+header-img: //这是头图，输入绝对地址，比如说img/1.jpg
+catalog: 	 true//也就是文章右边的摘要
 tags:
-    - 输入文字就行，这里是标签，类似于文章的分类
+    -       //输入文字就行，这里是标签，类似于文章的分类
 ---
 
 ```
