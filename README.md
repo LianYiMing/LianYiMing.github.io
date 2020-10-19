@@ -23,7 +23,6 @@
 	* [网站](#网站)
 	* [开始](#开始)
 	* [写博文](#写博文)
-        * [HTML5 演示文档布局](#keynote-layout)
 
 
 
@@ -89,19 +88,6 @@ tags:
 ### SEO Title
 
 其实这个 SEO Title 就是定义了<head><title>标题</title></head>这个里面的东西和多说分享的标题，你可以自行修改的。
-
-### 关于收到"Page Build Warning"的 Email
-
-由于jekyll升级到3.0.x,对原来的 pygments 代码高亮不再支持，现只支持一种-rouge，所以你需要在 `_config.yml`文件中修改`highlighter: rouge`.另外还需要在`_config.yml`文件中加上`gems: [jekyll-paginate]`.
-
-同时,你需要更新你的本地 jekyll 环境.
-
-使用`jekyll server`的同学需要这样：
-
-1. `gem update jekyll` # 更新jekyll
-2. `gem update github-pages` #更新依赖的包
-
-使用`bundle exec jekyll server`的同学在更新 jekyll 后，需要输入`bundle update`来更新依赖的包.
 
 > Note：
 > 可以使用 `jekyll -s` 命令在本地实时配置博客，提高效率。详见 [Jekyll.com](http://jekyllcn.com/)
