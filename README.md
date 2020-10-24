@@ -3,7 +3,7 @@
 
 [![](https://img.shields.io/github/stars/lianyiming/lianyiming.github.io.svg?style=social&label=Star)](https://github.com/lianyiming/lianyiming.github.io)
 [![](https://img.shields.io/github/forks/lianyiming/lianyiming.github.io.svg?style=social&label=Fork)](https://github.com/lianyiming/lianyiming.github.io)
-[![Twitter](https://img.shields.io/twitter/follow/agzxlym.svg?style=social&label=Follow)](https://twitter.com/agzxlym)
+[![Twitter](https://img.shields.io/twitter/follow/lianyiming2006.svg?style=social&label=Follow)](https://twitter.com/lianyiming2006)
  [![Awesome](https://camo.githubusercontent.com/1997c7e760b163a61aba3a2c98f21be8c524be29/68747470733a2f2f617765736f6d652e72652f62616467652e737667)](https://awesome.re/)
 
 ![GitHub tag](https://img.shields.io/github/tag/meteor/meteor.svg)
