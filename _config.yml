@@ -1,7 +1,7 @@
 # Site settings
 title: 廉一鸣的博客
 SEOTitle: 廉一鸣的博客
-header-img: img/1.jpg
+header-img: img/headimg/14.jpg
 email: AGZX_lym@163.com
 description:  "去他妈的真理无穷,进一步有一步的欢喜."
 keyword: "廉一鸣的博客, LianYiMing, 廉一鸣, lianyiming.com,lianyiming.github.io"
@@ -16,7 +16,7 @@ sidebar: true # whether or not using Sidebar.
 aboutSidebar: false 
 #ABOUT默认隐藏侧边栏
 sidebar-about-description: "Live a life you will remember"
-sidebar-avatar: /img/about-BY-gentle.jpg      # 用绝对URL地址,也就是要在前面加上/
+sidebar-avatar: /img/LianYiMing.jpg      # 用绝对URL地址,也就是要在前面加上/
 
 
 
