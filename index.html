@@ -3,6 +3,7 @@ layout: page
 description: "Even if it makes me blind,I just wanna see the light."
 ---
 {% for post in paginator.posts %}
+<!--分页器-->
 <div class="post-preview">
 	<a href="{{ post.url | prepend: site.baseurl }}" target="_blank">
 		<h2 class="post-title">
