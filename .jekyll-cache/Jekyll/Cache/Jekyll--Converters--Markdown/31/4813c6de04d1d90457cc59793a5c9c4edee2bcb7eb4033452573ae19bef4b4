@@ -1,0 +1,125 @@
+I"� <p>Smali 相当于 Dalvik 虚拟机的汇编语言，语法可以参考 <a href="http://pallergabor.uw.hu/androidblog/dalvik_opcodes.html">Dalvik opcodes</a>。</p>
+
+<p>本文介绍的是如何使用 Vim + Ctags + Taglist（或 Tagbar） 来实现如下需求：</p>
+
+<p><strong>目录</strong></p>
+
+<ul id="markdown-toc">
+  <li><a href="#smali-语法高亮" id="markdown-toc-smali-语法高亮">Smali 语法高亮</a></li>
+  <li><a href="#跳转到定义" id="markdown-toc-跳转到定义">跳转到定义</a></li>
+  <li><a href="#taglisttagbar-支持" id="markdown-toc-taglisttagbar-支持">Taglist/Tagbar 支持</a>    <ul>
+      <li><a href="#使用-taglist" id="markdown-toc-使用-taglist">使用 Taglist</a></li>
+      <li><a href="#使用-tagbar" id="markdown-toc-使用-tagbar">使用 Tagbar</a></li>
+    </ul>
+  </li>
+  <li><a href="#后话" id="markdown-toc-后话">后话</a></li>
+  <li><a href="#参考链接" id="markdown-toc-参考链接">参考链接</a></li>
+</ul>
+
+<p>最终效果图：</p>
+
+<p><img src="/images/posts/vim/smali-vim.png" alt="" /></p>
+
+<p>当然因为现在 Android 应用打包时都会做不同程度的混淆，最后配置完后在 Taglist 下看到的可能是一堆 a，b，c 之类的名字。:-P</p>
+
+<p>我的最终配置托管在 GitHub 上可供参考：<a href="https://github.com/mzlogin/config-files">https://github.com/mzlogin/config-files</a>。</p>
+
+<p><em>以下内容假设读者已经配置好 Vim + Ctags + Taglist（或 Tagbar） 环境，掌握了安装 Vim 插件的方法。</em></p>
+
+<h3 id="smali-语法高亮">Smali 语法高亮</h3>
+
+<p><strong>方法：</strong> 安装 Vim 插件 <a href="https://github.com/mzlogin/vim-smali">https://github.com/mzlogin/vim-smali</a>。</p>
+
+<p>如果你也跟我一样使用方便的 Vundle 管理插件，那你只需要在你的 _vimrc 文件里添加 <code class="language-plaintext highlighter-rouge">Plugin 'mzlogin/vim-smali'</code>，然后 <code class="language-plaintext highlighter-rouge">so %</code> 重新加载配置文件，再 <code class="language-plaintext highlighter-rouge">:PluginInstall</code> 即安装完成。</p>
+
+<p>如果是手动安装插件，那么可以点击插件链接页面右下角的「Download ZIP」按钮下载插件文件然后安装。</p>
+
+<h3 id="跳转到定义">跳转到定义</h3>
+
+<p><strong>方法：</strong> 为 Ctags 添加 Smali 语言支持。</p>
+
+<p>新建文件 ~/.ctags 并将如下内容复制进去：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--langdef=smali
+--langmap=smali:.smali
+--regex-smali=/^\.field (public |private |protected )?(static )?(final )?(synthetic )?([^:]*):.*/\5/f,field/
+--regex-smali=/^\.method (public |private |protected )?(static )?(final )?(varargs )?(bridge )?(synthetic )?(declared-synchronized )?(.*)\(.*/\8/m,method/
+</code></pre></div></div>
+
+<p>打开 Smali 文件后使用 <code class="language-plaintext highlighter-rouge">:!ctags -R .</code> 生成 tags 文件，对解析到的变量和方法等就可以 <code class="language-plaintext highlighter-rouge">Ctrl-]</code> 跳转到定义了。</p>
+
+<p>注：~ 是指用户目录，Linux 和 Mac OS X 用户应该都明白，Windows 用户可以在 Vim 下 <code class="language-plaintext highlighter-rouge">:ec $HOME</code> 查看该目录所在，比如 Win7 下是 <code class="language-plaintext highlighter-rouge">C:\Users\用户名</code>。</p>
+
+<p>Windows 下无法直接新建以 「.」 开头的文件名，可以先新建一个 txt 文件，然后在命令行下 <code class="language-plaintext highlighter-rouge">rename file.txt .ctags</code>。</p>
+
+<h3 id="taglisttagbar-支持">Taglist/Tagbar 支持</h3>
+
+<p>Taglist 和 Tagbar 是两个同类插件，任选其一即可，我以前使用 Taglist，最近切换到 Tagbar。</p>
+
+<h4 id="使用-taglist">使用 Taglist</h4>
+
+<p><strong>方法：</strong> 为 Taglist 添加 Smali 语言支持。</p>
+
+<p>在 _vimrc 文件里添加一行即可：</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">g:tlist_smali_settings</span> <span class="p">=</span> <span class="s2">"smali;f:field;m:method"</span> 
+</code></pre></div></div>
+
+<h4 id="使用-tagbar">使用 Tagbar</h4>
+
+<p><strong>方法：</strong> 为 Tagbar 添加 Smali 语言支持。</p>
+
+<p>在 _vimrc 文件里添加如下内容即可：</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">g:tagbar_type_smali</span> <span class="p">=</span> <span class="p">{</span>
+<span class="se">        \</span> <span class="s1">'ctagstype'</span> <span class="p">:</span> <span class="s1">'smali'</span><span class="p">,</span>
+<span class="se">        \</span> <span class="s1">'kinds'</span> <span class="p">:</span> <span class="p">[</span>
+<span class="se">                \</span> <span class="s1">'f:field'</span><span class="p">,</span>
+<span class="se">                \</span> <span class="s1">'m:method'</span><span class="p">,</span>
+<span class="se">        \</span> <span class="p">]</span>
+<span class="se">\</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>到此，我们要实现的三个目标就已经完成了。</p>
+
+<h3 id="后话">后话</h3>
+
+<p>对于实现 Taglist 支持这一步，我在网上搜索良久未找到有效解决方案，最后是打开 taglist.vim 文件，看到有如下代码段后才知道能这么做的，所以以后遇到问题找不到方法而有源码的时候，读它吧！</p>
+
+<p>切换到 Tagbar 之后的解决方案与此类似。</p>
+
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">" ...</span>
+
+<span class="c">" php language</span>
+<span class="k">let</span> <span class="nv">s:tlist_def_php_settings</span> <span class="p">=</span> <span class="s1">'php;c:class;d:constant;v:variable;f:function'</span>
+
+<span class="c">" python language</span>
+<span class="k">let</span> <span class="nv">s:tlist_def_python_settings</span> <span class="p">=</span> <span class="s1">'python;c:class;m:member;f:function'</span>
+
+<span class="c">" ...</span>
+
+    <span class="c">" Skip files which are not supported by exuberant ctags</span>
+    <span class="c">" First check whether default settings for this filetype are available.</span>
+    <span class="c">" If it is not available, then check whether user specified settings are</span>
+    <span class="c">" available. If both are not available, then don't list the tags for this</span>
+    <span class="c">" filetype</span>
+    <span class="k">let</span> var <span class="p">=</span> <span class="s1">'s:tlist_def_'</span> <span class="p">.</span> <span class="nv">a:ftype</span> <span class="p">.</span> <span class="s1">'_settings'</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nb">exists</span><span class="p">(</span>var<span class="p">)</span>
+        <span class="k">let</span> var <span class="p">=</span> <span class="s1">'g:tlist_'</span> <span class="p">.</span> <span class="nv">a:ftype</span> <span class="p">.</span> <span class="s1">'_settings'</span>
+        <span class="k">if</span> <span class="p">!</span><span class="nb">exists</span><span class="p">(</span>var<span class="p">)</span>
+            <span class="k">return</span> <span class="m">1</span>
+        <span class="k">endif</span>
+    <span class="k">endif</span>
+
+<span class="c">" ...</span>
+</code></pre></div></div>
+
+<p>当前解决方案 Ctags 只解析、Taglist/Tagbar 只显示了 field 和 method 两类 tag，我对此的原理不是很懂，但是猜想应该是上面 .ctags 文件里的 <code class="language-plaintext highlighter-rouge">--regex-smali</code> 里我们只告诉了 Ctags 如何解析这两种 tag，本来考虑后续有时间把 class 等更多内容做进来，但转念一想，一个 smali 文件里也就一个类，这种需求似乎不那么强烈，遂作罢。</p>
+
+<h3 id="参考链接">参考链接</h3>
+
+<ul>
+  <li><a href="http://www.claudxiao.net/2012/07/adding-smali-syntax-for-vim-and-ctags/">让Vim和Ctags支持smali语法</a></li>
+  <li><a href="http://howiefh.github.io/2013/05/17/make-tagbar-support-markdown/">让tagbar支持markdown</a></li>
+</ul>
+:ET

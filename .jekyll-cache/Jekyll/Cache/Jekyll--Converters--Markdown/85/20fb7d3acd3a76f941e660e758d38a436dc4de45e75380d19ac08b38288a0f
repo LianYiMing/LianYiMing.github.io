@@ -1,0 +1,87 @@
+I"�<h3 id="需求">需求</h3>
+
+<p>一个 EXE 在运行过程中（被）改名了，需要准确地获取它的文件名。</p>
+
+<h3 id="尝试">尝试</h3>
+
+<p>原本以为这是一个非常简单的 CASE，直接用 GetModuleFileName 不就行了吗？结果还真不如我所想。无论程序运行过程中被改名成什么样子，GetModuleFileName 返回的都是 EXE 开始运行时的名字。然后又尝试了 GetProcessImageFileName，也是如此，直到最后找到了 QueryFullProcessImageName。</p>
+
+<h3 id="示例代码">示例代码</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;Windows.h&gt;
+#include &lt;Psapi.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="cp">#pragma comment(lib, "Psapi.lib")
+</span>
+<span class="kt">void</span> <span class="nf">OutputSelfpath</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">szFile</span><span class="p">[</span><span class="n">MAX_PATH</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+	<span class="n">GetModuleFileName</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">szFile</span><span class="p">,</span> <span class="n">MAX_PATH</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"GetModuleFileName:</span><span class="se">\n\r</span><span class="s">%s</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> <span class="n">szFile</span><span class="p">);</span>
+
+	<span class="n">memset</span><span class="p">(</span><span class="n">szFile</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">MAX_PATH</span><span class="p">);</span>
+
+	<span class="n">HANDLE</span> <span class="n">hProcess</span> <span class="o">=</span> <span class="n">OpenProcess</span><span class="p">(</span><span class="n">PROCESS_ALL_ACCESS</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">GetCurrentProcessId</span><span class="p">());</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hProcess</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"OpenProcess failed!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="n">DWORD</span> <span class="n">dwRet</span> <span class="o">=</span> <span class="n">GetProcessImageFileName</span><span class="p">(</span><span class="n">hProcess</span><span class="p">,</span> <span class="n">szFile</span><span class="p">,</span> <span class="n">MAX_PATH</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">dwRet</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"GetProcessImageFileName:</span><span class="se">\n\r</span><span class="s">%s</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> <span class="n">szFile</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">else</span>
+		<span class="p">{</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"GetProcessImageFileName failed!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+		<span class="p">}</span>
+
+        <span class="n">memset</span><span class="p">(</span><span class="n">szFile</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">MAX_PATH</span><span class="p">);</span>
+		<span class="n">DWORD</span> <span class="n">dwSize</span> <span class="o">=</span> <span class="n">MAX_PATH</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">QueryFullProcessImageName</span><span class="p">(</span><span class="n">hProcess</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">szFile</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">dwSize</span><span class="p">))</span>
+		<span class="p">{</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"QueryFullProcessImageName:</span><span class="se">\n\r</span><span class="s">%s</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> <span class="n">szFile</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">else</span>
+		<span class="p">{</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"QueryFullProcessImageName failed</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">szFile</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">pszFile</span> <span class="o">=</span> <span class="s">"ConsoleTest.exe"</span><span class="p">;</span>
+	<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">pszNewFile</span> <span class="o">=</span> <span class="s">"ConsoleTest_bak.exe"</span><span class="p">;</span>
+	<span class="n">remove</span><span class="p">(</span><span class="n">pszNewFile</span><span class="p">);</span>
+
+	<span class="n">OutputSelfpath</span><span class="p">();</span>
+
+	<span class="kt">int</span> <span class="n">nRet</span> <span class="o">=</span> <span class="n">rename</span><span class="p">(</span><span class="n">pszFile</span><span class="p">,</span> <span class="n">pszNewFile</span><span class="p">);</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">!=</span> <span class="n">nRet</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"rename file failed!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"################### after rename ###################</span><span class="se">\n\n</span><span class="s">"</span><span class="p">);</span>
+		<span class="n">OutputSelfpath</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">"pause"</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="运行结果">运行结果</h3>
+
+<p><img src="/images/posts/windows/queryfullprocessimagename.png" alt="QueryFullProcessImageName" /></p>
+
+<h3 id="思考">思考</h3>
+
+<p>现象上讲就是如此了，这几个 API 的本质区别是什么呢？待续。</p>
+:ET

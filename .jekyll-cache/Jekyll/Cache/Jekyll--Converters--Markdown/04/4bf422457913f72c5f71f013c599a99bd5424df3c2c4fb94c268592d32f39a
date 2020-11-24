@@ -1,0 +1,21 @@
+I"�<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Inductive</span><span class="w"> </span><span class="no">ty</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kr">Type</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w">
+  </span><span class="c">(* record types *)</span><span class="w">
+  </span><span class="o">|</span><span class="w"> </span><span class="no">RNil</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">ty</span><span class="w">
+  </span><span class="o">|</span><span class="w"> </span><span class="no">RCons</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="no">string</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="no">ty</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="no">ty</span><span class="w"> </span><span class="p">→</span><span class="w"> </span><span class="no">ty</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p>we need typecon to identify record…</p>
+
+<p>```coq
+Inductive tm : Type :=
+  | rproj …?  isn’t it as well?
+  (* record terms *)
+  | rnil : tm
+  | rcons : string → tm → tm → tm.
+``</p>
+
+<p>as a list…</p>
+
+<p>for Record, can compiler reorder the fields? (SML and OCaml)</p>
+
+:ET

@@ -1,0 +1,461 @@
+I"��<p>本文的讨论围绕一个 <code class="language-plaintext highlighter-rouge">java.lang.SecurityException</code> 展开，异常的关键词是权限 <code class="language-plaintext highlighter-rouge">android.permission.INTERACT_ACROSS_USERS_FULL</code>。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">SecurityException</span><span class="o">:</span> <span class="nc">Permission</span> <span class="nl">Denial:</span> <span class="n">startActivity</span> <span class="n">asks</span> <span class="n">to</span> <span class="n">run</span> <span class="n">as</span> <span class="n">user</span> <span class="o">-</span><span class="mi">2</span> <span class="n">but</span> <span class="n">is</span> <span class="n">calling</span> <span class="n">from</span> <span class="n">user</span> <span class="mi">0</span><span class="o">;</span> <span class="k">this</span> <span class="n">requires</span> <span class="n">android</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">INTERACT_ACROSS_USERS_FULL</span>
+    <span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Parcel</span><span class="o">.</span><span class="na">readException</span><span class="o">(</span><span class="nc">Parcel</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1425</span><span class="o">)</span>
+    <span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">Parcel</span><span class="o">.</span><span class="na">readException</span><span class="o">(</span><span class="nc">Parcel</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1379</span><span class="o">)</span>
+    <span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="na">app</span><span class="o">.</span><span class="na">ActivityManagerProxy</span><span class="o">.</span><span class="na">startActivityAsUser</span><span class="o">(</span><span class="nc">ActivityManagerNative</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1921</span><span class="o">)</span>
+    <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">commands</span><span class="o">.</span><span class="na">am</span><span class="o">.</span><span class="na">Am</span><span class="o">.</span><span class="na">runStart</span><span class="o">(</span><span class="nc">Am</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">494</span><span class="o">)</span>
+    <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">commands</span><span class="o">.</span><span class="na">am</span><span class="o">.</span><span class="na">Am</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="nc">Am</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">109</span><span class="o">)</span>
+    <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">commands</span><span class="o">.</span><span class="na">am</span><span class="o">.</span><span class="na">Am</span><span class="o">.</span><span class="na">main</span><span class="o">(</span><span class="nc">Am</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">82</span><span class="o">)</span>
+    <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">internal</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">RuntimeInit</span><span class="o">.</span><span class="na">nativeFinishInit</span><span class="o">(</span><span class="nc">Native</span> <span class="nc">Method</span><span class="o">)</span>
+    <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">internal</span><span class="o">.</span><span class="na">os</span><span class="o">.</span><span class="na">RuntimeInit</span><span class="o">.</span><span class="na">main</span><span class="o">(</span><span class="nc">RuntimeInit</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">235</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>先就我所了解的知识说一下此异常发生的背景。</p>
+
+<h2 id="背景">背景</h2>
+
+<h3 id="android-系统里的多用户">Android 系统里的多用户</h3>
+
+<p>Android 系统是基于 Linux 内核，而 Linux 内核中用于支持多用户机制的 uid 在 Android 中被用于标识 app-specific sandbox。<a href="http://developer.android.com/reference/android/os/Process.html#myUid()">android.os.Process 类的 myUid() 方法</a> 的描述里的原话是：</p>
+
+<blockquote>
+  <p>Returns the identifier of this process’s uid. This is the kernel uid that the process is running under, which is the identity of its app-specific sandbox. It is different from myUserHandle() in that a uid identifies a specific app sandbox in a specific user.</p>
+</blockquote>
+
+<p>所以注定 Android 如果要实现多用户不能直接使用 Linux 的 uid 机制了，需要另做一套机制。</p>
+
+<p>在 Android API level 17 的 Features 列表里有一项是</p>
+
+<blockquote>
+  <p>Multiple user accounts (tablets only)</p>
+</blockquote>
+
+<p>所以在 API level 17 以上的 Android 系统里其实已经内置了多用户的支持，只不过暂时只对平板启用（据说是因为多用户手机专利早已被 Symbian 雇员注册，不知真假。）。在实现上是新引入了 <a href="http://developer.android.com/reference/android/os/UserHandle.html">UserHandle</a> 的概念，封装了 user id，在 <a href="http://developer.android.com/reference/android/os/Process.html#myUserHandle()">android.os.Process 类的 myUserHandle() 方法</a> 的描述里的原话是：</p>
+
+<blockquote>
+  <p>Returns this process’s user handle. This is the user the process is running under. It is distinct from myUid() in that a particular user will have multiple distinct apps running under it each with their own uid.</p>
+</blockquote>
+
+<h3 id="user-id-与-uid">user id 与 uid</h3>
+
+<p><strong>结论</strong></p>
+
+<ol>
+  <li>user id = uid / 100000</li>
+  <li>目前 Android 手机上所有 APP 的 user id 都为 0</li>
+  <li>root 权限与 uid 是否为 0 有关，与 user id 无关</li>
+</ol>
+
+<p><strong>分析</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Representation of a user on the device.
+ */</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">UserHandle</span> <span class="kd">implements</span> <span class="nc">Parcelable</span> <span class="o">{</span>
+    <span class="cm">/**
+     * @hide Range of uids allocated for a user.
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">PER_USER_RANGE</span> <span class="o">=</span> <span class="mi">100000</span><span class="o">;</span>
+    <span class="o">......</span>
+    <span class="cm">/**
+     * @hide Enable multi-user related side effects. Set this to false if
+     * there are problems with single user use-cases.
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="no">MU_ENABLED</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">......</span>
+    <span class="cm">/**
+     * Returns the user id for a given uid.
+     * @hide
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="nf">getUserId</span><span class="o">(</span><span class="kt">int</span> <span class="n">uid</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="no">MU_ENABLED</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">uid</span> <span class="o">/</span> <span class="no">PER_USER_RANGE</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="o">......</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>这个类定义在 frameworks/base/core/java/android/os/UserHandle.java 里。</p>
+
+<p>上面这段代码能得出结论 1 里的公式。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Tools for managing OS processes.
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Process</span> <span class="o">{</span>
+    <span class="o">......</span>
+    <span class="cm">/**
+     * Defines the root UID.
+     * @hide
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">ROOT_UID</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">......</span>
+    <span class="cm">/**
+     * Defines the start of a range of UIDs (and GIDs), going from this
+     * number to {@link #LAST_APPLICATION_UID} that are reserved for assigning
+     * to applications.
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">FIRST_APPLICATION_UID</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">;</span>
+
+    <span class="cm">/**
+     * Last of application-specific UIDs starting at
+     * {@link #FIRST_APPLICATION_UID}.
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">LAST_APPLICATION_UID</span> <span class="o">=</span> <span class="mi">19999</span><span class="o">;</span>
+    <span class="o">......</span>        
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>这个类定义在 frameworks/base/core/java/android/os/Process.java 里。</p>
+
+<p>从 <code class="language-plaintext highlighter-rouge">FIRST_APPLICATION_UID</code> 与 <code class="language-plaintext highlighter-rouge">LAST_APPLICATION_UID</code> 的值，结合结论 1 里的公式来看，所有 APP 运行时获取自身的 user id 都为 0；而运行时 uid 为 <code class="language-plaintext highlighter-rouge">ROOT_UID</code> （即 0）的 APP 获取自身的 user id 也为 0，所以 user id 是否为 0 与是否获取 root 权限并无关联。</p>
+
+<h3 id="异常发生的场景">异常发生的场景</h3>
+
+<p>该异常发生在 API level 17 以上的机型里，在 APP 或者 APP 调用的 Native 进程里使用 am start 来启动 Activity 时。</p>
+
+<p>在 Java 代码中直接 startActivity 并不会触发此异常。</p>
+
+<p>好了，背景交待完毕，下面按惯例先上结论及解决方案，以便急于解决文章开始提到的异常而不想探究原理的同学可以省时地带着结论心满意足地离去。</p>
+
+<h2 id="结论及解决方案">结论及解决方案</h2>
+
+<p>在 API level 17 以上的 Android 设备里，通过 am start 命令来启动 Activity 时会校验调用 am 命令的进程的 user id 与 am 进程从 –user 参数获取到的 user id（默认值为 UserHandle.USER_CURRENT，即 -2）是否相等， 如果想在 APP 或者 APP 调用的 Native 进程里使用 am start 来启动 Activity，那么需要给其传递能通过校验的 –user 参数，参数值可以直接硬编码为 0，也可以使用 <code class="language-plaintext highlighter-rouge">android.os.Process.myUserHandle().hashCode()</code> 的值。</p>
+
+<p>如果不给 am start 传递正确的 –user 参数，那调用进程对应 uid 需要拥有 INTERACT_ACROSS_USERS_FULL 权限，但是该权限的 protectionLevel 为 <code class="language-plaintext highlighter-rouge">signature|installer</code>，一般场景下是无法获取到的。</p>
+
+<p>我做了一个 Demo APP，通过 <code class="language-plaintext highlighter-rouge">Runtime.getRuntime().exec("am start xxxxxxx");</code> 来启动拔号程序界面，有两个按钮分别模拟了传递与不传递 –user 参数的情况，有兴趣的同学可以看看现象，完整源码在 <a href="https://github.com/mzlogin/AndroidPractices/tree/master/android-studio/AuthorityDemo">AuthorityDemo</a>。</p>
+
+<p>运行截图如下：</p>
+
+<p><img src="/images/posts/android/authority-demo.png" alt="authority demo" /></p>
+
+<h2 id="分析">分析</h2>
+
+<p>接下来我们将借助于源码对 am start 的执行过程进行分析，一点一点吹散迷雾。</p>
+
+<h3 id="am-start-的执行过程">am start 的执行过程</h3>
+
+<p>am 命令的源码在 frameworks/base/cmds/am 里，里面的 am 文件即为 am 命令主体：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/system/bin/sh</span>
+<span class="c">#</span>
+<span class="c"># Script to start "am" on the device, which has a very rudimentary</span>
+<span class="c"># shell.</span>
+<span class="c">#</span>
+<span class="nv">base</span><span class="o">=</span>/system
+<span class="nb">export </span><span class="nv">CLASSPATH</span><span class="o">=</span><span class="nv">$base</span>/framework/am.jar
+<span class="nb">exec </span>app_process <span class="nv">$base</span>/bin com.android.commands.am.Am <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>这段代码在 framworks/base/cmds/am/am 里。</p>
+
+<p>am 命令是通过 app_process 最终调用到 com.android.commands.am.Am 类的 main 方法，并将所有参数传递给 main 来执行后续流程的。app_process 相关知识与 am start 执行逻辑无关，此处略去不表，放在本文最后一节附录中讲解。</p>
+
+<p>am start 的关键方法调用如下：</p>
+
+<p><img src="/images/posts/android/am-start-call-stack.svg" alt="am start call stack" /></p>
+
+<p>文章开始处的异常就是在 handleIncomingUser 方法里校验 user id 和权限失败之后抛出的。下面按方法调用层级详细分析一下，如下源码所在源文件可以在上图中找到：</p>
+
+<h4 id="ammain">Am.main</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">(</span><span class="k">new</span> <span class="nc">Am</span><span class="o">()).</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>就是一个简单的 new 和 run 方法调用，而 Am 类中并无 <code class="language-plaintext highlighter-rouge">run(String[])</code> 原型的方法，所以其实调用的是 Am 类的基类 BaseCommand 的 run 方法。</p>
+
+<h4 id="basecommandrun">BaseCommand.run</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">......</span>
+    <span class="n">mArgs</span> <span class="o">=</span> <span class="n">args</span><span class="o">;</span>
+    <span class="o">......</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">onRun</span><span class="o">();</span>
+        <span class="o">......</span>
+    <span class="o">}</span>
+    <span class="o">......</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>BaseCommand 类的 onRun 方法是一个抽象方法，所以其实 run 方法只是保存了参数，然后调用了 Am 的 onRun 方法。</p>
+
+<h4 id="amonrun">Am.onRun</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRun</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+
+    <span class="n">mAm</span> <span class="o">=</span> <span class="nc">ActivityManagerNative</span><span class="o">.</span><span class="na">getDefault</span><span class="o">();</span>
+    <span class="o">......</span>
+
+    <span class="nc">String</span> <span class="n">op</span> <span class="o">=</span> <span class="n">nextArgRequired</span><span class="o">();</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"start"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">runStart</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="o">......</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>onRun 方法主要是对 am 命令后第一个参数进行判断并进行相应的方法调用，我们可以看到 <code class="language-plaintext highlighter-rouge">am start</code> 是调用了 runStart 方法。</p>
+
+<p>这里可以顺便留意到的是 mAm 对象，追踪 <code class="language-plaintext highlighter-rouge">ActivityManagerNative.getDefault()</code> 可以知道它最终通过 binder 机制对应 ActivityManagerService 对象。</p>
+
+<h4 id="amrunstart">Am.runStart</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Am</span> <span class="kd">extends</span> <span class="nc">BaseCommand</span> <span class="o">{</span>
+    <span class="o">......</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">mWaitOption</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">......</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">mUserId</span><span class="o">;</span>
+    <span class="o">......</span>
+    <span class="kd">private</span> <span class="nc">Intent</span> <span class="nf">makeIntent</span><span class="o">(</span><span class="kt">int</span> <span class="n">defUser</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">URISyntaxException</span> <span class="o">{</span>
+        <span class="o">......</span>
+        <span class="n">mWaitOption</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">......</span>
+        <span class="n">mUserId</span> <span class="o">=</span> <span class="n">defUser</span><span class="o">;</span>
+        <span class="o">......</span>
+        <span class="k">while</span> <span class="o">((</span><span class="n">opt</span><span class="o">=</span><span class="n">nextOption</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">opt</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"-a"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="o">......</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">opt</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"-W"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">mWaitOption</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="o">......</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">opt</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"--user"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">mUserId</span> <span class="o">=</span> <span class="n">parseUserArg</span><span class="o">(</span><span class="n">nextArgRequired</span><span class="o">());</span>
+            <span class="o">}</span>
+            <span class="o">......</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">runStart</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="n">makeIntent</span><span class="o">(</span><span class="nc">UserHandle</span><span class="o">.</span><span class="na">USER_CURRENT</span><span class="o">);</span>
+        <span class="o">......</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">mWaitOption</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">mAm</span><span class="o">.</span><span class="na">startActivityAndWait</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">intent</span><span class="o">,</span> <span class="n">mimeType</span><span class="o">,</span>
+                        <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">mStartFlags</span><span class="o">,</span> <span class="n">profilerInfo</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">mUserId</span><span class="o">);</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">result</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">mAm</span><span class="o">.</span><span class="na">startActivityAsUser</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">intent</span><span class="o">,</span> <span class="n">mimeType</span><span class="o">,</span>
+                    <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">mStartFlags</span><span class="o">,</span> <span class="n">profilerInfo</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">mUserId</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="o">......</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">res</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 启动 Activity 的结果提示</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">mWaitOption</span> <span class="o">&amp;&amp;</span> <span class="n">launched</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 输出启动 Activity 的结果状态，起止时间等</span>
+        <span class="o">}</span>
+        <span class="o">......</span>
+    <span class="o">}</span>
+    <span class="o">......</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>由如上代码可知，一般通过 am start 启动 Activity 时若未传 -W 参数（我一般的做法），会调用 ActivityManagerService.startActivityAsUser 来启动 Activity。（ActivityManagerService.startActivityAndWait 其实与 ActivityManagerService.startActivityAsUser 类似，只是在启动 Activity 后多了一个等待过程，下面不再重复分析。）</p>
+
+<p>而 mUserId 的值，若命令行中有 –user 参数，则被赋为该参数的值；若命令行中无 –user 参数，则默认为 <code class="language-plaintext highlighter-rouge">UserHandle.USER_CURRENT</code> 的值，在 frameworks/base/core/java/android/os/UserHandle.java 中可知此默认值为 -2。</p>
+
+<p>-2 这个数字是不是有点似曾相似？没错，文首的异常信息里就有这个值。</p>
+
+<h4 id="activitymanagerservicestartactivityasuser">ActivityManagerService.startActivityAsUser</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="nf">startActivityAsUser</span><span class="o">(</span><span class="nc">IApplicationThread</span> <span class="n">caller</span><span class="o">,</span> <span class="nc">String</span> <span class="n">callingPackage</span><span class="o">,</span>
+        <span class="nc">Intent</span> <span class="n">intent</span><span class="o">,</span> <span class="nc">String</span> <span class="n">resolvedType</span><span class="o">,</span> <span class="nc">IBinder</span> <span class="n">resultTo</span><span class="o">,</span> <span class="nc">String</span> <span class="n">resultWho</span><span class="o">,</span> <span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span>
+        <span class="kt">int</span> <span class="n">startFlags</span><span class="o">,</span> <span class="nc">ProfilerInfo</span> <span class="n">profilerInfo</span><span class="o">,</span> <span class="nc">Bundle</span> <span class="n">options</span><span class="o">,</span> <span class="kt">int</span> <span class="n">userId</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">enforceNotIsolatedCaller</span><span class="o">(</span><span class="s">"startActivity"</span><span class="o">);</span>
+    <span class="n">userId</span> <span class="o">=</span> <span class="n">handleIncomingUser</span><span class="o">(</span><span class="nc">Binder</span><span class="o">.</span><span class="na">getCallingPid</span><span class="o">(),</span> <span class="nc">Binder</span><span class="o">.</span><span class="na">getCallingUid</span><span class="o">(),</span> <span class="n">userId</span><span class="o">,</span>
+            <span class="kc">false</span><span class="o">,</span> <span class="no">ALLOW_FULL_ONLY</span><span class="o">,</span> <span class="s">"startActivity"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+    <span class="c1">// TODO: Switch to user app stacks here.</span>
+    <span class="k">return</span> <span class="n">mStackSupervisor</span><span class="o">.</span><span class="na">startActivityMayWait</span><span class="o">(</span><span class="n">caller</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">callingPackage</span><span class="o">,</span> <span class="n">intent</span><span class="o">,</span>
+            <span class="n">resolvedType</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">resultTo</span><span class="o">,</span> <span class="n">resultWho</span><span class="o">,</span> <span class="n">requestCode</span><span class="o">,</span> <span class="n">startFlags</span><span class="o">,</span>
+            <span class="n">profilerInfo</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">options</span><span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Binder.getCallingUid()</code> 是一个 native 方法，在 frameworks/base/core/java/android/os/Binder.java 中能找到，它其实就是返回了当前进程的 uid，而<strong>该 uid 是从父进程继承的</strong>。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Return the Linux uid assigned to the process that sent you the
+ * current transaction that is being processed.  This uid can be used with
+ * higher-level system services to determine its identity and check
+ * permissions.  If the current thread is not currently executing an
+ * incoming transaction, then its own uid is returned.
+ */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kd">native</span> <span class="kt">int</span> <span class="nf">getCallingUid</span><span class="o">();</span>
+</code></pre></div></div>
+
+<h4 id="activitymanagerservicehandleincominguser">ActivityManagerService.handleIncomingUser</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">handleIncomingUser</span><span class="o">(</span><span class="kt">int</span> <span class="n">callingPid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">callingUid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">userId</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">allowAll</span><span class="o">,</span>
+        <span class="kt">int</span> <span class="n">allowMode</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">callerPackage</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">callingUserId</span> <span class="o">=</span> <span class="nc">UserHandle</span><span class="o">.</span><span class="na">getUserId</span><span class="o">(</span><span class="n">callingUid</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">callingUserId</span> <span class="o">==</span> <span class="n">userId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">userId</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="o">......</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">callingUid</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">callingUid</span> <span class="o">!=</span> <span class="nc">Process</span><span class="o">.</span><span class="na">SYSTEM_UID</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">allow</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">checkComponentPermission</span><span class="o">(</span><span class="no">INTERACT_ACROSS_USERS_FULL</span><span class="o">,</span> <span class="n">callingPid</span><span class="o">,</span>
+                <span class="n">callingUid</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span> <span class="o">==</span> <span class="nc">PackageManager</span><span class="o">.</span><span class="na">PERMISSION_GRANTED</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// If the caller has this permission, they always pass go.  And collect $200.</span>
+            <span class="n">allow</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">allowMode</span> <span class="o">==</span> <span class="no">ALLOW_FULL_ONLY</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// We require full access, sucks to be you.</span>
+            <span class="n">allow</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(......)</span> <span class="o">{</span>
+            <span class="o">......</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">allow</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">userId</span> <span class="o">==</span> <span class="nc">UserHandle</span><span class="o">.</span><span class="na">USER_CURRENT_OR_SELF</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// In this case, they would like to just execute as their</span>
+                <span class="c1">// owner user instead of failing.</span>
+                <span class="n">targetUserId</span> <span class="o">=</span> <span class="n">callingUserId</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="nc">StringBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">(</span><span class="mi">128</span><span class="o">);</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"Permission Denial: "</span><span class="o">);</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">callerPackage</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">" from "</span><span class="o">);</span>
+                    <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">callerPackage</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">" asks to run as user "</span><span class="o">);</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">userId</span><span class="o">);</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">" but is calling from user "</span><span class="o">);</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="nc">UserHandle</span><span class="o">.</span><span class="na">getUserId</span><span class="o">(</span><span class="n">callingUid</span><span class="o">));</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"; this requires "</span><span class="o">);</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">INTERACT_ACROSS_USERS_FULL</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">allowMode</span> <span class="o">!=</span> <span class="no">ALLOW_FULL_ONLY</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">" or "</span><span class="o">);</span>
+                    <span class="n">builder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="no">INTERACT_ACROSS_USERS</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="nc">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+                <span class="nc">Slog</span><span class="o">.</span><span class="na">w</span><span class="o">(</span><span class="no">TAG</span><span class="o">,</span> <span class="n">msg</span><span class="o">);</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">SecurityException</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="o">......</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>它先校验了当前进程的 user id 与参数里的 userId（即 –user 的值或默认的 -2）是否相等，如果相等则正常返回，执行后续的启动 Activity 动作；</p>
+
+<p>如果不相等，普通应用程序的 callingUid 必为 0，则先进行权限校验，看当前 pid 和 uid 是否被赋予了 INTERACT_ACROSS_USERS_FULL 权限，我们在前面的「结论及解决方案」一节中已经交待过，该权限的 protectionLevel 为 <code class="language-plaintext highlighter-rouge">signature|installer</code>，一般场景下是无法获取到的；</p>
+
+<p>如果没有 INTERACT_ACROSS_USERS_FULL 权限，allowMode 参数值又为 ALLOW_FULL_ONLY 则将抛出 SecurityException，从上一小节「ActivityManagerService.startActivityAsUser」中调用 handleIncomingUser 的参数可知 allowMode 参数就是 ALLOW_FULL_ONLY。</p>
+
+<p>上方代码段里的 <code class="language-plaintext highlighter-rouge">Permission Denial:</code>、<code class="language-plaintext highlighter-rouge">asks to run as user</code> 和 <code class="language-plaintext highlighter-rouge">but is calling from user</code> 等字符串是不是很熟悉？这就是从文首开始困惑我们的异常抛出的地方。</p>
+
+<p>至此，am start 的大概执行过程和异常发生的情景分析完成。</p>
+
+<h4 id="实现功能避免异常">实现功能，避免异常</h4>
+
+<p>从上方的分析可知，要避免异常最直接有效的方法就是让 handleIncomingUser 方法正常返回，既然声明 INTERACT_ACROSS_USERS_FULL 权限的路不通，就只有传递 –user 参数了。</p>
+
+<p>那么给这个参数传递什么值呢？</p>
+
+<p>从上文的分析可知，该参数应该与 am 进程的 user id 相等，所以传递父进程的 user id 即可。（user id 由 uid 运算得来，而 uid 与父进程相同。）</p>
+
+<p>由「背景」一节可知，所有 APP 进程的 user id 都为 0，所以该参数直接写 0 是可以的；如果不想硬编码，那么可以先用 Process 类的 <code class="language-plaintext highlighter-rouge">myUserHandle()</code> 方法获取进程的 user handle：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Returns this process's user handle.  This is the
+ * user the process is running under.  It is distinct from
+ * {@link #myUid()} in that a particular user will have multiple
+ * distinct apps running under it each with their own uid.
+ */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">UserHandle</span> <span class="nf">myUserHandle</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">UserHandle</span><span class="o">(</span><span class="nc">UserHandle</span><span class="o">.</span><span class="na">getUserId</span><span class="o">(</span><span class="n">myUid</span><span class="o">()));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>这段代码定义在 frameworks/base/core/java/android/os/Process.java 中。</p>
+
+<p>继续分析 UserHandle 类里的相关方法：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">UserHandle</span> <span class="kd">implements</span> <span class="nc">Parcelable</span> <span class="o">{</span>
+    <span class="o">......</span>
+    <span class="cm">/** @hide */</span>
+    <span class="kd">public</span> <span class="nf">UserHandle</span><span class="o">(</span><span class="kt">int</span> <span class="n">h</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mHandle</span> <span class="o">=</span> <span class="n">h</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Returns the userId stored in this UserHandle.
+     * @hide
+     */</span>
+    <span class="nd">@SystemApi</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getIdentifier</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">mHandle</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="o">......</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">mHandle</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="o">......</span>
+</code></pre></div></div>
+
+<p>这段代码定义在 frameworks/base/core/java/android/os/UserHandle.java 中。</p>
+
+<p>构造方法 <code class="language-plaintext highlighter-rouge">UserHandle(int h)</code> 里将 user id 保存在 mHandle 成员里，本来 UserHandle 类有一个 getIdentifier 方法可以返回 mHandle 的，但该方法被标为了 SystemApi 和 hide，无法正常调用，所以找了一个取巧的办法，使用也返回 mHandle 值的 hashCode 方法来达成目标。</p>
+
+<p>所以 am start 的 –user 的参数可以直接写为 0，也可以使用 <code class="language-plaintext highlighter-rouge">android.os.Process.myUserHandle().hashCode()</code> 的值。</p>
+
+<h2 id="引申思考">引申思考</h2>
+
+<p>启动 Activity 的方法并非只有在 APP 进程里使用 am start 一种，还有通过 adb 命令 adb shell am start 或在 APP 进程里使用 startActivity 等，它们为什么没有抛出此异常呢？继续探索。</p>
+
+<h3 id="为何-adb-shell-am-start-不抛此异常">为何 adb shell am start 不抛此异常</h3>
+
+<p><strong>原因：</strong> shell 是拥有 INTERACT_ACROSS_USERS_FULL 权限的，所以 am start 作为其子进程继承了 shell 的 uid 和对应权限，在如上流程中 ActivityManagerService.handleIncomingUser 里通过了权限检查，不会抛出文首的异常。</p>
+
+<p>在 frameworks/base/packages/Shell/AndroidManifest.xml 里有如下声明：</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;manifest</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+        <span class="na">package=</span><span class="s">"com.android.shell"</span>
+        <span class="na">coreApp=</span><span class="s">"true"</span>
+        <span class="na">android:sharedUserId=</span><span class="s">"android.uid.shell"</span>
+        <span class="nt">&gt;</span>
+    ......
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERACT_ACROSS_USERS_FULL"</span> <span class="nt">/&gt;</span>
+    ......
+<span class="nt">&lt;/manifest&gt;</span>    
+</code></pre></div></div>
+
+<h3 id="java-代码里-startactivity-的执行过程">Java 代码里 startActivity 的执行过程</h3>
+
+<p><img src="/images/posts/android/start-activity-call-stack.svg" alt="start activity call stack" /></p>
+
+<p>其实与 am start 一样，都是执行到了 ActivityManagerService.startActivityAsUser，区别在于参数。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="nf">startActivity</span><span class="o">(</span><span class="nc">IApplicationThread</span> <span class="n">caller</span><span class="o">,</span> <span class="nc">String</span> <span class="n">callingPackage</span><span class="o">,</span>
+        <span class="nc">Intent</span> <span class="n">intent</span><span class="o">,</span> <span class="nc">String</span> <span class="n">resolvedType</span><span class="o">,</span> <span class="nc">IBinder</span> <span class="n">resultTo</span><span class="o">,</span> <span class="nc">String</span> <span class="n">resultWho</span><span class="o">,</span> <span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span>
+        <span class="kt">int</span> <span class="n">startFlags</span><span class="o">,</span> <span class="nc">ProfilerInfo</span> <span class="n">profilerInfo</span><span class="o">,</span> <span class="nc">Bundle</span> <span class="n">options</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nf">startActivityAsUser</span><span class="o">(</span><span class="n">caller</span><span class="o">,</span> <span class="n">callingPackage</span><span class="o">,</span> <span class="n">intent</span><span class="o">,</span> <span class="n">resolvedType</span><span class="o">,</span> <span class="n">resultTo</span><span class="o">,</span>
+        <span class="n">resultWho</span><span class="o">,</span> <span class="n">requestCode</span><span class="o">,</span> <span class="n">startFlags</span><span class="o">,</span> <span class="n">profilerInfo</span><span class="o">,</span> <span class="n">options</span><span class="o">,</span>
+        <span class="nc">UserHandle</span><span class="o">.</span><span class="na">getCallingUserId</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>在 am start 流程中的，传给 startActivityAsUser 的最后一个参数是 –user 传入的或者默认的 -2，而 Java 代码里的 startActivity 流程中传给 startActivityAsUser 的是 <code class="language-plaintext highlighter-rouge">UserHandle.getCallingUserId()</code>，相当于到 handleIncomingUser 中是当前进程的 user id 与当前进程的 user id 比较（必相等），如果相等则通过校验，所以必能通过校验，不会抛出文首说的异常。</p>
+
+<h2 id="附录">附录</h2>
+
+<h3 id="app_process-简要执行过程">app_process 简要执行过程</h3>
+
+<p><img src="/images/posts/android/app-process.svg" alt="app process" /></p>
+
+<p>在第 2 步，AndroidRuntime::start 中调用了 <code class="language-plaintext highlighter-rouge">startVm</code> 启动虚拟机，最终在第 5 步 AppRuntime::onStarted 中调用通过参数传进来的类的 main 方法，并将类名后的参数传给它。</p>
+
+:ET

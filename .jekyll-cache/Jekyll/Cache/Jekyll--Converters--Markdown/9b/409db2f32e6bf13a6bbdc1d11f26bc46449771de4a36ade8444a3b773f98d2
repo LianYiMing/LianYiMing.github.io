@@ -1,0 +1,61 @@
+I"�<p>使用这个博客模板的朋友们时不时会提出一些问题，我将它们以及对应的解决方案逐渐整理归纳，汇总到这一篇帖子里。</p>
+
+<h2 id="如何本地预览">如何本地预览</h2>
+
+<p>参考 GitHub 的官方说明：</p>
+
+<ul>
+  <li><a href="https://help.github.com/articles/setting-up-your-pages-site-locally-with-jekyll/">Setting up your Pages site locally with Jekyll</a></li>
+</ul>
+
+<h2 id="本地预览报错-undefined-method-map-for-false">本地预览报错 undefined method map for false</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GitHub Metadata: Failed to open TCP connection to api.github.com:443 (Connection refused - connect(2) for "api.github.com" port 443)
+Liquid Exception: undefined method `map' for false:FalseClass Did you mean? tap in /_layouts/page.html
+jekyll 3.8.5 | Error:  undefined method `map' for false:FalseClass
+Did you mean?  tap
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">undefined method `map` for false:FalseClass</code> 这条报错之前总是伴随着 <code class="language-plaintext highlighter-rouge">Failed to open TCP connection to api.github.com:443</code> 一起出现，是在获取 GitHub Metadata 出错后，导致这一句报错：</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">github</span><span class="p">.</span><span class="nv">public_repositories</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">sort</span><span class="p">:</span><span class="w"> </span><span class="s2">"stargazers_count"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">reverse</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<p>解决方法：</p>
+
+<p>模板里主要是 _includes/sidebar-popular-repo.html 和 _pages/open-source.md 两个文件里用到了 Metadata，将以上这一句前的判断条件做一下修改后问题解决，将</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">github</span><span class="p">.</span><span class="nv">public_repositories</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nv">null</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<p>改为</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">github</span><span class="p">.</span><span class="nv">public_repositories</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<p>模板最新代码已经做了修改。</p>
+
+<h2 id="是否支持画流程图时序图mermaid-和-mathjax">是否支持画流程图、时序图、mermaid 和 MathJax</h2>
+
+<p>支持。因为相关的引入文件比较大可能影响加载速度，没有默认对所有文件开启，需要在要想开启的文件的 Front Matter 里加上声明：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">flow</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">sequence</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">mermaid</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">mathjax</span><span class="pi">:</span> <span class="no">true</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>以上四个开关分别对应 flowchart.js（流程图）、sequence-diagram.js（时序图）、mermaid 和 MathJax 的支持，按需开启即可，然后就可以在正文里正常画图了，展示效果可以参见 <a href="https://mazhuang.org/wiki/markdown/">https://mazhuang.org/wiki/markdown/</a>，对应写法参考源文件 <a href="https://github.com/mzlogin/mzlogin.github.io/blob/master/_wiki/markdown.md">https://github.com/mzlogin/mzlogin.github.io/blob/master/_wiki/markdown.md</a>。</p>
+
+<h2 id="如何修改代码高亮风格">如何修改代码高亮风格</h2>
+
+<p>可以通过 _config.yml 文件里的配置项 <code class="language-plaintext highlighter-rouge">highlight_theme</code> 来指定代码高亮风格，支持的风格名称列表参考我维护的另一个项目：</p>
+
+<ul>
+  <li><a href="https://github.com/mzlogin/rouge-themes">https://github.com/mzlogin/rouge-themes</a></li>
+</ul>
+
+<p>在项目主页可以看到每种风格的预览效果。</p>
+:ET

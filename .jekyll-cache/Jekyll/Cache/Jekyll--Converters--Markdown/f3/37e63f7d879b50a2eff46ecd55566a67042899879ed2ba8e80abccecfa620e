@@ -1,0 +1,48 @@
+I"4<p>我的日常主力编辑器主要是：</p>
+
+<ul>
+  <li>(Neo)Vim</li>
+  <li>Spacemacs (via Emacs-plus)</li>
+  <li>Visual Studio Code</li>
+  <li>IntelliJ IDEA</li>
+</ul>
+
+<p>这里面只有 (Neo)Vim 是存活在终端中的（我并不在终端内使用 Emacs），而由于我日常主要是从终端（via iTerm）来使用电脑，所以会把他们都加入到 <code class="language-plaintext highlighter-rouge">$PATH</code> 里以方便从终端中唤起，VSCode 和 IDEA 都有一键加入的功能， Emacs 我在 <code class="language-plaintext highlighter-rouge">~/.zshrc</code> 中放了一个 <code class="language-plaintext highlighter-rouge">alias emacs='open -n -a Emacs.app .'</code> 解决。</p>
+
+<p>但是，偶尔也会有从 Finder 中打开文件的需求，这时候如果通常会打开拓展名所绑定的 <code class="language-plaintext highlighter-rouge">Open with...</code> 应用，在大部分时候我的默认绑定是 VSCode，但是今天心血来潮觉得有没有办法直接打开 Vim 呢？搜了一下还真有基于 AppleScript 的解决方案：</p>
+
+<ol>
+  <li>打开 <code class="language-plaintext highlighter-rouge">Automator.app</code></li>
+  <li>选择 <code class="language-plaintext highlighter-rouge">New Document</code></li>
+  <li>找到 <code class="language-plaintext highlighter-rouge">Run AppleScript</code> 的 action 双击添加</li>
+  <li>编写 AppleScript 脚本来唤起终端与 vim （下文给出了我的脚本你可以直接稍作修改使用）</li>
+  <li>保存为 <code class="language-plaintext highlighter-rouge">Applications/iTermVim.app</code> （你可以自己随便取）</li>
+  <li>找到你想要以这种方式打开的文件，比如 <code class="language-plaintext highlighter-rouge">&lt;随便&gt;.markdown</code>，<code class="language-plaintext highlighter-rouge">⌘ i</code> 获取信息然后修改 <code class="language-plaintext highlighter-rouge">Open with</code> 为这个应用然后 <code class="language-plaintext highlighter-rouge">Change All...</code></li>
+</ol>
+
+<p>效果超爽 ;)</p>
+
+<div class="language-applescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">on</span> <span class="nb">run</span><span class="w"> </span><span class="p">{</span><span class="nv">input</span><span class="p">,</span><span class="w"> </span><span class="nv">parameters</span><span class="p">}</span><span class="w">
+  </span><span class="k">set</span><span class="w"> </span><span class="nv">filename</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nv">POSIX</span><span class="w"> </span><span class="na">path</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nv">input</span><span class="w">
+  </span><span class="k">set</span><span class="w"> </span><span class="nv">cmd</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s2">"clear; cd `dirname "</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">filename</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="s2">"`;vim "</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nb">quote</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nv">filename</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nb">quote</span><span class="w">
+  </span><span class="k">tell</span><span class="w"> </span><span class="nb">application</span><span class="w"> </span><span class="s2">"iTerm"</span><span class="w">
+    </span><span class="nb">activate</span><span class="w">
+    </span><span class="k">tell</span><span class="w"> </span><span class="nb">the</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="na">window</span><span class="w">
+      </span><span class="nv">create</span><span class="w"> </span><span class="nb">tab</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">default</span><span class="w"> </span><span class="nv">profile</span><span class="w">
+      </span><span class="k">tell</span><span class="w"> </span><span class="nb">the</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">session</span><span class="w">
+        </span><span class="nb">write</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="nv">cmd</span><span class="w">
+      </span><span class="k">end</span><span class="w"> </span><span class="k">tell</span><span class="w">
+    </span><span class="k">end</span><span class="w"> </span><span class="k">tell</span><span class="w">
+  </span><span class="k">end</span><span class="w"> </span><span class="k">tell</span><span class="w">
+</span><span class="k">end</span><span class="w"> </span><span class="nb">run</span><span class="w">
+</span></code></pre></div></div>
+
+<p>我这里的代码是采取是用 <code class="language-plaintext highlighter-rouge">iTerm</code> 与唤起 <code class="language-plaintext highlighter-rouge">vim</code>、窗口置前、在新窗口中打开、同时 <code class="language-plaintext highlighter-rouge">cd</code> 到目录。你也可以改成用 macOS 自带的 <code class="language-plaintext highlighter-rouge">Terminal.app</code>、在新窗口而非新 tab 打开、应用不同的 profile、或是执行其他 executable 等……任你发挥啦。</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li><a href="https://gist.github.com/charlietran/43639b0f4e0a01c7c20df8f1929b76f2">Open file in iTerm vim for MacOS Sierra</a></li>
+  <li><a href="https://bl.ocks.org/napcs/2d8376e941133ccfad63e33bf1b1b60c">Open file in Terminal Vim on OSX</a></li>
+</ul>
+:ET

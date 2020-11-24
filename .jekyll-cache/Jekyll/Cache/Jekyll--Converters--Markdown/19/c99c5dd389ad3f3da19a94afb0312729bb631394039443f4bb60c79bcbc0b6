@@ -1,0 +1,151 @@
+I",+<p>这是一个源自知乎的话题，原贴链接：<a href="https://www.zhihu.com/question/50801791">一道百度的面试题，有大神会嘛？</a></p>
+
+<p>虽然我不是大神，但我也点进去看了一下，思考了一会之后有了一些思路，然后去看其它人的答案的时候果然全都已经被各路大神们先想到并贴出来了，所以我就不去凑热闹写重复答案了，整理一下网友们的智慧在这里自娱自乐好了。</p>
+
+<h2 id="题目">题目</h2>
+
+<p><img src="/images/posts/java/output-ab.jpg" alt="java-output-ab" /></p>
+
+<h2 id="思路一">思路一</h2>
+
+<p>作为一个多年前也见过不少笔试题的少年，看到这个题目的第一想法是脑筋急转弯——注入一段逻辑直接改变原 if 结构。</p>
+
+<h3 id="解法一">解法一</h3>
+
+<p>填入内容 <code class="language-plaintext highlighter-rouge">true){System.out.print("a");}if(false</code>。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="kc">false</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"b"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>类似地也可以填入 <code class="language-plaintext highlighter-rouge">true){System.out.print("ab");return;}if(false</code> 等。</p>
+
+<p>当初大学时单纯的少年可是很难想出这样的套路的，时间改变了我们啊。</p>
+
+<h2 id="思路二">思路二</h2>
+
+<p>如果正经遵从题目的原代码结构，那就得想办法构造一段代码，既能输出 <code class="language-plaintext highlighter-rouge">a</code>，又能返回 <code class="language-plaintext highlighter-rouge">false</code>。</p>
+
+<h3 id="解法二">解法二</h3>
+
+<p>我也想到能否使用 <code class="language-plaintext highlighter-rouge">System.out.print</code> 的返回值来做文章，但奈何并不记得它返回什么，首先让我们复习一下 <code class="language-plaintext highlighter-rouge">PrintStream</code> 的 <code class="language-plaintext highlighter-rouge">print</code>、<code class="language-plaintext highlighter-rouge">println</code> 和 <code class="language-plaintext highlighter-rouge">printf</code> 方法的区别：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>方法</th>
+      <th>功能</th>
+      <th>返回值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>print</td>
+      <td>打印一个值或者对象</td>
+      <td>void</td>
+    </tr>
+    <tr>
+      <td>println</td>
+      <td>打印并换行</td>
+      <td>void</td>
+    </tr>
+    <tr>
+      <td>printf</td>
+      <td>格式化打印</td>
+      <td>PrintStream</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>所以适用的是 <code class="language-plaintext highlighter-rouge">printf</code>，它的返回值是 <code class="language-plaintext highlighter-rouge">PrintStream</code> 类型的 <code class="language-plaintext highlighter-rouge">System.out</code>，判它是否为空即可。</p>
+
+<p>填入内容 <code class="language-plaintext highlighter-rouge">System.out.printf("a") == null</code>。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"a"</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"b"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>经测试填入 <code class="language-plaintext highlighter-rouge">System.out.append("a") == null</code> 也是可以达到效果的。</p>
+
+<h3 id="解法三">解法三</h3>
+
+<p>仍然是思路二，但从匿名内部类来作文章。</p>
+
+<p>实现代码：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="k">new</span> <span class="nc">Object</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}.</span><span class="na">print</span><span class="o">())</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"b"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>这里利用的知识点是匿名内部类可以声明基类没有的新方法并且马上调用。</p>
+
+<h3 id="解法四">解法四</h3>
+
+<p>使用 Java 8 里的 lambda 来实现思路二。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(((</span><span class="nc">BooleanSupplier</span><span class="o">)(()</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span><span class="k">return</span> <span class="kc">false</span><span class="o">;})).</span><span class="na">getAsBoolean</span><span class="o">())</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"b"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>严格来讲这个不一定能算作正确答案，因为要增加 <code class="language-plaintext highlighter-rouge">import java.util.function.BooleanSupplier;</code>。</p>
+
+<h2 id="脑洞大开">脑洞大开</h2>
+
+<p>讲完严肃的解法，来看看网友 <a href="https://www.zhihu.com/people/qiong-xiao-zi-158">穷小子</a> 开脑洞的思路：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>
+<span class="c1">//    if ( ) {</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"a"</span><span class="o">);</span>
+<span class="c1">//    } else {</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"b"</span><span class="o">);</span>
+<span class="c1">//    }</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>如果没有特意说明只能在括号里加东西，倒真是个妙计！</p>
+
+<p>同样看得我一愣一愣的还有 <a href="https://www.zhihu.com/people/caiwei710">caiwei</a> 同学的答案，他和朋友们发现题目里少写了个大括号（真的），于是我们看到他的朋友老方的解决方案：</p>
+
+<p><img src="/images/posts/java/add-brace.jpg" alt="add-brace" /></p>
+
+<p>真是防不胜防啊~不过我喜欢！:+1:</p>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+  <li><a href="https://www.zhihu.com/question/50801791/answer/122781965">RednaxelaFX 的回答</a></li>
+  <li><a href="https://www.zhihu.com/question/50801791/answer/122773831">仓鼠君 的回答</a></li>
+  <li><a href="https://www.zhihu.com/question/50801791/answer/122769426">放开那女孩 的回答</a></li>
+  <li><a href="https://www.zhihu.com/question/50801791/answer/122863062">穷小子 的回答</a></li>
+  <li><a href="https://www.zhihu.com/question/50801791/answer/122795854">caiwei 的回答</a></li>
+</ul>
+:ET

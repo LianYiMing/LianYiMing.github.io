@@ -1,0 +1,111 @@
+I"F<p><em>注：本文方法同时适用于 Excel 和 Numbers。</em></p>
+
+<h3 id="问题">问题</h3>
+
+<p>对 Excel 中一列已经排序的数据，如何去重，且保留最终留下的值的行号？</p>
+
+<p>例如：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>110
+110
+151
+163
+163
+163
+888
+888
+999
+</code></pre></div></div>
+
+<p>这样一列数据，进行普通的去重之后结果为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>110
+151
+163
+888
+999
+</code></pre></div></div>
+
+<p>而现在想要的效果是：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>110
+
+151
+163
+
+
+888
+
+999
+</code></pre></div></div>
+
+<h3 id="分析">分析</h3>
+
+<p>遇到这个问题第一个念头是用脚本来做，虽然 VBA 编辑很方便，也肯定能解决，但是总觉得还是不如 Excel 本身提供的操作方便。</p>
+
+<p>第二个念头是使用公式，数据已经排序，需要保留第一次出现该值的那一行，那么可以比对本行值与上一行的值，如果相等则说明不是第一次出现，应删除，如果不等则说明是第一次出现，应保留。沿这个思路很简单地用一个 IF 就解决了问题：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>=IF(A2&lt;&gt;A1,A2,"")
+</code></pre></div></div>
+
+<h3 id="效果">效果</h3>
+
+<p><img src="/images/posts/excel/remove-duplicate.png" alt="" /></p>
+
+<h3 id="总结">总结</h3>
+
+<p>自从几年前学了点 VBA，遇到一些利用 Excel 进行数据处理的问题首先就想到使用脚本去做。可以想见步骤：</p>
+
+<ol>
+  <li>Alt+F11 打开脚本编辑器。</li>
+  <li>查并不熟悉的 API 然后写出逻辑。</li>
+  <li>执行之后拿到结果。</li>
+  <li>保存的时候可能还得复制到另一份纯净的 Excel 文档里去，免得带脚本的 xls 文件在别人的机子上打开会报安全隐患之类的。</li>
+</ol>
+
+<p>略繁琐，而像本问题则很合适就由 Excel 自带的公式来做，一行公式干净利落。</p>
+
+<h3 id="题外话">题外话</h3>
+
+<p>前面都是浮云，重点其实在这里，说这么多其实想说的是这样一句话：</p>
+
+<blockquote>
+  <p>做事情选对方法和工具很重要。</p>
+</blockquote>
+
+<p>比如我周末看了优酷排行第一的蛙泳教学视频，然后有意识地调整了一下呼吸节奏与动作，前后对比如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>调整前</th>
+      <th>调整后</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>最远距离</td>
+      <td>1km</td>
+      <td>2km</td>
+    </tr>
+    <tr>
+      <td>50m 划水次数</td>
+      <td>33</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>呼吸</td>
+      <td>急促难持久</td>
+      <td>平稳易坚持</td>
+    </tr>
+    <tr>
+      <td>个人感觉</td>
+      <td>速度慢，累</td>
+      <td>速度一般，不怎么累</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>由此可见一斑。</p>
+:ET

@@ -1,0 +1,43 @@
+I"H<ol>
+  <li>
+    <p>禁止 Win7 下窗口被拖到顶部时自动飘到左上角</p>
+
+    <p>去掉窗口的 WS_THICKFRAME 风格</p>
+  </li>
+  <li>
+    <p>将最小化或者不是在最前面的窗口激活到前面</p>
+
+    <p>SwitchToThisWindow</p>
+  </li>
+  <li>
+    <p>禁止双击标题栏最大化窗口</p>
+
+    <p>屏蔽 WM_NCLBUTTONDBLCLK 消息</p>
+  </li>
+  <li>
+    <p>禁止 XP 下右键任务栏的「最大化」菜单项</p>
+
+    <p>去掉窗口的 WS_MAXIMIZEBOX 风格</p>
+  </li>
+  <li>
+    <p>在任务管理器下「应用程序」标签栏不显示程序，但是在「进程」里显示进程</p>
+
+    <p>一个可能的原因是窗口标题为空</p>
+  </li>
+  <li>
+    <p>在 XP 任务栏右键无菜单，在 Win7 任务栏右键只有一个关闭项</p>
+
+    <p>给窗口添加 WS_SYSMENU 风格</p>
+  </li>
+  <li>
+    <p>程序的系统托盘图标右键菜单不消失</p>
+
+    <p>在<code class="language-plaintext highlighter-rouge">menu.TrackPopupMenu</code>前调用<code class="language-plaintext highlighter-rouge">SetForegroundWindow(m_hWnd)</code></p>
+  </li>
+  <li>
+    <p>子窗口显示 / 不显示任务栏图标</p>
+
+    <p>通过<code class="language-plaintext highlighter-rouge">SetWindowLong</code>修改窗口的扩展风格，WS_EX_APPWINDOW 是显示，WS_EX_TOOLWINDOW 是不显示。</p>
+  </li>
+</ol>
+:ET

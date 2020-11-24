@@ -1,0 +1,35 @@
+I"�<h2 id="需求">需求</h2>
+
+<p>现要求将一个 Excel 数据表中的每行数据导成一个 Word 文档，即有多少行数据就生成多少个 Word 文档，Excel 每列与 Word 文档中的表格项一一对应。</p>
+
+<h2 id="实现">实现</h2>
+
+<p><strong>前置工作：</strong>将 Word 文档空表格当作模板文档做好，与 Excel 数据源文件置于同一路径下。</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Sub</span> <span class="err">分离()</span>
+    <span class="nf">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">False</span>
+    
+    <span class="n">p</span> <span class="o">=</span> <span class="n">ThisWorkbook</span><span class="p">.</span><span class="n">Path</span> <span class="o">&amp;</span> <span class="s">"/"</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">p</span> <span class="o">&amp;</span> <span class="s">"空白模板.doc"</span>
+    
+    <span class="k">Dim</span> <span class="nv">myWS</span> <span class="ow">As</span> <span class="n">Worksheet</span>
+    <span class="k">Set</span> <span class="n">myWS</span> <span class="o">=</span> <span class="n">ThisWorkbook</span><span class="p">.</span><span class="n">Sheets</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">'存有数据的表格</span>
+    
+    <span class="k">For</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">To</span> <span class="mi">54</span>    <span class="c1">'遍历数据行</span>
+        <span class="n">FileCopy</span> <span class="n">f</span><span class="p">,</span> <span class="n">p</span> <span class="o">&amp;</span> <span class="s">"test/"</span> <span class="o">&amp;</span> <span class="n">myWS</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="n">Text</span> <span class="o">&amp;</span> <span class="s">".doc"</span>    <span class="c1">'复制空模板并以某列数据为名命名新产生的文档</span>
+        <span class="k">Set</span> <span class="n">wd</span> <span class="o">=</span> <span class="n">CreateObject</span><span class="p">(</span><span class="s">"word.application"</span><span class="p">)</span>
+        <span class="k">Set</span> <span class="n">d</span> <span class="o">=</span> <span class="n">wd</span><span class="p">.</span><span class="n">documents</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">p</span> <span class="o">&amp;</span> <span class="s">"test/"</span> <span class="o">&amp;</span> <span class="n">myWS</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="n">Text</span> <span class="o">&amp;</span> <span class="s">".doc"</span><span class="p">)</span> <span class="c1">'打开新文档</span>
+        
+        <span class="n">d</span><span class="p">.</span><span class="n">tables</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">Cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">myWS</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="n">Text</span> <span class="c1">'###</span>
+        <span class="c1">'复制表格每列内容到文档，有多少项就有多少条</span>
+        <span class="n">d</span><span class="p">.</span><span class="n">tables</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">Cell</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="n">myWS</span><span class="p">.</span><span class="n">Cells</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">20</span><span class="p">).</span><span class="n">Text</span> <span class="c1">'###</span>
+        
+        <span class="n">d</span><span class="p">.</span><span class="n">Close</span>
+        <span class="n">wd</span><span class="p">.</span><span class="n">Quit</span>
+        <span class="k">Set</span> <span class="n">wd</span> <span class="o">=</span> <span class="k">Nothing</span>
+    <span class="k">Next</span>
+    
+    <span class="n">Application</span><span class="p">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="k">True</span>
+<span class="k">End</span> <span class="k">Sub</span>
+</code></pre></div></div>
+:ET

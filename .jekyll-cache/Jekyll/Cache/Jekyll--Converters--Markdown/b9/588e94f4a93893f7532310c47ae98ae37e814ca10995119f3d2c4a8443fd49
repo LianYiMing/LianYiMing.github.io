@@ -1,0 +1,78 @@
+I"^$<h3 id="背景">背景</h3>
+
+<p>发现使用 Fiddler 进行抓包时有一部分请求总是没抓到，查看了一下源代码，发现使用 WinINET 这套 API 发送的请求都能正常抓到，而使用 WinHTTP 这套 API 发送的请求都没有抓到，遂搜索了一下，果然前人们早已给出答案，解决方案原文可以参看 Fiddler 作者 Eric Lawrence 大神的一篇博客 <a href="http://blogs.telerik.com/fiddler/posts/13-04-29/using-fiddler-with-winhttp">Using Fiddler with WinHTTP</a>，博客里表示 Fiddler 对各种 HTTP(s) stacks 都是能支持的，只是默认启动时只是接管了 WinINET 代理设置。</p>
+
+<p>Eric 的那篇博客里已经列出了相关的方法和代码，本文只是对其略做改进，让同一段代码可以适配不同的 Windows 版本。</p>
+
+<h3 id="分析">分析</h3>
+
+<p>我们需要让 Fiddler 抓取 WinHTTP 的包时，要做的就是让 WinHTTP 的代理设置改为与 WinINET 一致，因为 WinINET 在 Fiddler 启动后使用 Fiddler 作为代理。这些通过 Windows 自带命令就可以做到：</p>
+
+<ul>
+  <li>
+    <p>在 XP 下：</p>
+
+    <p><code class="language-plaintext highlighter-rouge">proxycfg -u</code></p>
+  </li>
+  <li>
+    <p>在 Win7 下（使用管理员权限的命令行）：</p>
+
+    <p><code class="language-plaintext highlighter-rouge">netsh winhttp import proxy ie</code>
+<em>注：在 Win7 64 位系统下需要将 System32 目录和 SysWOW64 目录下的 netsh 命令各执行一次，下方将给出的脚本已覆盖这种情况。</em></p>
+  </li>
+</ul>
+
+<p>但是如果使用频繁，每次都还要去手动敲命令行还是挺痛苦的，作为能偷懒的地方绝不多放过的少年，一劳永逸的方法当然是让它随 Fiddler 的启动与关闭自动执行这些命令（当然这就是 Eric 的博客里讲述的方法）。</p>
+
+<h3 id="实现">实现</h3>
+
+<p>这可以通过修改 CustomRules.js 实现（如果想对 Fiddler 的扩展机制进行深入了解可以去参阅 Fiddler 官网的文档）。</p>
+
+<p>操作方法：</p>
+
+<p><strong>打开 Fiddler &gt; 点击菜单 Rules &gt; 点击 Customize Rules…</strong></p>
+
+<p>然后就打开了 CustomRules.js 文件，寻找到<code class="language-plaintext highlighter-rouge">OnAttach</code>与<code class="language-plaintext highlighter-rouge">OnDetach</code>函数，可以将 Fiddler 启动后与关闭前需要定制的一些自动动作分别填写在它们里头，我们为实现让 Fiddler 能抓取 WinHTTP 发送的请求的目的而修改后的代码如下，添加了<code class="language-plaintext highlighter-rouge">UpdateWinHTTPSettings</code>函数，在<code class="language-plaintext highlighter-rouge">OnAttach</code>和<code class="language-plaintext highlighter-rouge">OnDetach</code>里添加了对它的调用，修改完后保存即可生效。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">function</span> <span class="nx">OnAttach</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">UpdateWinHTTPSettings</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">static</span> <span class="kd">function</span> <span class="nx">OnDetach</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">UpdateWinHTTPSettings</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">static</span> <span class="kd">function</span> <span class="nx">UpdateWinHTTPSettings</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">oPSI</span><span class="p">:</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Diagnostics</span><span class="p">.</span><span class="nx">ProcessStartInfo</span>
+        <span class="o">=</span> <span class="k">new</span> <span class="nx">System</span><span class="p">.</span><span class="nx">Diagnostics</span><span class="p">.</span><span class="nx">ProcessStartInfo</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">os</span> <span class="p">:</span> <span class="nx">OperatingSystem</span> <span class="o">=</span> <span class="nx">Environment</span><span class="p">.</span><span class="nx">OSVersion</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Version</span><span class="p">.</span><span class="nx">Major</span> <span class="o">&gt;=</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">oPSI</span><span class="p">.</span><span class="nx">UseShellExecute</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="nx">oPSI</span><span class="p">.</span><span class="nx">FileName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">netsh.exe</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">oPSI</span><span class="p">.</span><span class="nx">Verb</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">runas</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">oPSI</span><span class="p">.</span><span class="nx">Arguments</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">winhttp import proxy ie</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">System</span><span class="p">.</span><span class="nx">Diagnostics</span><span class="p">.</span><span class="nx">Process</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">oPSI</span><span class="p">);</span>
+
+        <span class="c1">// Re-run 32bit version</span>
+        <span class="nx">oPSI</span><span class="p">.</span><span class="nx">FileName</span> <span class="o">=</span> <span class="nx">oPSI</span><span class="p">.</span><span class="nx">FileName</span> <span class="o">=</span>
+            <span class="nx">Environment</span><span class="p">.</span><span class="nx">SystemDirectory</span><span class="p">.</span><span class="nx">Replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">system32</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">syswow64</span><span class="dl">"</span><span class="p">)</span>
+            <span class="o">+</span> <span class="dl">"</span><span class="se">\\</span><span class="s2">netsh.exe</span><span class="dl">"</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">System</span><span class="p">.</span><span class="nx">IO</span><span class="p">.</span><span class="nx">File</span><span class="p">.</span><span class="nx">Exists</span><span class="p">(</span><span class="nx">oPSI</span><span class="p">.</span><span class="nx">FileName</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">Diagnostics</span><span class="p">.</span><span class="nx">Process</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">oPSI</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">oPSI</span><span class="p">.</span><span class="nx">UseShellExecute</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="nx">oPSI</span><span class="p">.</span><span class="nx">FileName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">proxycfg.exe</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">oPSI</span><span class="p">.</span><span class="nx">Verb</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">open</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">oPSI</span><span class="p">.</span><span class="nx">Arguments</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">-u</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nx">System</span><span class="p">.</span><span class="nx">Diagnostics</span><span class="p">.</span><span class="nx">Process</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">oPSI</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">UpdateWinHTTPSettings</code>函数里做的事情其实很简单，就是使用管理员权限执行文章前面说到的命令。</p>
+
+<h3 id="附注">附注</h3>
+
+<p>我使用的完整最新的 CustomRules.js 文件我上传到了一个 Gist 里，详见：<a href="https://gist.github.com/mzlogin/3c5f9781c5bedff3fcfb">https://gist.github.com/mzlogin/3c5f9781c5bedff3fcfb</a>，如果想直接使用可以复制脚本内容后放置到「我的文档 /Fiddler 2/Scripts/CustomRules.js」，也可以在此目录下使用 git 抓取我的最新定制 js 文件。</p>
+:ET

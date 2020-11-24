@@ -1,0 +1,112 @@
+I"� <p>想要灵活应用宏，离不开<code class="language-plaintext highlighter-rouge">#</code>和<code class="language-plaintext highlighter-rouge">##</code>。</p>
+
+<h3>”</h3>
+<p>在学习<code class="language-plaintext highlighter-rouge">#</code>和<code class="language-plaintext highlighter-rouge">##</code>之前，先来看一个关于<code class="language-plaintext highlighter-rouge">"</code>的例子：</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p1</span> <span class="o">=</span> <span class="s">"Hello,"</span> <span class="s">"World!"</span><span class="p">;</span>     <span class="c1">// 一个空格</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p2</span> <span class="o">=</span> <span class="s">"Hello,"</span>    <span class="s">"World!"</span><span class="p">;</span>  <span class="c1">// 多个空格</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p3</span> <span class="o">=</span> <span class="s">"Hello,""World!"</span><span class="p">;</span>      <span class="c1">// 没有空格</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p4</span> <span class="o">=</span> <span class="s">"Hello,World!"</span><span class="p">;</span>        <span class="c1">// 一个整串</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p5</span> <span class="o">=</span> <span class="s">"Nihao,""Shijie!"</span><span class="p">;</span>  <span class="c1">// 一个不同的串</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"p1 = %s, strlen(p1) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p1</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"p2 = %s, strlen(p2) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p2</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"p3 = %s, strlen(p3) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p3</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"p4 = %s, strlen(p4) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p4</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"p5 = %s, strlen(p5) = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">p5</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p5</span><span class="p">));</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>输出为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p1 = Hello,World!, strlen(p1) = 12
+p2 = Hello,World!, strlen(p2) = 12
+p3 = Hello,World!, strlen(p3) = 12
+p4 = Hello,World!, strlen(p4) = 12
+p5 = Nihao,Shijie!, strlen(p5) = 13
+</code></pre></div></div>
+
+<p>查看 PE 文件的常量字符串段，发现经过编译器优化后只存在一个<code class="language-plaintext highlighter-rouge">Hello,World!</code>串。</p>
+
+<p><img src="/images/posts/cplusplus/staticstring_helloworld.png" alt="img" /></p>
+
+<p>即 p1，p2，p3，p4 这四种写法是等价的，这一点作为之后解释<code class="language-plaintext highlighter-rouge">#</code>用法的前提。</p>
+
+<h3 id="字符串化操作-">字符串化操作 (#)</h3>
+<p>当用作字符串化操作时，<code class="language-plaintext highlighter-rouge">#</code>的主要作用是将宏参数不经扩展地转换成字符串常量。
+<strong>要点：</strong></p>
+
+<ul>
+  <li>宏定义参数的左右两边的空格会被忽略，参数的各个 Token 之间的多个空格会被转换成一个空格。</li>
+  <li>宏定义参数中含有需要特殊含义字符如<code class="language-plaintext highlighter-rouge">"</code>或<code class="language-plaintext highlighter-rouge">\</code>时，它们前面会自动被加上转义字符<code class="language-plaintext highlighter-rouge">\</code>。</li>
+</ul>
+
+<p>还是通过 MSDN 上的例子来看看容易懂：</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define F abc
+#define B def
+#define FB(arg) #arg
+#define FB1(arg) FB(arg)
+</span>
+<span class="n">FB</span><span class="p">(</span><span class="n">F</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">FB1</span><span class="p">(</span><span class="n">F</span> <span class="n">B</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>初看到时推测这两行预编译出来后效果是一样的，但是看了使用 gcc -E 编译出来代码，这才理解了 MSDN 上对「不经扩展」有了更深刻的理解，实际的预编译后代码为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"F B";
+"abc def";
+</code></pre></div></div>
+
+<p>推测变换过程应该如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FB(F B) --&gt; #F B --&gt;"F B"
+FB1(F B) --&gt; FB1(abc def) --&gt; FB(abc def) --&gt; #abc def --&gt; "abc def"
+</code></pre></div></div>
+
+<h3 id="标记连接操作-">标记连接操作 (##)</h3>
+<p>将多个 Token 连接成一个 Token。
+<strong>要点：</strong></p>
+
+<ul>
+  <li>它不能是宏定义中的第一个或最后一个 Token。</li>
+  <li>前后的空格可有可无。</li>
+</ul>
+
+<p>来理解一下 MSDN 上举的例子：</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#define paster( n ) printf_s( "token" #n " = %d", token##n )
+</span><span class="kt">int</span> <span class="n">token9</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">paster</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">paster(9);</code>的预处理步骤应该如下：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">paster(9);</code></li>
+  <li><code class="language-plaintext highlighter-rouge">printf_s( "token" #9 " = %d", token##9 );</code></li>
+  <li><code class="language-plaintext highlighter-rouge">printf_s( "token" "9" " = %d", token9 );</code></li>
+  <li><code class="language-plaintext highlighter-rouge">printf_s( "token9 = %d", token9 );</code></li>
+</ul>
+
+<p>这样应该就很好理解了。</p>
+
+<h3 id="参考-msdn">参考 MSDN</h3>
+
+<ul>
+  <li>Stringizing Operator(#) : <a href="http://msdn.microsoft.com/EN-US/library/7e3a913x(v=VS.110,d=hv.2).aspx">http://msdn.microsoft.com/EN-US/library/7e3a913x(v=VS.110,d=hv.2).aspx</a></li>
+  <li>Token-Pasting Operator(##) : <a href="http://msdn.microsoft.com/EN-US/library/09dwwt6y(v=VS.110,d=hv.2).aspx">http://msdn.microsoft.com/EN-US/library/09dwwt6y(v=VS.110,d=hv.2).aspx</a></li>
+</ul>
+:ET

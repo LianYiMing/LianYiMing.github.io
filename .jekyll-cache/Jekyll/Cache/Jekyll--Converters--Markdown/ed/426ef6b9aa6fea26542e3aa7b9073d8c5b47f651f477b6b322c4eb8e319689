@@ -1,0 +1,387 @@
+I"�i<p>最近抽空浏览了一遍《COM 原理与应用》，一本老书了，COM 技术在我工作中运用得不多，但是接口设计规范和标准这一套东西还是能带给我一些有用的实践经验和启发的。在读到第二章《COM 对象和接口》的时候，看到虚函数表的一些相关知识，这些之前倒是也都知道，但是从来没有试着自己描述过，所以老觉得理解得不够彻底，那么……就试着结合一些小的代码段描述一下看，权当笔记加深记忆。</p>
+
+<p><em>以下代码及运行结果基于 Win7_64 + GCC 4.7.2 环境，其它环境下可能程序运行结果等有出入，但是原理相通。</em></p>
+
+<p><strong>目录</strong></p>
+
+<ul id="markdown-toc">
+  <li><a href="#无继承类对象的内存结构" id="markdown-toc-无继承类对象的内存结构">无继承类对象的内存结构</a></li>
+  <li><a href="#单继承的类对象的内存结构" id="markdown-toc-单继承的类对象的内存结构">单继承的类对象的内存结构</a></li>
+  <li><a href="#普通多继承的类对象的内存结构" id="markdown-toc-普通多继承的类对象的内存结构">普通多继承的类对象的内存结构</a></li>
+  <li><a href="#单虚继承的类对象的内存结构" id="markdown-toc-单虚继承的类对象的内存结构">单虚继承的类对象的内存结构</a></li>
+  <li><a href="#钻石结构的类对象的内存结构" id="markdown-toc-钻石结构的类对象的内存结构">钻石结构的类对象的内存结构</a></li>
+</ul>
+
+<h3 id="无继承类对象的内存结构">无继承类对象的内存结构</h3>
+
+<p>先来看看有与没有虚函数的类的对象的内存结构的不同之处：</p>
+
+<p><strong>无虚函数的对象</strong></p>
+
+<p>内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/objectwithnovirtual.png" alt="Object with no virtual function" /></p>
+
+<p>验证如下：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">class</span> <span class="nc">CObj</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CObj</span><span class="p">(</span><span class="kt">int</span> <span class="n">nData1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nData2</span><span class="p">)</span> <span class="o">:</span> <span class="n">m_nData1</span><span class="p">(</span><span class="n">nData1</span><span class="p">),</span> <span class="n">m_nData2</span><span class="p">(</span><span class="n">nData2</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="o">~</span><span class="n">CObj</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="kt">void</span> <span class="n">Func</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CObj::Func()</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">m_nData2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CObj</span> <span class="n">obj</span><span class="p">(</span><span class="mi">11</span> <span class="p">,</span><span class="mi">22</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>来看看 obj 的实际内存分布：</p>
+
+<p><img src="/images/posts/cplusplus/objectwithnovirtual_mem.png" alt="Object with no virtual function" /></p>
+
+<p>小结：</p>
+
+<ul>
+  <li>数据成员按声明顺序排列</li>
+</ul>
+
+<p><strong>有虚函数的对象</strong></p>
+
+<p>内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/objectwithvirtual.png" alt="Object with virtual functions" /></p>
+
+<p>验证如下：</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">class</span> <span class="nc">CObj</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CObj</span><span class="p">(</span><span class="kt">int</span> <span class="n">nData1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nData2</span><span class="p">)</span> <span class="o">:</span> <span class="n">m_nData1</span><span class="p">(</span><span class="n">nData1</span><span class="p">),</span> <span class="n">m_nData2</span><span class="p">(</span><span class="n">nData2</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="o">~</span><span class="n">CObj</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CObj::FuncA()</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncB</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CObj::FuncB()</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">m_nData2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CObj</span> <span class="n">obj1</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
+    <span class="n">CObj</span> <span class="n">obj2</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">22</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>来看看 obj1 和 obj2 的实际内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/objectwithvirtual_mem.png" alt="Object with virtual functions" /></p>
+
+<p>小结：</p>
+
+<ul>
+  <li>虚函数指针在虚表内按声明顺序排列</li>
+</ul>
+
+<h3 id="单继承的类对象的内存结构">单继承的类对象的内存结构</h3>
+
+<p>子类覆盖父类虚函数之后虚函数表的变化可以通过对比明显的得出，这即是多态的实现机制。</p>
+
+<p><strong>子类无覆盖父类的虚函数</strong></p>
+
+<p>内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/derivenooverride.png" alt="derive no override" /></p>
+
+<p>验证如下：</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">class</span> <span class="nc">CBase</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CBase</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CBase::FuncA</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData1</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">CDerive</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CBase</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CDerive</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncB</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncB</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CDerive</span> <span class="o">*</span><span class="n">pDerive</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CDerive</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>来看看 pDerive 的实际内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/derivenooverride_mem.png" alt="derive no override" /></p>
+
+<p>小结：</p>
+
+<ul>
+  <li>父类成员在子类成员之前</li>
+  <li>父类虚函数在子类虚函数之前</li>
+</ul>
+
+<p><strong>子类有覆盖父类的虚函数</strong></p>
+
+<p>内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/deriveoverride.png" alt="derive override" /></p>
+
+<p>验证如下：</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">class</span> <span class="nc">CBase</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CBase</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CBase::FuncA</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData1</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">CDerive</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CBase</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CDerive</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncA</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>    <span class="c1">// add this line</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncB</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncB</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CDerive</span> <span class="o">*</span><span class="n">pDerive</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CDerive</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>来看看 pDerive 的实际内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/deriveoverride_mem.png" alt="derive override" /></p>
+
+<h3 id="普通多继承的类对象的内存结构">普通多继承的类对象的内存结构</h3>
+
+<p>内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/multiderive.png" alt="multi derive" /></p>
+
+<p>验证如下：</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">class</span> <span class="nc">CBase1</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CBase1</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CBase1::FuncA</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData1</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">CBase2</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CBase2</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncB</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CBase2::FuncB</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">CDerive</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CBase1</span><span class="p">,</span> <span class="k">public</span> <span class="n">CBase2</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CDerive</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData3</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncA</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncB</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncB</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncC</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncC</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData3</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CDerive</span> <span class="o">*</span><span class="n">pDerive</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CDerive</span><span class="p">;</span>
+    <span class="n">CBase1</span> <span class="o">*</span><span class="n">pBase1</span> <span class="o">=</span> <span class="n">pDerive</span><span class="p">;</span>
+    <span class="n">CBase2</span> <span class="o">*</span><span class="n">pBase2</span> <span class="o">=</span> <span class="n">pDerive</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>来看看 pDerive、pBase1 和 pBase2 在实际内存中的情况：</p>
+
+<p><img src="/images/posts/cplusplus/multiderive_mem.png" alt="multi derive" /></p>
+
+<p>小结：</p>
+
+<ul>
+  <li>多个父类的成员在内存中按继承时声明的顺序排列</li>
+  <li>子类数据成员放在最后一个父类的数据成员之后</li>
+  <li>子类虚函数列表在第一个虚表中</li>
+  <li>第一张虚表中存放了所有的虚函数指针，其它虚表存放了某个父类的（可能是被覆盖后的）虚函数指针</li>
+</ul>
+
+<h3 id="单虚继承的类对象的内存结构">单虚继承的类对象的内存结构</h3>
+
+<p>内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/virtualderive.png" alt="virtual derive" /></p>
+
+<p>验证如下：</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">class</span> <span class="nc">CBase</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CBase</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CBase::FuncA</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData1</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">CDerive</span> <span class="o">:</span> <span class="k">public</span> <span class="k">virtual</span> <span class="n">CBase</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CDerive</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncA</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncB</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncB</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CDerive</span> <span class="o">*</span><span class="n">pDerive</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CDerive</span><span class="p">;</span>
+    <span class="n">CBase</span> <span class="o">*</span><span class="n">pBase</span> <span class="o">=</span> <span class="n">pDerive</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>来看看 pDerive、pBase 在实际内存中的情况：</p>
+
+<p><img src="/images/posts/cplusplus/virtualderive_mem.png" alt="virtual derive" /></p>
+
+<p>小结：</p>
+
+<ul>
+  <li>父类数据成员会放在第二张虚表指针之后</li>
+  <li>第一张虚表里存放了所有的虚函数指针</li>
+</ul>
+
+<h3 id="钻石结构的类对象的内存结构">钻石结构的类对象的内存结构</h3>
+
+<p>内存结构：</p>
+
+<p><img src="/images/posts/cplusplus/diamond.png" alt="diamond derive" /></p>
+
+<p>验证如下：</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">class</span> <span class="nc">CBase</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CBase</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Func</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CBase::Func</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">CBase1</span> <span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">CBase</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CBase1</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CBase1::FuncA</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData1</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">CBase2</span> <span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">CBase</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CBase2</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncB</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CBase2::FuncB</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">CDerive</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CBase1</span><span class="p">,</span> <span class="k">public</span> <span class="n">CBase2</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">CDerive</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_nData3</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncA</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncA</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncB</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncB</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">FuncC</span><span class="p">()</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"CDerive::FuncC</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="kt">int</span> <span class="n">m_nData3</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CDerive</span> <span class="o">*</span><span class="n">pDerive</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CDerive</span><span class="p">;</span>
+    <span class="n">CBase</span> <span class="o">*</span><span class="n">pBase</span> <span class="o">=</span> <span class="n">pDerive</span><span class="p">;</span>
+    <span class="n">CBase1</span> <span class="o">*</span><span class="n">pBase1</span> <span class="o">=</span> <span class="n">pDerive</span><span class="p">;</span>
+    <span class="n">CBase2</span> <span class="o">*</span><span class="n">pBase2</span> <span class="o">=</span> <span class="n">pDerive</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>来看看 pDerive、pBase、pBase1 和 pBase2 在实际内存中的情况：</p>
+
+<p><img src="/images/posts/cplusplus/diamond_mem.png" alt="diamond derive" /></p>
+
+<p>小结：</p>
+
+<ul>
+  <li>第一张虚表里没有存放根父类的虚函数指针</li>
+</ul>
+:ET

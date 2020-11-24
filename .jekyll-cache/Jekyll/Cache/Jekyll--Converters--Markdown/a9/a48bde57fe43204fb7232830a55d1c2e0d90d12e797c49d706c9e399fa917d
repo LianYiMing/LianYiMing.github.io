@@ -1,0 +1,115 @@
+I"�#<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">From</span><span class="w"> </span><span class="no">PLF</span><span class="w"> </span><span class="k">Require</span><span class="w"> </span><span class="k">Import</span><span class="w"> </span><span class="no">LibTactics</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">LibTactics</code>  vs. <code class="language-plaintext highlighter-rouge">SSReflect</code> (another tactics package)</p>
+
+<ul>
+  <li>for PL      vs. for math</li>
+  <li>traditional vs. rethinks..so harder</li>
+</ul>
+
+<h2 id="tactics-for-naming-and-performing-inversion">Tactics for Naming and Performing Inversion</h2>
+
+<h3 id="introv"><code class="language-plaintext highlighter-rouge">introv</code></h3>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">Theorem</span><span class="w"> </span><span class="no">ceval_deterministic</span><span class="p">:</span><span class="w"> </span><span class="p">∀</span><span class="no">c</span><span class="w"> </span><span class="no">st</span><span class="w"> </span><span class="no">st1</span><span class="w"> </span><span class="no">st2</span><span class="o">,</span><span class="w">
+  </span><span class="no">st</span><span class="w"> </span><span class="o">=[</span><span class="w"> </span><span class="no">c</span><span class="w"> </span><span class="o">]</span><span class="p">⇒</span><span class="w"> </span><span class="no">st1</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="no">st</span><span class="w"> </span><span class="o">=[</span><span class="w"> </span><span class="no">c</span><span class="w"> </span><span class="o">]</span><span class="p">⇒</span><span class="w"> </span><span class="no">st2</span><span class="w"> </span><span class="p">→</span><span class="w">
+  </span><span class="no">st1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">st2</span><span class="pi">.</span><span class="w">
+</span><span class="kp">intros</span><span class="w"> </span><span class="no">c</span><span class="w"> </span><span class="no">st</span><span class="w"> </span><span class="no">st1</span><span class="w"> </span><span class="no">st2</span><span class="w"> </span><span class="no">E1</span><span class="w"> </span><span class="no">E2</span><span class="pi">.</span><span class="w"> </span><span class="c">(* 以往如果想给 Hypo 命名必须说全 *)</span><span class="w">
+</span><span class="no">introv</span><span class="w"> </span><span class="no">E1</span><span class="w"> </span><span class="no">E2</span><span class="pi">.</span><span class="w">              </span><span class="c">(* 现在可以忽略 forall 的部分 *)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="inverts"><code class="language-plaintext highlighter-rouge">inverts</code></h3>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">(* was... 需要 subst, clear *)</span><span class="w">
+</span><span class="o">-</span><span class="w"> </span><span class="kp">inversion</span><span class="w"> </span><span class="no">H</span><span class="pi">.</span><span class="w"> </span><span class="kp">subst</span><span class="pi">.</span><span class="w"> </span><span class="kp">inversion</span><span class="w"> </span><span class="no">H2</span><span class="pi">.</span><span class="w"> </span><span class="kp">subst</span><span class="pi">.</span><span class="w"> 
+</span><span class="c">(* now... *)</span><span class="w">
+</span><span class="o">-</span><span class="w"> </span><span class="no">inverts</span><span class="w"> </span><span class="no">H</span><span class="pi">.</span><span class="w"> </span><span class="no">inverts</span><span class="w"> </span><span class="no">H2</span><span class="pi">.</span><span class="w"> 
+
+
+</span><span class="c">(* 可以把 invert 出来的东西放在 goal 的位置让你自己用 intro 命名！*)</span><span class="w">
+</span><span class="no">inverts</span><span class="w"> </span><span class="no">E2</span><span class="w"> </span><span class="kr">as</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="tactics-for-n-ary-connectives">Tactics for N-ary Connectives</h2>
+
+<blockquote>
+  <p>Because Coq encodes conjunctions and disjunctions using binary constructors ∧ and ∨…
+to work with a <code class="language-plaintext highlighter-rouge">N</code>-ary logical connectives…</p>
+</blockquote>
+
+<h3 id="splits"><code class="language-plaintext highlighter-rouge">splits</code></h3>
+
+<blockquote>
+  <p>n-ary conjunction</p>
+</blockquote>
+
+<p>n-ary <code class="language-plaintext highlighter-rouge">split</code></p>
+
+<h3 id="branch"><code class="language-plaintext highlighter-rouge">branch</code></h3>
+
+<blockquote>
+  <p>n-ary disjunction</p>
+</blockquote>
+
+<p>faster <code class="language-plaintext highlighter-rouge">destruct</code>?</p>
+
+<h2 id="tactics-for-working-with-equality">Tactics for Working with Equality</h2>
+
+<h3 id="asserts_rewrite-and-cuts_rewrite"><code class="language-plaintext highlighter-rouge">asserts_rewrite</code> and <code class="language-plaintext highlighter-rouge">cuts_rewrite</code></h3>
+
+<h3 id="substs"><code class="language-plaintext highlighter-rouge">substs</code></h3>
+
+<p>better <code class="language-plaintext highlighter-rouge">subst</code> - not fail on circular eq</p>
+
+<h3 id="fequals"><code class="language-plaintext highlighter-rouge">fequals</code></h3>
+
+<p>vs <code class="language-plaintext highlighter-rouge">f_equal</code>?</p>
+
+<h3 id="applys_eq"><code class="language-plaintext highlighter-rouge">applys_eq</code></h3>
+
+<p>variant of <code class="language-plaintext highlighter-rouge">eapply</code></p>
+
+<h2 id="some-convenient-shorthands">Some Convenient Shorthands</h2>
+
+<h3 id="unfolds"><code class="language-plaintext highlighter-rouge">unfolds</code></h3>
+
+<p>better <code class="language-plaintext highlighter-rouge">unfold</code></p>
+
+<h3 id="false-and-tryfalse"><code class="language-plaintext highlighter-rouge">false</code> and <code class="language-plaintext highlighter-rouge">tryfalse</code></h3>
+
+<p>better <code class="language-plaintext highlighter-rouge">exfalso</code></p>
+
+<h3 id="gen"><code class="language-plaintext highlighter-rouge">gen</code></h3>
+
+<p>shorthand for <code class="language-plaintext highlighter-rouge">generalize dependent</code>, multiple arg.</p>
+
+<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">(* old *)</span><span class="w">
+</span><span class="kp">intros</span><span class="w"> </span><span class="no">Gamma</span><span class="w"> </span><span class="no">x</span><span class="w"> </span><span class="no">U</span><span class="w"> </span><span class="no">v</span><span class="w"> </span><span class="no">t</span><span class="w"> </span><span class="no">S</span><span class="w"> </span><span class="no">Htypt</span><span class="w"> </span><span class="no">Htypv</span><span class="pi">.</span><span class="w">
+</span><span class="kp">generalize</span><span class="w"> </span><span class="kp">dependent</span><span class="w"> </span><span class="no">S</span><span class="pi">.</span><span class="w"> </span><span class="kp">generalize</span><span class="w"> </span><span class="kp">dependent</span><span class="w"> </span><span class="no">Gamma</span><span class="pi">.</span><span class="w">
+ 
+</span><span class="c">(* new...so nice!!! *)</span><span class="w">
+</span><span class="no">introv</span><span class="w"> </span><span class="no">Htypt</span><span class="w"> </span><span class="no">Htypv</span><span class="pi">.</span><span class="w"> </span><span class="no">gen</span><span class="w"> </span><span class="no">S</span><span class="w"> </span><span class="no">Gamma</span><span class="pi">.</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="admits-admit_rewrite-and-admit_goal"><code class="language-plaintext highlighter-rouge">admits</code>, <code class="language-plaintext highlighter-rouge">admit_rewrite</code> and <code class="language-plaintext highlighter-rouge">admit_goal</code></h3>
+
+<p>wrappers around <code class="language-plaintext highlighter-rouge">admit</code></p>
+
+<h3 id="sort"><code class="language-plaintext highlighter-rouge">sort</code></h3>
+
+<blockquote>
+  <p>proof context more readable</p>
+</blockquote>
+
+<p>vars       -&gt; top
+hypotheses -&gt; bottom</p>
+
+<h2 id="tactics-for-advanced-lemma-instantiation">Tactics for Advanced Lemma Instantiation</h2>
+
+<h3 id="working-on-lets">Working on <code class="language-plaintext highlighter-rouge">lets</code></h3>
+
+<h3 id="working-on-applys-forwards-and-specializes">Working on <code class="language-plaintext highlighter-rouge">applys</code>, <code class="language-plaintext highlighter-rouge">forwards</code> and <code class="language-plaintext highlighter-rouge">specializes</code></h3>
+
+:ET

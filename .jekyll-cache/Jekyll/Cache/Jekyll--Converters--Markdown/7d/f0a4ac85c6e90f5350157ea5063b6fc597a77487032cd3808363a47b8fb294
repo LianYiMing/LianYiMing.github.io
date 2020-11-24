@@ -1,0 +1,75 @@
+I"�<h3 id="查找">查找</h3>
+
+<ol>
+  <li>
+    <p>FIND 函数</p>
+
+    <p><strong>作用：</strong></p>
+
+    <p>用于在第二个文本串中定位第一个文本串，并返回第一个文本串的起始位置的值，该值从第二个文本串的第一个字符算起。</p>
+
+    <p><strong>语法：</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">FIND(find_text, within_text, [start_num])</code></p>
+
+    <p><strong>示例：</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">=FIND("ha", B2)</code></p>
+  </li>
+</ol>
+
+<h3 id="替换">替换</h3>
+
+<ol>
+  <li>
+    <p>REPLACE 函数</p>
+
+    <p><strong>作用：</strong></p>
+
+    <p>使用其它文本字符串并根据所指定的字符数替换某文本字符串中的部分文本。</p>
+
+    <p><strong>语法：</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">REPLACE(old_text, start_num, num_chars, new_text)</code></p>
+
+    <p><strong>示例：</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">=REPLACE(B2, FIND("(", B2), FIND(")", B2) - FIND("(", B2) + 1, "")</code></p>
+  </li>
+  <li>
+    <p>SUBSTITUTE 函数</p>
+
+    <p><strong>作用：</strong></p>
+
+    <p>在文本字符串中用 new_text 替换 old_text。如果需要在某一文本字符串中替换指定的文本，请使用函数 SUBSTITUTE；如果需要在某一文本字符串中替换指定位置的任意文本，请使用函数 REPLACE。</p>
+
+    <p><strong>语法：</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">SUBSTITUTE(text, old_text, new_text, [instance_num])</code></p>
+
+    <p><strong>示例：</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">=SUBSTITUTE(B2, "helo", "hello")</code></p>
+  </li>
+</ol>
+
+<h3 id="去掉单元格里的空格">去掉单元格里的空格</h3>
+
+<ol>
+  <li>
+    <p>TRIM 函数</p>
+
+    <p><strong>作用：</strong></p>
+
+    <p>除了单词之间的单个空格外，清除文本中所有的空格。</p>
+
+    <p><strong>语法：</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">TRIM(text)</code></p>
+
+    <p><strong>示例：</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">=TRIM(B2)</code></p>
+  </li>
+</ol>
+:ET

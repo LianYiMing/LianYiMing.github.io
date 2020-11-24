@@ -1,0 +1,88 @@
+I"<p><strong>如下内容是学习《Head First 设计模式》第五部分《单件模式》所得，主要就是一些原文摘抄和少量自己的总结。</strong></p>
+
+<h3 id="单件模式定义">单件模式定义</h3>
+
+<blockquote>
+  <p>单件模式确保类只有一个实例，并提供一个全局访问点。</p>
+</blockquote>
+
+<h3 id="书中示例的-c-实现版源码">书中示例的 C++ 实现版源码</h3>
+
+<p><a href="https://github.com/mzlogin/DesignPatternDemos" target="_blank">这个 Solution 的 SingletonPattern 工程里</a>。</p>
+
+<h3 id="书中示例的类图">书中示例的类图</h3>
+
+<p>Visio 原图见<a href="https://github.com/mzlogin/DesignPatternDemos/blob/master/DesignPatternDemos.vsd" target="_blank">这里</a>:</p>
+
+<p><img src="/images/posts/designpattern/SingletonPattern.png" alt="Singleton Pattern UML Class Diagram" /></p>
+
+<h3 id="关键代码片断">关键代码片断</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CSingleton</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="k">static</span> <span class="n">CSingleton</span><span class="o">*</span> <span class="n">GetInstance</span><span class="p">();</span>
+
+    <span class="cm">/**
+    释放单例，应仅限于所有对单例对象的使用完成后调用
+    */</span>
+    <span class="k">static</span> <span class="kt">void</span> <span class="n">ReleaseInstance</span><span class="p">();</span>
+
+    <span class="kt">void</span> <span class="n">DoSomething</span><span class="p">();</span>
+
+<span class="nl">private:</span>
+    <span class="n">CSingleton</span><span class="p">();</span>
+	<span class="n">CSingleton</span><span class="p">(</span><span class="k">const</span> <span class="n">CSingleton</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// private and not implemented copy constructor</span>
+	<span class="n">CSingleton</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">CSingleton</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// private and not implemented = operator</span>
+
+    <span class="k">volatile</span> <span class="k">static</span> <span class="n">CSingleton</span><span class="o">*</span> <span class="n">m_sUniqueInstance</span><span class="p">;</span>
+    <span class="k">static</span> <span class="n">HANDLE</span> <span class="n">m_hSync</span><span class="p">;</span>
+<span class="p">};</span>
+
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">volatile</span> <span class="n">CSingleton</span><span class="o">*</span> <span class="n">CSingleton</span><span class="o">::</span><span class="n">m_sUniqueInstance</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="n">HANDLE</span> <span class="n">CSingleton</span><span class="o">::</span><span class="n">m_hSync</span> <span class="o">=</span> <span class="o">::</span><span class="n">CreateEvent</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">TRUE</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+<span class="n">CSingleton</span><span class="o">*</span> <span class="n">CSingleton</span><span class="o">::</span><span class="n">GetInstance</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">==</span> <span class="n">m_sUniqueInstance</span><span class="p">)</span>
+	<span class="p">{</span>
+        <span class="n">WaitForSingleObject</span><span class="p">(</span><span class="n">m_hSync</span><span class="p">,</span> <span class="n">INFINITE</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">==</span> <span class="n">m_sUniqueInstance</span><span class="p">)</span>
+		<span class="p">{</span>
+            <span class="n">m_sUniqueInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CSingleton</span><span class="p">();</span>
+		<span class="p">}</span>
+        <span class="n">SetEvent</span><span class="p">(</span><span class="n">m_hSync</span><span class="p">);</span>
+	<span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">CSingleton</span><span class="o">*</span><span class="p">)</span><span class="n">m_sUniqueInstance</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">CSingleton</span><span class="o">::</span><span class="n">ReleaseInstance</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">!=</span> <span class="n">m_sUniqueInstance</span><span class="p">)</span>
+	<span class="p">{</span>
+        <span class="k">delete</span> <span class="n">m_sUniqueInstance</span><span class="p">;</span>
+        <span class="n">m_sUniqueInstance</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">!=</span> <span class="n">m_hSync</span><span class="p">)</span>
+	<span class="p">{</span>
+        <span class="n">CloseHandle</span><span class="p">(</span><span class="n">m_hSync</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="小结">小结</h3>
+
+<ol>
+  <li>单件模式的精华是通过设计来限制一个类产生多个实例的可能性，从而满足有且仅能有一个实例的类的设计需求。</li>
+  <li>为了实现上述目标，采用了私有化构造函数和提供一个公开的获取唯一实例的接口。</li>
+  <li>要记得将复制构造函数和重载赋值运算符也声明为私有，不然类的用户仍然可以使用<code class="language-plaintext highlighter-rouge">CSingleton ObjA(*CSingleton::GetInstance())</code>和<code class="language-plaintext highlighter-rouge">CSingleton ObjB = *CSingleton::GetInstance())</code>的写法来得到第二、第三甚至更多的实例对象。</li>
+  <li>为了实现多线程安全，在创建唯一实例的时候会采用多线程同步设施如临界区、事件等来保证，声明实例指针使用 volatile 关键字。</li>
+  <li>在 Java 等语言中有「同步方法」和「急切」创建实例等方式来解决多线程的问题，C++ 中貌似都不太适用，使用 volatile 加双重检查加锁相对靠谱。</li>
+  <li>记得在合适的地方释放单例以及时和正确地回收资源。</li>
+</ol>
+:ET

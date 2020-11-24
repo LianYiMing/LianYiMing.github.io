@@ -1,0 +1,304 @@
+I">�<p>用 Python 实现自动批量打分评论指定 CSDN 账号内所有下载过待评论的资源。</p>
+
+<p>GitHub 仓库地址：<a href="https://github.com/mzlogin/csdncommenter">https://github.com/mzlogin/csdncommenter</a></p>
+
+<p>可通过 pip 安装运行：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install csdncommenter
+csdncommenter
+</code></pre></div></div>
+
+<h3 id="背景">背景</h3>
+
+<p>CSDN 账号过一段时间就会累积几十个下载过但是未评论打分的资源，虽然现在上传了一些资源供别人下载后基本不愁积分，但是为了可持续发展，还是把评论一下就能顺手拿了的这种积分不客气地收入囊中吧！不过手动一个一个去评论真的很蛋疼……特别是 CSDN 还设了两个评论间隔不能小于 60 秒、刚刚下载的资源十分钟内不能评论的限制，评论几十个就得至少花个几十分钟折腾，所以想想这种耗时、无脑的活还是交给程序来完成吧。</p>
+
+<p>对于这类模拟 HTTP 请求然后可能频繁用到页面解析和正则表达式之类的活，用 C++ 写还是有点蛋疼的，用我那半生不熟的 Python 练练手正合适。</p>
+
+<p>遂在 GitHub 上建了个仓库开工，地址在这里：<a href="https://github.com/mzlogin/csdncommenter">https://github.com/mzlogin/csdncommenter</a>。</p>
+
+<blockquote>
+  <p>Update 2016/08/10：当前 CSDN 貌似已经取消了评论返积分的规则，我看了下我的得分记录，最近一次评论得分是在 2015/11/15。</p>
+</blockquote>
+
+<h3 id="分析">分析</h3>
+
+<p>使用 Fiddler 把<em>登录 - 到待评论页面 - 评论</em>的完整流程抓了一下，整理程序逻辑大致如下：</p>
+
+<p><em>注：如下 HTTP 请求均使用同一个 SESSION。</em></p>
+
+<ol>
+  <li>
+    <p>手动输入 CSDN 的用户名和密码。</p>
+  </li>
+  <li>
+    <p>用 <code class="language-plaintext highlighter-rouge">GET</code> 方法从 https://passport.csdn.net/account/login 页面获取 <code class="language-plaintext highlighter-rouge">lt</code>、<code class="language-plaintext highlighter-rouge">execution</code> 和 <code class="language-plaintext highlighter-rouge">_eventId</code> 等参数。</p>
+  </li>
+  <li>
+    <p>将第 1 步中的用户名和密码，还有第 2 步中得到的参数 <code class="language-plaintext highlighter-rouge">POST</code> 给 https://passport.csdn.net/account/login ，从 Response 中判断是否登录成功——我采用的依据是 status_code 为 200 且 Reponse 内容中有 <code class="language-plaintext highlighter-rouge">lastLoginIP</code>。</p>
+  </li>
+  <li>
+    <p>用 <code class="language-plaintext highlighter-rouge">GET</code> 方法从 http://download.csdn.net/my/downloads 页面获取已下载资源总页数。从最后一个 <code class="language-plaintext highlighter-rouge">pageliststy</code> 的 <code class="language-plaintext highlighter-rouge">href</code> 中得到。</p>
+  </li>
+  <li>
+    <p>根据第 4 步中得到的总页数，根据每个页面 num 拼得 url 为 http://download.csdn.net/my/downloads/num ，使用 <code class="language-plaintext highlighter-rouge">GET</code> 方法访问之拿到该页面中所有待评论资源 ID。从所有 <code class="language-plaintext highlighter-rouge">class="btn-comment"</code> 的 <code class="language-plaintext highlighter-rouge">a</code> 标签的 <code class="language-plaintext highlighter-rouge">href</code> 中得到。</p>
+  </li>
+  <li>
+    <p>在进行第 5 步的过程中，如果 num 为 1 的页面里有 <code class="language-plaintext highlighter-rouge">&lt;span class="btn-comment"&gt;</code> 存在，那说明存在 10 分钟以内下载，暂时不能评论的资源，这时循环检查最多 11 次，每次检查完如果发现还需要等待就过一分钟再检查，进到不再需要等待或者超过 11 次为止。</p>
+  </li>
+  <li>
+    <p>对第 5 步中得到的所有待评论资源 ID 依次进行间隔至少 60S 的打分评论，根据资源的现有评星打分，不对资源评分造成不良影响。根据打出的 1 到 5 星，对应一句英文短句评论。出乎我意料的是评论这一步竟然也是用 <code class="language-plaintext highlighter-rouge">GET</code> 就可以做，http://download.csdn.net/index.php/comment/post_comment 后面带上 <code class="language-plaintext highlighter-rouge">sourceid</code>、<code class="language-plaintext highlighter-rouge">content</code>（评论内容）、<code class="language-plaintext highlighter-rouge">rating</code>（打分）和 <code class="language-plaintext highlighter-rouge">t</code>（时间戳）参数就可以。评论成功会返回 <code class="language-plaintext highlighter-rouge">({"succ":1})</code>，失败会返回「两次评论需要间隔 60 秒」、「您已经发表过评论」等之类的 <code class="language-plaintext highlighter-rouge">msg</code>。</p>
+
+    <p>获取资源的现有评星的方法是从 http://download.csdn.net/detail/&lt;资源所有者 ID&gt;/&lt;资源 ID&gt; 页面获取 <code class="language-plaintext highlighter-rouge">&lt;span style="width:75px" class="star-yellow"&gt;&lt;/span&gt;</code> 这一段内容，其中的 <code class="language-plaintext highlighter-rouge">75px</code> 表示为五星，如果是 <code class="language-plaintext highlighter-rouge">0px</code> 表示为零星，即每加一星增加 15px。</p>
+  </li>
+</ol>
+
+<p>最终运行截图如下：</p>
+
+<p><img src="/images/posts/python/csdncommenter.png" alt="CSDN 自动批量打分评论" /></p>
+
+<p>确认这种方式能有效拿到 CSDN 的分数：</p>
+
+<p><img src="/images/posts/python/csdnscore.png" alt="CSDN 自动评论得分" /></p>
+
+<h3 id="总结">总结</h3>
+
+<ol>
+  <li>用 Python 干这种类型的活还是很有优势的，requests 和 BeautifulSoup 简直神器啊！</li>
+  <li>我那点蹩脚的 Python 底子之所以能还比较顺利地把这个流程写下来，实际上也得亏 CSDN 对请求的验证相对较松，比如像我代码里那样写， <code class="language-plaintext highlighter-rouge">User-Agent</code> 是带有 <code class="language-plaintext highlighter-rouge">Python</code> 字样的，而且很显然不是浏览器在访问，但 CSDN 并未对此作限制。</li>
+</ol>
+
+<h3 id="源码">源码</h3>
+
+<p>没有找到从 Github Pages 引用 Github 仓库里的源码的方法<del>，所以把 py 文件放到一个 gist 里了，引用如下</del>：</p>
+
+<p>（Gist 前几天被伟大的墙封了，还是直接贴上代码吧。2014/11/5 update）</p>
+
+<p>（GitHub 仓库：<a href="https://github.com/mzlogin/csdncommenter">mzlogin/csdncommenter</a>，现在可以通过 pip 安装使用了  <code class="language-plaintext highlighter-rouge">pip install csdncommenter</code>  然后  <code class="language-plaintext highlighter-rouge">csdncommenter</code>。2015/10/27 update）</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File   : csdncommenter.py
+# Author : Zhuang Ma
+# E-mail : chumpma(at)gmail.com
+# Website: https://mazhuang.org
+# Date   : 2016-07-26
+</span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">BeautifulSoup</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">getpass</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="k">class</span> <span class="nc">CsdnCommenter</span><span class="p">():</span>
+    <span class="s">"""Csdn operator"""</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">sess</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">Session</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""login and keep session"""</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">'username: '</span><span class="p">)</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">.</span><span class="n">getpass</span><span class="p">(</span><span class="s">'password: '</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s">'https://passport.csdn.net/account/login'</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getUrlContent</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sess</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">html</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+
+        <span class="n">lt</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getElementValue</span><span class="p">(</span><span class="n">soup</span><span class="p">,</span> <span class="s">'name'</span><span class="p">,</span> <span class="s">'lt'</span><span class="p">)</span>
+        <span class="n">execution</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getElementValue</span><span class="p">(</span><span class="n">soup</span><span class="p">,</span> <span class="s">'name'</span><span class="p">,</span> <span class="s">'execution'</span><span class="p">)</span>
+        <span class="n">_eventId</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getElementValue</span><span class="p">(</span><span class="n">soup</span><span class="p">,</span> <span class="s">'name'</span><span class="p">,</span> <span class="s">'_eventId'</span><span class="p">)</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s">'username'</span> <span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+                <span class="s">'password'</span> <span class="p">:</span> <span class="n">password</span><span class="p">,</span>
+                <span class="s">'lt'</span> <span class="p">:</span> <span class="n">lt</span><span class="p">,</span>
+                <span class="s">'execution'</span> <span class="p">:</span> <span class="n">execution</span><span class="p">,</span>
+                <span class="s">'_eventId'</span> <span class="p">:</span> <span class="n">_eventId</span>
+                <span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">sess</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+<span class="c1">#             traceback.print_exc()
+</span>            <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">isLoginSuccess</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">autoComment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""main handler"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">getSourceItems</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'No source can comment!'</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">'Total %d source(s) wait for comment.'</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sourceitems</span><span class="p">))</span>
+
+        <span class="n">nhandled</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">sourceid</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">sourceitems</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sourceitems</span><span class="p">)</span> <span class="o">-</span> <span class="n">nhandled</span>
+
+            <span class="n">sec</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">61</span><span class="p">,</span><span class="mi">71</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Wait %d seconds for start. %s source(s) left.'</span> <span class="o">%</span> <span class="p">(</span><span class="n">sec</span><span class="p">,</span> <span class="n">left</span><span class="p">))</span>
+            <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sec</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="p">.</span><span class="n">comment</span><span class="p">(</span><span class="n">sourceid</span><span class="p">)</span>
+            <span class="n">nhandled</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">'Finished!'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">getSourceItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""get (sourceid,username) couples wait for comment"""</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">sourceitems</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">pagecount</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getPageCount</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">pagecount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">'Pagecount is %d.'</span> <span class="o">%</span> <span class="n">pagecount</span><span class="p">)</span>
+
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="s">r'/detail/([^/]+)/(\d+)#comment'</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pagecount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">waitUncommentableSourceIfNecessary</span><span class="p">()</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s">'http://download.csdn.net/my/downloads/%d'</span> <span class="o">%</span> <span class="n">n</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getUrlContent</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sess</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">html</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+            <span class="n">sourcelist</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span> <span class="p">:</span> <span class="s">'btn-comment'</span><span class="p">})</span>
+            <span class="k">if</span> <span class="n">sourcelist</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">sourcelist</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sourcelist</span><span class="p">:</span>
+                <span class="n">href</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">href</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">rematch</span> <span class="o">=</span> <span class="n">pattern</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="n">href</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">rematch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="p">.</span><span class="n">sourceitems</span><span class="p">[</span><span class="n">rematch</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">rematch</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sourceitems</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">waitUncommentableSourceIfNecessary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""souce cannot comment within 10 minutes after download"""</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s">'http://download.csdn.net/my/downloads/1'</span>
+        <span class="n">maxMinutes</span> <span class="o">=</span> <span class="mi">11</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxMinutes</span><span class="p">):</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getUrlContent</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sess</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">html</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+            <span class="n">sourcelist</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'span'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span> <span class="p">:</span> <span class="s">'btn-comment'</span><span class="p">})</span>
+            <span class="k">if</span> <span class="n">sourcelist</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">sourcelist</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">'None uncommentable source now!'</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Waiting for uncommentable source count down %d minutes.'</span> <span class="o">%</span> <span class="p">(</span><span class="n">maxMinutes</span><span class="o">-</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">getPageCount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""get downloaded resources page count"""</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s">'http://download.csdn.net/my/downloads'</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getUrlContent</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sess</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">html</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Get pagecount failed'</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+
+        <span class="n">pagelist</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span> <span class="p">:</span> <span class="s">'pageliststy'</span><span class="p">})</span>
+        <span class="k">if</span> <span class="n">pagelist</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">pagelist</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="n">lasthref</span> <span class="o">=</span> <span class="n">pagelist</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">pagelist</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lasthref</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="nb">str</span><span class="p">.</span><span class="n">isdigit</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">lasthref</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">comment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sourceid</span><span class="p">):</span>
+        <span class="s">"""comment per source"""</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'sourceid %s commenting...'</span> <span class="o">%</span> <span class="n">sourceid</span><span class="p">)</span>
+        <span class="n">contents</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s">'It just soso, but thank you all the same.'</span><span class="p">,</span>
+                <span class="s">'Neither good nor bad.'</span><span class="p">,</span>
+                <span class="s">'It is a nice resource, thanks for share.'</span><span class="p">,</span>
+                <span class="s">'It is useful for me, thanks.'</span><span class="p">,</span>
+                <span class="s">'I have looking this for long, thanks.'</span>
+                <span class="p">]</span>
+        <span class="n">rating</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getSourceRating</span><span class="p">(</span><span class="n">sourceid</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'current rating is %d.'</span> <span class="o">%</span> <span class="n">rating</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rating</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># nobody comments
+</span>            <span class="n">rating</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">contents</span><span class="p">[</span><span class="n">rating</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="s">'%d'</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+
+        <span class="n">paramsmap</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s">'sourceid'</span> <span class="p">:</span> <span class="n">sourceid</span><span class="p">,</span>
+                <span class="s">'content'</span> <span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+                <span class="s">'rating'</span> <span class="p">:</span> <span class="n">rating</span><span class="p">,</span>
+                <span class="s">'t'</span> <span class="p">:</span> <span class="n">t</span>
+                <span class="p">}</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">urllib</span><span class="p">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">paramsmap</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s">'http://download.csdn.net/index.php/comment/post_comment?%s'</span> <span class="o">%</span> <span class="n">params</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getUrlContent</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sess</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">html</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">html</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'({"succ":1})'</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'sourceid %s comment failed! response is %s.'</span> <span class="o">%</span> <span class="p">(</span><span class="n">sourceid</span><span class="p">,</span> <span class="n">html</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'sourceid %s comment succeed!'</span> <span class="o">%</span> <span class="n">sourceid</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">getSourceRating</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sourceid</span><span class="p">):</span>
+        <span class="s">"""get current source rating"""</span>
+        <span class="n">rating</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s">'http://download.csdn.net/detail/%s/%s'</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sourceitems</span><span class="p">[</span><span class="n">sourceid</span><span class="p">],</span> <span class="n">sourceid</span><span class="p">)</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">getUrlContent</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sess</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">html</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rating</span>
+
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+        <span class="n">ratingspan</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'span'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'star-yellow'</span><span class="p">})</span>
+        <span class="k">if</span> <span class="n">ratingspan</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">ratingspan</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rating</span>
+
+        <span class="n">ratingstyle</span> <span class="o">=</span> <span class="n">ratingspan</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">get</span><span class="p">(</span><span class="s">'style'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ratingstyle</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rating</span>
+
+        <span class="n">rating</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="nb">str</span><span class="p">.</span><span class="n">isdigit</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ratingstyle</span><span class="p">)))</span> <span class="o">/</span> <span class="mi">15</span>
+        <span class="k">return</span> <span class="n">rating</span>
+
+
+    <span class="o">@</span><span class="nb">staticmethod</span>
+    <span class="k">def</span> <span class="nf">getElementValue</span><span class="p">(</span><span class="n">soup</span><span class="p">,</span> <span class="n">element_name</span><span class="p">,</span> <span class="n">element_value</span><span class="p">):</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">soup</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="n">element_name</span> <span class="p">:</span> <span class="n">element_value</span><span class="p">})</span>
+        <span class="k">if</span> <span class="n">element</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">element</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'value'</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+    <span class="o">@</span><span class="nb">staticmethod</span>
+    <span class="k">def</span> <span class="nf">isLoginSuccess</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">response</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">response</span><span class="p">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="o">!=</span> <span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">'lastLoginIP'</span><span class="p">)</span>
+
+    <span class="o">@</span><span class="nb">staticmethod</span>
+    <span class="k">def</span> <span class="nf">getUrlContent</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">response</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">html</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">text</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="nb">ConnectionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="c1">#             traceback.print_exc()
+</span>            <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="n">html</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">csdn</span> <span class="o">=</span> <span class="n">CsdnCommenter</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">csdn</span><span class="p">.</span><span class="n">login</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Login failed! Please try again.'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Login succeed!'</span><span class="p">)</span>
+
+    <span class="n">csdn</span><span class="p">.</span><span class="n">autoComment</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+:ET
