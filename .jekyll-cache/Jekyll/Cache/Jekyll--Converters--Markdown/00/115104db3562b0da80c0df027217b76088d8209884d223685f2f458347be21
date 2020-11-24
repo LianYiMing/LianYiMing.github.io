@@ -1,0 +1,82 @@
+I""<h3 id="自私的基因">自私的基因</h3>
+
+<blockquote>
+  <p>活着的你必须死</p>
+</blockquote>
+
+<p>基因是自私的[^ 1]，We just是基因的载体，所有物质（包括我们）的生命，不过是基因为了延续和进化这个目的而存在的，如果个体没有死亡，资源则会稀缺，物种会全扑街,基因就不会迭代发展。
+如果真有造物主，人身上的基因阔能就是定时器，死亡貌似就是到点定时运行的 if-else 程序</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+ 
+    <span class="kt">boolean</span> <span class="n">活着</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="kt">boolean</span> <span class="n">死了</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+ 
+	
+    <span class="k">if</span><span class="o">(</span> <span class="n">a</span> <span class="o">)</span> <span class="o">{</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"你快死了呢"</span><span class="o">);</span>
+    <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span> <span class="n">b</span> <span class="o">){</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"恭喜您，你死了"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">break</span>
+</code></pre></div></div>
+
+<p>不管如何一通乱搞，这玩意永远面无表情的执行code，当嗝屁终于完成后，缓缓地break[^ 3]
+“生命就是一辆开向坟墓的列车”[^4]，恐怕正应了罗胖的梦之始——
+‘末日启示，向死而生’[^5]</p>
+
+<h3 id="生而惧怕死亡">生而惧怕死亡</h3>
+
+<blockquote>
+  <p>活着的你不想死</p>
+</blockquote>
+
+<p>追求永生，insert在每个个体意识的源代码里，无论是宗教还是中国博大精深的特产迷信复方长生不老卡因，追求永生，永远是每一个生命个体的终极愿望
+”人生痛苦的根源，在于我们对死亡无所不在的恐惧。“[^ 2]
+在基督教跟伊斯兰教中，都有关于死后的描述。
+人死后的结局有两个极端：
+一种是极端的幸福，这个只在你生前完全遵守了教义的时候才能实现；
+另外一种是极端的惨烈，大都跟火、高温、烈焰、有毒、疼痛、饥饿等长久的惩罚有关。
+在科学占据解释世界的地位之前，很多人信教的理由，就是希望死后可以免于惩罚，只因为恐惧而放弃了理智认识世界的全部机会。</p>
+
+<h3 id="一名坚定的无神论者的自述">一名坚定的无神论者的自述</h3>
+
+<blockquote>
+  <p>三无青年的白痴主义</p>
+</blockquote>
+
+<p>窝 am a 所谓的无神论者，一个无节操没信仰不怕鬼有底线的三无白痴青年，
+也Maybe是因为新时代已经很少瞅见封建迷信，自始至终就否定一切脱离人的意志的不可证伪的一切内容的存在。自然也就某的任何信仰，看鬼片眼也貌似不眨一下，欧了后继续白痴生活。</p>
+
+<h3 id="魂归何方">魂归何方</h3>
+
+<blockquote>
+  <p>虚无——活着的无神论主义信徒最大的悲哀</p>
+</blockquote>
+
+<p>我没有宗教信仰，所以真的不知道死后会去哪里。
+So 未知带来的就是对死亡无边的恐惧，不是貌似有鸡汤说：‘死了有的是时间睡”。死亡真正是睡眠吗？
+No
+睡眠起码还有意识，还有梦可以做[^ 3]，至少还有醒来的机会</p>
+
+<p>死了呢？</p>
+
+<blockquote>
+  <p>——虚无</p>
+</blockquote>
+
+<p>我不会再拥有意识，一切与人类社会相伴的记忆在医生签完死亡证明的那一刻瞬间消散——</p>
+
+<p>嘭!!!</p>
+
+<p>病床边的一家老小哭成了泪人,我却挂了后一切都turn into虚无，意识彻底扑街。见过的人，干过的事，所有思维世界都木有了</p>
+
+<p>然后呢？</p>
+
+<p>木有然后了，你生如夏花，悄悄的来，又悄悄的挂了。
+突然想起一句歌词:<em>人生如梦</em>。
+再想到这句歌词就已经毛骨悚然，这一生的路程，如果把它比作一个从没有真正存在过的梦勒？从虚无到梦始再回到虚无，这一生如果用这个框架来理解，好像瞬间崩塌，</p>
+
+<p>这是无神论者对死亡的最大恐惧</p>
+
+:ET

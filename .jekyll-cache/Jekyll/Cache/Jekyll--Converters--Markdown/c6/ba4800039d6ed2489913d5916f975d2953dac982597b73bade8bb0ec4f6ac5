@@ -1,0 +1,55 @@
+I"<h2 id="internet主题美化11安卓ui的脸2">internet｜主题美化（11）｜安卓UI的脸（2）</h2>
+
+<p>你好呀，今天来聊一聊好看的图标包吧</p>
+
+<p>前情提要→</p>
+
+<p>众所周知，咱目前使用手机和电脑，看到的都是UI～user interface（也就是所谓的用户界面）</p>
+
+<p>but</p>
+
+<p>这个东东貌似发展出来比较晚，so在这之前都是直接通过终端来操作电脑的（也就是面前全是指令行，只能输入代码来进行操作，乔布斯整出了鼠标之前貌似也只能输代码，but还是太难上手了，所以UI应运而生）</p>
+
+<p>之所以咱可以搞一下一个应用的图标就可以启动一个应用</p>
+
+<p>就是采用了映射的方式～如果你点击了这个图标的素材，那么会自动执行，打开这个应用的活动的指令，而图标包就是可以更改这些个图标具体是什么图片的一个类似于压缩包的东西（因为里边儿压了很多的照片和对应的映射关系）</p>
+
+<p>具体的原理就是首先在先找到图片，之后给这些图片写上（数据不在图片本身～一般都会专门用一个文件来记录）对应的是哪个应用的包名（相当于APP的身份证）</p>
+
+<p>之后点击这个图标，系统就知道到底要启动那个应用了</p>
+
+<hr />
+
+<p>上次咱聊到了→图标包一般都是以应用的形式安装到手机上，所以今天聊的这个图标包也是一个应用</p>
+
+<p>Fluent图标包</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPWDWHgSLufMFlZXml768jKOibuoA0Q2l1nqvsU0DItdick7icHm99w4WgLnTnfyPTxUvlq5vC7DiccfQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>下载</p>
+
+<p>https://www.coolapk.com/apk/com.fluent.iconpack</p>
+
+<p>介个图标包主打FluentFluentDesign的风格</p>
+
+<p>绘，讲究层次感与光感，配色也参考了 Fluent Design，风格上趋于统一并且应用界面。很好看，并且据作者自己说，这个图标包也是用在之前聊到的那个<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484288&amp;idx=1&amp;sn=58740a086003f313a1e1881784a06c1b&amp;scene=21#wechat_redirect">app</a>做的</p>
+
+<p>but，图标包应用的话 Nova Launcher Lawnchair Microsoft Launcher Apex Launcher这类第三方桌面可以直接应用</p>
+
+<p>一加诺基亚等系统自带桌面可以直接应用，但其他的系统启动器就不行</p>
+
+<p>so↓</p>
+
+<p>Miui主题WP White主题设计师:＠int暮日</p>
+
+<p>Flyme主题《源 Fluent》，主题设计师:＠开明确白茶</p>
+
+<p>ColorOS主题《 Fluent颠覆想象》，主题设计师:＠波说科技苹安果mui9主题fluent</p>
+
+<p>EMUI9FIuent</p>
+
+<p>EMU10FIuent主题设计师:＠Tbbet97</p>
+
+<p>在主题商店里面下载应用就可以</p>
+
+:ET

@@ -1,0 +1,72 @@
+I"$<h2 id="internet从零开发app4初级fusionapp玩法配色">internet｜从零开发APP(4)初级fusionapp玩法(配色)</h2>
+
+<p>你好鸭，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485097&amp;idx=1&amp;sn=ac940c588ab96aace7fbfc42420ba777&amp;scene=21#wechat_redirect">昨天</a>聊到了fusionapp的基本组件设置，今天聊聊初级阶段的最后一个→配色属性吧</p>
+
+<hr />
+
+<p>首先还是打开fusionAPP</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMcicLTwwEGlS0kkJBaIGhoRj0RKowePLGl7yqNgkt5YOBtKwUMjicm8RQSgiapHr4ZsSibbGibicbMEVgg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+前几天创建的工程是编辑里边找到属性</p>
+
+<p>就可以设置个控件的颜色了</p>
+
+<p>下面聊一聊可能不知道是啥的组件叭，，，</p>
+
+<p>顶栏部件｜部件触摸</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMcicLTwwEGlS0kkJBaIGhoR77wx9GJbaicTTXu0nMVHGtIvrPeQFJH2NgdM8qhiasV4ffML3rYgo3AQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+顶栏部件也就是应用打开最上面那一栏的图标，触摸效果，也就是点击图标后，图标的动画</p>
+
+<p>剩下还可以调整:</p>
+
+<p>进度条</p>
+
+<p>顶栏</p>
+
+<p>顶栏部件</p>
+
+<p>顶栏部件触摸</p>
+
+<p>侧滑栏背景</p>
+
+<p>侧滑栏列表图标</p>
+
+<p>侧滑栏列表文字</p>
+
+<p>搜索栏背景</p>
+
+<p>搜索栏部件</p>
+
+<p>搜索栏部件触摸(这个部件跟触摸跟上面的顶栏同理)</p>
+
+<p>搜索栏提示文字</p>
+
+<p>悬浮按钮(也就是悬浮按钮的背景颜色)</p>
+
+<p>悬浮按钮图标</p>
+
+<p>导航栏</p>
+
+<p>→的颜色</p>
+
+<p>ps:像顶栏图标和悬浮球图标，他们都是<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485062&amp;idx=2&amp;sn=503c195d337c92c98246dbd513eec90b&amp;scene=21#wechat_redirect">矢量图</a>，所以就可以直接修改颜色，咱前几天聊矢量图的时候貌似聊过。</p>
+
+<hr />
+
+<p>再看底下</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+顶栏的标题也就是下图的”工程编辑”顶栏的高度就是工程编辑文字所在同一直线的那一栏</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+剩下的貌似是顾名思义了呢</p>
+
+<p>固定图标管理，也就是可以更换默认的图标(比如因为侧滑栏按钮，如果不在这里设置，就会默认3道横的杠的矢量图，剩下的同理)</p>
+
+<p>貌似到这里，初级玩法就聊完了，现在可以成功的把一个网页div成喜欢的APP了，之后继续聊高级玩法吧</p>
+
+<hr />
+
+<p>拜拜</p>
+:ET

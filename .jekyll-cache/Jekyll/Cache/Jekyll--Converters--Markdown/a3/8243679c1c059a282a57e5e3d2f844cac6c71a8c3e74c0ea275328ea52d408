@@ -1,0 +1,102 @@
+I"N<h2 id="internet主题美化12安卓ui的脸3像素风1">internet｜主题美化（12）｜安卓UI的脸（3）像素风『1』</h2>
+
+<p>你好呀，今天接着来聊一聊好看的图标包吧</p>
+
+<hr />
+
+<p>前情提要→</p>
+
+<p>众所周知，咱目前使用手机和电脑，看到的都是UI～user interface（也就是所谓的用户界面）</p>
+
+<p>but</p>
+
+<p>这个东东貌似发展出来比较晚，so在这之前都是直接通过终端来操作电脑的（也就是面前全是指令行，只能输入代码来进行操作，乔布斯整出了鼠标之前貌似也只能输代码，but还是太难上手了，所以UI应运而生）</p>
+
+<p>之所以咱可以搞一下一个应用的图标就可以启动一个应用</p>
+
+<p>就是采用了映射的方式～如果你点击了这个图标的素材，那么会自动执行，打开这个应用的活动的指令，而图标包就是可以更改这些个图标具体是什么图片的一个类似于压缩包的东西（因为里边儿压了很多的照片和对应的映射关系）</p>
+
+<p>具体的原理就是首先在先找到图片，之后给这些图片写上（数据不在图片本身～一般都会专门用一个文件来记录）对应的是哪个应用的包名（相当于APP的身份证）</p>
+
+<p>之后点击这个图标，系统就知道到底要启动那个应用了</p>
+
+<hr />
+
+<p>上次咱聊到了→图标包一般都是以应用的形式安装到手机上，所以今天聊的这个图标包也是一个应用→pixelword</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNM721JGeK8Q5UEbmKT0DAwXMRBbckh5ZVn89vG3kPulkX3S2nyWnyKP16ickRzBquuvTo1EqpNcQQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+也就是一款像素风的图标，配上像素壁纸很好看</p>
+
+<hr />
+
+<p>怎么使</p>
+
+<p>first，下载</p>
+
+<p>https://www.coolapk.com/apk/me.jiping.theme.launcher.icon.pack.pixelworld</p>
+
+<p>second，直接在应用内部应用到第三方启动器</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNM721JGeK8Q5UEbmKT0DAwcPvw3QNE3mKupOibMFiaXTvbIrJHf7gicRJkm4IVS5fk1ZPXtL27KZo5Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>或者在第三方启动器里面应用图标包就可以</p>
+
+<hr />
+
+<p>官方介绍</p>
+
+<p>Pixelword图标包说明</p>
+
+<p>这是一款以「像素艺术」风格创作的图标包。他可以美你的桌面图标。灵感来源于 Minecraft（我的世界）如果你喜欢像素游戏或者 Pixel Art插画，我想你一定会喜欢它。图标尽可能的还原了原图标的样子，提高识别度。我会尽可能还原图标细节，因为在有限的像素数上表现出细节是很酷的效果。我正在让 Pixelworld图标包变得更加好</p>
+
+<p>图标的适配</p>
+
+<p>现在有超过800＋枚精心手绘的像素图标.其中已包含 Google全系列常用程序的图标适配。微软系列部分图标。目前刚刚建立这个图标包，还在积极更新中没有适配到图标请以邮件的形式发送图标请求给我。我会尽快绘制这些图标。请耐心等待。</p>
+
+<p>支持的启动器</p>
+
+<p>Pixelworld支持以下启动器:（直接可应用的）</p>
+
+<p>-Lawnchair</p>
+
+<p>-Smart launcher</p>
+
+<p>-Action</p>
+
+<p>-AOW</p>
+
+<p>-ADW Ex</p>
+
+<p>-Apex</p>
+
+<p>-Go</p>
+
+<p>-Google Now</p>
+
+<p>-Holo</p>
+
+<p>-Holo ICS</p>
+
+<p>-LG Home</p>
+
+<p>-LineageOS</p>
+
+<p>-Lucid</p>
+
+<p>Nava</p>
+
+<p>-Smart Pro launcher</p>
+
+<p>-Solo</p>
+
+<p>-TFS</p>
+
+<p>＊＊没有在列表中的启动启动，可以尝试在启动器调用图标包（Pixelworld）＊</p>
+
+<p>关于 Pixelworld的额外说明</p>
+
+<p>Pixelworld由 JPING制作，其中非常的感谢酷安＠frank的帮助如果大家喜欢这个图标包，请支持我们。</p>
+
+<p>本 gjahirfiquitiva  （https://github.com/jahirfiquitiva）供图标包基本模版。非常感谢他。</p>
+
+:ET

@@ -1,0 +1,77 @@
+I"�
+<h2 id="广告拦截杀招4">广告拦截｜杀招+4</h2>
+
+<p>你好鸭，接着上次聊聊屏蔽广告的代码叭(继续氵一天哈哈哈)</p>
+
+<p>前情提要→具体咋用<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485016&amp;idx=1&amp;sn=85e83a84983a056e4c27c4b80fa9dc7c&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s/HQ8PRITvWcN_rylL2AIgKQ</a></p>
+
+<p>剧中的是域名，也就是在上一栏填的东西，下面的是具体的屏蔽元素，也就是在下一栏填入的</p>
+
+<p>www.shangyouw.cn</p>
+
+<p>.qqboqncu mgtkeeeq</p>
+
+<p>www.sanzhima.com</p>
+
+<p>.w-75 d-flex justify-content-center , .a2</p>
+
+<p>m.90mh.cc</p>
+
+<p>.menu-main, .nav-previous</p>
+
+<p>www.logosc.cn</p>
+
+<p>.link el-button el-button–text nostyle, .link el-button el-button–text nostyle, .so-header__avatar login-btn</p>
+
+<p>orxing.top</p>
+
+<p>.pull-left, .hitokoto,DIV.container,DIV.nav_title,DIV.nav_title,DIV#footer,A.site-page.social-icon.search,DIV.toggle-menu.pull-right.open,DIV.scroll-down,DIV.hot_site,BUTTON#search_submit</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNF7y9JrmxOtEB8yTbG3YqwDRCeu4x1zFBA51FfV166J48iahAU16aTMSy0S5pGNpwx6rDH21iaGqFQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+zhidao.baidu.com</p>
+
+<p>DIV#wgt-kyuoo5ef8a6-asp, A.ask-for-friend,DIV#wgt-hmarr5eeaf7-youx,DIV#wgt-related-questions-new,DIV#wgt-zmoni5eeaf7-asp</p>
+
+<p>百度知道去广告</p>
+
+<p>m.bilibili.com</p>
+
+<p>.v-switcher__header__tabs__item, .v-swipe__item, .v-card,DIV.float-bottom-bar,BUTTON.openapp</p>
+
+<p>b站去广告</p>
+
+<p>m.dqanneng.com</p>
+
+<p>.head_img clearfix, .head_img1, .head_img clearfix</p>
+
+<p>ent.ifeng.com</p>
+
+<p>.txt-38R68J0-, .logo-2oB-_t4c, .channelName-imJoFICs, DIV.bottom_box-qClU0haT,DIV.titleImg-1BvN-wPz,DIV.slideImg-lGG7Uta-,DIV.hot_box-HbnRLIxr,DIV.link-qP2JS-s8,DIV.share_box-2AehKzY_,DIV.hot_box-1v2DRDE4,DIV.editor_box-1fq2DCyB,DIV.counts-K1lf1pIP,DIV.ipt-1UhKJDch,DIV.shareIcon-35CiOLx9</p>
+
+<p>m.iqiyi.com</p>
+
+<p>HEADER.navigation-fixed.m-navigation-content,DIV.player-handle</p>
+
+<p>jingyan.baidu.com</p>
+
+<p>#cms-slide-img, .main-menu-item, .channel, .channel, #fresh-share-exp-e</p>
+
+<p>detail.m.tmall.com</p>
+
+<p>.right-btns, DIV#J_smartloader,I.app-video,DIV#v7ee851,DIV#s-actionBar-container,H3.askall-title,DIV#J_mod16,DIV#h398a6d,DIV#g472f31,DIV#head,SECTION.actionBar-bg,DIV#J_mod18</p>
+
+<p>www.52pojie.cn</p>
+
+<p>.hdc cl,DIV#nv_ph,DIV.hdc.cl,DIV#pt,DIV#scbar,DIV#ft,DIV.wp.dnch_eo_f</p>
+
+<p>app.smzdm.com</p>
+
+<p>DIV.content.sf.pulldown,HEADER.testin-header</p>
+
+<hr />
+
+<p>加上前几次聊得，，，，</p>
+
+<p>基本几个常用网站的广告屏蔽标记算是全了。。。。。</p>
+
+:ET

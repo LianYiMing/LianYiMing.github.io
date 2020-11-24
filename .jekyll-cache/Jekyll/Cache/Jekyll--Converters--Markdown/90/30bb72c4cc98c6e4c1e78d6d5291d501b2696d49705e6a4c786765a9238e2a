@@ -1,0 +1,93 @@
+I"�
+<h2 id="internet从零开发app7进阶3androlua写布局-线性布局">internet｜从零开发APP(7)进阶(3)Androlua写布局-线性布局</h2>
+
+<p>你好呀，今天接着昨天的聊一聊，通过线性布局来写APP的界面布局叭</p>
+
+<p>今天要用到的布局是线性布局，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485122&amp;idx=2&amp;sn=a3de67c8c2ae0f9d9c94b589fb866bcd&amp;scene=21#wechat_redirect">前情提要</a></p>
+
+<hr />
+
+<p>首先还是在fusionAPP里创建一个空白的工程</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP0sA0baM80vpwA1Ie5SwbnaX31YfkziaibpbgriajbsKa1GSCLlPRjq4OmVIF63h8Y8HydbY8gpcUbA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+然后点进去工程页面，找到自定义事件</p>
+
+<p>点进去程序启动</p>
+
+<p>在代码行里输入</p>
+
+<p>layout={</p>
+
+<p>LinearLayout,</p>
+
+<p>layout_width=”fill”,</p>
+
+<p>layout_height=”fill”,</p>
+
+<p>orientation=”vertical”,</p>
+
+<p>backgroundColor=”#FF464C6F”,</p>
+
+<p>}</p>
+
+<p>activity.setContentView(loadlayout(layout))</p>
+
+<p>点击运行</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+会发现整个屏幕都是紫色</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+下面来具体解释一下</p>
+
+<p>整个代码部分会发现有两部分组成</p>
+
+<p>一个是</p>
+
+<p>layout={</p>
+
+<p>，，，，，</p>
+
+<p>}</p>
+
+<p>然后还有底下的这个</p>
+
+<p>activity.setContentView(loadlayout(layout))</p>
+
+<p>首先是上面的</p>
+
+<p>开始的layout=，就相当于是给{ }里的内容取了个名字，所以这个名字也可以自定义，比如</p>
+
+<p>lua={</p>
+
+<p>，，，，，</p>
+
+<p>}</p>
+
+<p>中间的逗号就是布局的具体内容</p>
+
+<p>LinearLayout,</p>
+
+<p>layout_width=”fill”,</p>
+
+<p>layout_height=”fill”,</p>
+
+<p>orientation=”vertical”,</p>
+
+<p>backgroundColor=”#FF464C6F”,</p>
+
+<p>开始的linearlayout，是声明这个布局是线性布局</p>
+
+<p>然后剩下的就是线性布局的一些属性(比如说布局的长度宽度和背景)，会在每天的第二更一个一个聊</p>
+
+<p>然后就是activity.setContentView(loadlayout(layout))</p>
+
+<p>会发现在load layout后有个(layout)，这就是刚刚我们给那一段布局起的名字</p>
+
+<p>具体来说就是输入这段代码后，系统才会判定，叫这个名字的布局会被显示</p>
+
+<p>如果取掉这一段代码，运行之后就会发现是完全空白。</p>
+
+<hr />
+
+:ET

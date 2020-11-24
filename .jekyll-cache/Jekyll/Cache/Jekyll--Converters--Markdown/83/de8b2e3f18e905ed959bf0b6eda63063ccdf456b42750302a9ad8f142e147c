@@ -1,0 +1,52 @@
+I"t<h2 id="adbwm代码">ADB『wm代码』</h2>
+
+<p>今天咱来聊一聊wm代码，我记得之前讲<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484024&amp;idx=1&amp;sn=ef11c5f5da60c14dc181ade41150fc18&amp;scene=21#wechat_redirect">dpI的时候好像也聊到过</a>用这个代码来修改dpi</p>
+
+<p>所以这玩意儿的用处，就是来修改跟显示有关的内容的，比如说像素密度，dpi，分辨率，or屏幕尺寸（还能修改啥就不知道了……）</p>
+
+<p>目前已知的代码（都知道咋用adb吧）</p>
+
+<p>🤣屏幕尺寸（分辨率，跟DPI不是一回事，之后聊）：</p>
+
+<p>看</p>
+
+<p>adb shell（底下的都省略了adbshell） wm size『出来：Physical size: 几x几（这就是手机的分辨率）』</p>
+
+<p>改</p>
+
+<p>wm size 几×几『悠着点』</p>
+
+<p>还原</p>
+
+<p>wm size reset『万一改的时候翻车了（具体就表现在<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484221&amp;idx=2&amp;sn=6182e46f0342d53f24b93e25f9033650&amp;scene=21#wechat_redirect">ui卡死</a>），可以拿这个救回来』</p>
+
+<p>😂DPI</p>
+
+<p>看</p>
+
+<p>wm density『输出：Physical density: 几』</p>
+
+<p>改</p>
+
+<p>wm density: 几</p>
+
+<p>还原</p>
+
+<p>wm density reset</p>
+
+<p>😭这两天咱聊的overscan（挖）</p>
+
+<p>看</p>
+
+<p>木有，默认是0</p>
+
+<p>改</p>
+
+<p>wm overscan 几，几，几，几（应该是上下左右）</p>
+
+<p>还原</p>
+
+<p>wm density reset</p>
+
+<p>对了，再扯一句，可能已经听到恶心的话：一定，一定，一定，一定，一定，一定，一定，一定，一定，一定，一定，一定，一定要把USB调试时刻开着，万一比如说像乱调屏幕显示造成变砖或者无限重启，就不用再重新刷一遍系统and数据也不会丢（并且因为没有重新刷系统分区，所以之前的搞机成果还在）</p>
+:ET

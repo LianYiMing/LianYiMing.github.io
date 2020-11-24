@@ -1,0 +1,65 @@
+I"�
+<h2 id="gitpage">Gitpage</h2>
+
+<p>Gitpage是Github为开源的开发者提供的一个可以用来介绍自己开源项目的一个服务器，很多的开发者都会把自己开源项目的介绍页写在这上面，and， Getpage还有免费的域名，也就是xxxx.github.io。百度上一搜这个后缀出来的选项，多半都是gitpage搭的网站</p>
+
+<p>不过，由于他的空间免费稳定，用来做搭建一个博客再好不过了。</p>
+
+<p>github Pages可以被认为是用户编写的、托管在github上的静态网页（静态网页之后聊）</p>
+
+<p>And，这个东东竟然是免费的……..</p>
+
+<p>用户注册之后就会有一G内存的服务器，访问速度也不算慢</p>
+
+<p>所以咱就可以真的零花钱搞个网页</p>
+
+<hr />
+
+<p>ps→基本的网页文件</p>
+
+<p>_config.yml</p>
+
+<p>博客配置文档（包括博客标题、favicon、博主 ID、头像、描述、联系方式等基本信息都在这个文档添加或修改）；</p>
+
+<p>index.html</p>
+
+<p>博客架构文档；</p>
+
+<p>_include</p>
+
+<p>博客调用的网页模块（比如导航栏、底栏、博文内容显示、评论模块等），一般不需要管；</p>
+
+<p>_layouts</p>
+
+<p>存放博客调用的页面模板文件（比如博客主页、具体博文页）的文件夹；</p>
+
+<p>css</p>
+
+<p>存放博客系统的页面渲染文档文件夹，主要用于调节诸如标题字体、博文字体大小颜色之类；</p>
+
+<p>js 存放博客调用的 JS 文档文件夹</p>
+
+<p>_posts 博客正文存放的文件夹。命名有规定，必须为「日期 + 标题」的模式，即「2020-04-27-扯扯淡-LYM.md」，才能发布到博客里；</p>
+
+<p>images</p>
+
+<p>图片文件夹，存放博客相关素材，包括博客 <a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484791&amp;idx=2&amp;sn=02d4442d04d5e3edd7c9d20669dbc8f5&amp;scene=21#wechat_redirect">favicon</a>、博主头像等图片及博文贴图素材；</p>
+
+<p>CNAME 用于绑定个人域名的文档；</p>
+
+<p>404.html</p>
+
+<p>「404 Not Found.」站点链接无法访问时的提示页面。</p>
+
+<p>About.html</p>
+
+<p>博客中的个人说明文档（About Me），以 html、md 格式为主；</p>
+
+<p>feed.xml</p>
+
+<p>博客的 <a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484473&amp;idx=1&amp;sn=0302c7d67960748324e4c6bd9db23999&amp;scene=21#wechat_redirect">RSS</a> 订阅；</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMmIvN7dBnmfaOjCAI1hDtRmSia08CjeGcd0zLhNSEGJbPU5x4JvgiaQthkianJg7U5QJkTP38ofSCgQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+如图，窝的博客的源码就似酱子</p>
+
+:ET

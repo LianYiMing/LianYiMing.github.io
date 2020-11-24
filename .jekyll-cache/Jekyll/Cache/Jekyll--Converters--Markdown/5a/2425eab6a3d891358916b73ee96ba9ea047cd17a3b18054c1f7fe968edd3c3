@@ -1,0 +1,30 @@
+I"�<h2 id="主机记录">主机记录@</h2>
+
+<p>原来我们聊<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484934&amp;idx=2&amp;sn=98b3b949063d670ce4f67f671bb06b5e&amp;scene=21#wechat_redirect">a记录</a>的时候提到过，A是网站域名与服务器之间<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484619&amp;idx=2&amp;sn=98c0343323f2e5a0682120e28c1d5c05&amp;scene=21#wechat_redirect">DNS解析</a>添加的一种解析形式</p>
+
+<p>A记录的记录值是ipv4的地址(这几年更新的IPv6要用AAAA解析)，也就是网站服务器的地址</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNoicc3UQIuhHb4VjY0nicNK9GMyDgU6YF7RSgRicKed29wD519xPJLrz2NnI2SDtY9Qz7Ss066bdh2Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+记录值知道是IP地址，但主机记录为啥要填@:</p>
+
+<p>@可以理解为是空的意思，也就是说不用三级域名，直接把服务器解析道主域名，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485030&amp;idx=2&amp;sn=99dbf1e586541b7ba1ceacc2cd20125d&amp;scene=21#wechat_redirect">什么是主域名and什么是三级域名</a>，这一点之前聊过</p>
+
+<p>具体来说就是baidu.com就是主域名，www.baidu.com的www，就是三级域名</p>
+
+<p>既然主机纪录填了一个空，那就说明不需要三级域名，直接通过baidu.com就访问到了百度的首页，所以如果不想用三级域名，想直接用主域名的话，就应该把所有的主题记录都换成@</p>
+
+<p>同理，如果要自定义三级域名的话，记录的纸直接修改成三级域名就可以</p>
+
+<p>附录</p>
+
+<p>为啥要设置子域名(来自阿里云的”帮助”)</p>
+
+<p>1、 因为一个主域名可以设置出不同的子域名，所以能够便于用户将不同的子域名应用到不同的业务中。</p>
+
+<p>例如主域名是 aliyun.com，开发者则可以设置子域名 api.aliyun.com 为接口业务使用，子域名 pay.aliyun.com 为支付系统使用。</p>
+
+<p>2、 实现访问者按照用户指定的子域名进行访问。</p>
+
+<p>例如主域名是 aliyun.com，开发者设置子域名为 www.aliyun.com和aliyun.com 后, 访问者输入这两个域名时就可以实现访问。</p>
+
+:ET

@@ -1,0 +1,40 @@
+I"<h2 id="internet搭建个人网站4自定义域名1">internet｜搭建个人网站（4）｜自定义域名（1）</h2>
+
+<p>你好吖，如果您是跟着前几天等文章一路搞过来的，那么现在应该就可以通过→你的github用户名.github.io来访问到你的网站了，but因为这个域名个人觉得比较丑，并且碰到大佬了一看就知道是用<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484846&amp;idx=2&amp;sn=81738c20469085c2c6c6225b4682d461&amp;scene=21#wechat_redirect">gitpage</a>的服务器，然后可能就会感觉有点low，最主要还是域名比较长，很难记住，所以今天就来聊一聊怎么样自定义你的域名</p>
+
+<hr />
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484810&amp;idx=2&amp;sn=2787983add73658b7f9908f478992a2c&amp;scene=21#wechat_redirect">原来咱们聊过</a>，有了服务器之后，如果想要通过域名来访问网站，那么就需要配置一下DNS和拥有一个域名，国内同时是dns服务商和域名提供商的主要有阿里巴巴和腾讯（如果是DNS服务商，但不是域名的提供商就会很麻烦，不过也可以整，但是这次咱不用搞这个），今天就拿阿里巴巴的阿里云来举个例子</p>
+
+<p>first，下载阿里云</p>
+
+<p>https://www.coolapk.com/apk/com.alibaba.aliyun</p>
+
+<p>second，注册阿里云的账号</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOlnjBuv4RpqJyVUhwdCxlT8EyH8bcsUdhPIubict1nO6icVruH7TUg637ONuenufMiaQ91r00ibrUedw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+之后来到“我的”，然后点击上面的头像
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOlnjBuv4RpqJyVUhwdCxlTHw7ffco8jAIhJJQ5Cic91jC6BxMs9yFmh2RDXFKXmI3YI1pQVMWG7kw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+then，去实名认证（因为如果是.com或者是点cn之类的顶级域名需要实名认证，不然的话很麻烦）</p>
+
+<p>之后到““管控””</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOlnjBuv4RpqJyVUhwdCxlTuP88oWwC6WpuLWOMs7PevXn71VDWKnLXxDWZDtWxU7kd7vM7UmZv8g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+再到产品控制台→域名注册
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOlnjBuv4RpqJyVUhwdCxlTvBUnjibTI8gIJnuEib0G3lpOUnZg7Cn9v9ic0UtnHRBBtyHgQBfrEWnnQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+之后会看到</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOlnjBuv4RpqJyVUhwdCxlTgAq7CxdwlRpRU4hFPYSU5cvGl1L80S74Ll7vF0C7bdad1Zmcs9mgyg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+然后搜索你想要注册的域名</p>
+
+<p>tips，直接搜域名的前缀就行，他会自动展示所有的后缀</p>
+
+<p>ps→比如lianyiming.com就是lianyiming是前缀，.com是后缀</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOlnjBuv4RpqJyVUhwdCxlTURepnpGPPTtNCDeg7x03awo3x5FCmQiasmAk02D0Sg50TlCdXe0fCuQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+然后找到没有注册的域名，填左边的那个圈购买就可以</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOlnjBuv4RpqJyVUhwdCxlTbHCHF1up8CAGgNwDLNmDiaPtKZfSgCLTT4FACOzX6cwUfBN4riaiclekQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+如果支付成功的话，那么这个域名就成功的买了一年了，明天来讲一讲怎么样配置DNS叭</p>
+
+:ET

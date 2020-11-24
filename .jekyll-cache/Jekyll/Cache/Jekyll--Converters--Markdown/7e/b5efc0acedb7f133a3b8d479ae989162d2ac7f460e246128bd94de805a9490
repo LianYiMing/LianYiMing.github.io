@@ -1,0 +1,63 @@
+I"%<h2 id="kwgt6进阶改动2">KWGT(6)｜进阶改动(2)</h2>
+
+<p>你好呀，昨天聊了基本改动，也就是说→通过改动一下控件的底部背景形状，可以让控件更好的贴合边缘</p>
+
+<p>但是有时候会发现↓</p>
+
+<p>底部面积算是扩大了，但是上面的控件排列又很不尽人意</p>
+
+<p>所以今天接着来聊一聊叭</p>
+
+<hr />
+
+<p>还是以昨天的那个控件为例</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOMSwhcKIRMzINKLCKLrniapyXvekqzDyavwAS7biaQTGa8vay4lBycqBQfE7yFia0TTgtg2bRibHabwg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+调整黑底让他贴和边缘了之后，会发现在控间上的玩意还是在原来的位置不变，所以这就需要对单个控件进行调整了</p>
+
+<p>到高级编辑器里</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOMSwhcKIRMzINKLCKLrniapic9VgQPrAaw8b6aVrq10OxnKGTAgOwsibbwdEEozxVcLibxXj3W57vYiaw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+会发现除了昨天介绍的shape还有text，image之类的控件</p>
+
+<p>现在来解释一下</p>
+
+<p>高级编辑器里的右上角是加号，也就是添加组件，会发现有这几个</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOMSwhcKIRMzINKLCKLrniapahEjziaWNnbLTiaBLtzWvTIticHVvicyQe3CaVPKztpm82yq9DT72P5Bng/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+第1个也就是可以在控间中载入其他的控件</p>
+
+<p>第2个txt也就是文本，可以加入文字</p>
+
+<p>第3个是昨天聊的形状</p>
+
+<p>第4个也就是载入图片，让控件显示某个图片</p>
+
+<p>第5个fonticon，也就是可以载入kwgt预设的一些图标</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOMSwhcKIRMzINKLCKLrniapGjh2mRJEe75XeNIdG1DOQSSE1LBG1Vm3hdrsQ7kV2DLhfzu5AqxZUw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+比如说箭头上的播放按键，就是kwgt预设的，省得再去找<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485062&amp;idx=2&amp;sn=503c195d337c92c98246dbd513eec90b&amp;scene=21#wechat_redirect">矢量图</a>导入图片控件了呢</p>
+
+<p>第六个，后面的progress也就是进度条，比如说可以调取音量的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247483881&amp;idx=2&amp;sn=d76db1ea24440efa813c210e274fb949&amp;scene=21#wechat_redirect">API</a>就可以显示当前的音量</p>
+
+<p>比如说介个电池的控件的控件就是这么整的</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+第7个翻译过来大致理解为是变形文本，大致理解为是文本组件的升级版，也就是可以让文字圆弧之类的变形排列</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+比如说上面的12:33，就是用了这样的东东</p>
+
+<p>然后是下一个serIes</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+也就是可以连着显示一些连续的事物，比如说时间日期或者电池电量</p>
+
+<p>以下这个就是用内个搞出来的</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOMSwhcKIRMzINKLCKLrniapicVogIwuL8XeGibS0McVJdmHXXFU9mBIxeptYNiax7lKibxcxcmkfERKwg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+就是上图的27 28 29 30那些日期就是介个</p>
+
+<p>后面的两个都可以理解为是文件夹，也就是说他们只是一个空文件夹，可以在里面再创建控件，具体啥区别，之后聊到了详细说⑧</p>
+
+:ET

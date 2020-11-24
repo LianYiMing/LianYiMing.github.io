@@ -1,0 +1,27 @@
+I"<<h2 id="原生电池曲线">原生电池曲线</h2>
+
+<p>前情提要：</p>
+
+<p>1.</p>
+
+<p>原生与类原生</p>
+
+<p>各家厂商所定制的系统UI等都是基于安卓开源计划</p>
+
+<p>AOSP(Android Open-Source Project)</p>
+
+<p>这是谷歌开源的安卓源代码，可供各厂商修改定制使用。安卓系统的另一部分是GMS(Google Mobile Service)，也就是GAPPS，（之前咱好像聊到过open gapps的卡刷包，可以上车谷歌服务）</p>
+
+<p>通俗说就是谷歌全家桶</p>
+
+<p>GMS部分是收费的服务(非常强大实用)</p>
+
+<p>AOSP和GMS加在一起就是人原生安卓</p>
+
+<p>相对的，所谓类原生安卓就比如说像EMUI或者MIUI之类的各手机厂商，根据自己的手机定制出来的</p>
+
+<p>2.<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484270&amp;idx=1&amp;sn=d0e838ea2605b75b1200417accf06a2f&amp;scene=21#wechat_redirect">之前聊到过</a>也就是各大系统厂商会隐藏一些安卓的原生<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247483881&amp;idx=2&amp;sn=d76db1ea24440efa813c210e274fb949&amp;scene=21#wechat_redirect">API</a>或者再加入一些他们自己的功能，比如说电池统计曲线就是～也就是在省电设置里边看到电池从充满到现在的一个下降或者上升的过程or每个应用的占比之类的，安卓原生的电池统计方法跟一些厂商所定制出来的还不一样，所以就又可看性，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484556&amp;idx=1&amp;sn=9fdb323e5cb80a089e4935cbf42286ad&amp;scene=21#wechat_redirect">不过之前也说了各大厂商是没有留入口的so～就可以用创建快捷方式app来调用</a>，今天第一更介个app就是起了创建快捷方式の这个作用</p>
+
+<p>什么极致省电下次聊哈</p>
+
+:ET

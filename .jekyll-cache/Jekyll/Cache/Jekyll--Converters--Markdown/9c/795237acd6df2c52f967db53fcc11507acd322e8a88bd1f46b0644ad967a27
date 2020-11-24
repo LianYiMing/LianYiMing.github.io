@@ -1,0 +1,37 @@
+I"�<h2 id="什么是网络">什么是网络</h2>
+
+<p>呼～总算碰到了一个比较重磅的question了</p>
+
+<p>首先先来看看什么是因特网（Internet（介个词是网络的统称，so感觉有点问题））</p>
+
+<p>因特网是最大的网络，由<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484556&amp;idx=4&amp;sn=b59c54a7d3df69d2b68f31b608445545&amp;scene=21#wechat_redirect">核心部分和边缘部分构成</a>（也就是由边缘的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484542&amp;idx=2&amp;sn=c347f4bc8979a6c3f14b9420a2834818&amp;scene=21#wechat_redirect">主机</a>和核心的线路构成）</p>
+
+<p>又来了一个问题，什么是网络？</p>
+
+<p>我觉得有本book给的定义挺好的（结果发现百度百科就用的这句）：</p>
+
+<p>网络是由若干节点（<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484542&amp;idx=2&amp;sn=c347f4bc8979a6c3f14b9420a2834818&amp;scene=21#wechat_redirect">主机</a>）和连接这些节点的链路构成（如<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484565&amp;idx=2&amp;sn=ef2b2603415197fa07280f7bc358d9f3&amp;scene=21#wechat_redirect">路由</a>器或者网线），表示诸多对象及其相互联系</p>
+
+<p>（我觉得根据很多大佬写的博文以及另外的一些教材，应该把定义再补上：可以进行数据交换）</p>
+
+<p>用这个定义看咱这几天聊的</p>
+
+<p>『城域网（Metropolitan Area Network，MAN）</p>
+
+<p>局域网（Local Area Network，LAN）</p>
+
+<p>个人区域网（Personal Area Network，PAN）</p>
+
+<p>广域网（Wide Area Network，WAN）』</p>
+
+<p>发现从个人区域网再到广域网好像都是这样：</p>
+
+<p><strong><em>1.他们都互相相连（不一定非要无线，不然咋解释网线也可以宽带上网（只要上网就算是连接到网络了））</em></strong></p>
+
+<p><strong><em>2.她们都可以传输数据（其他的都不用说。蓝牙可能有点恶心，</em></strong></p>
+
+<p><strong><em>：就可以想一想，蓝牙耳机就是手机得给耳机传输音频数据，蓝牙鼠标就是鼠标给手机传送他把咱的动作转化成的电信号）</em></strong></p>
+
+<p>嗯，拜拜，第一次五更真带劲</p>
+
+:ET

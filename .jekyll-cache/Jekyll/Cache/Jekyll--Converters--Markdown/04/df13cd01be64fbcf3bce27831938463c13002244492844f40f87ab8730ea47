@@ -1,0 +1,20 @@
+I"i
+<h2 id="网站的交互">网站的交互</h2>
+
+<p>网站主要就是分为<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484306&amp;idx=2&amp;sn=f4bf4546b0a5342c37a2d8762e30031d&amp;scene=21#wechat_redirect">服务器</a>和域名两部分，一部分负责存储网页上的东西，一部分负责与用户进行交互（不过这么划分也有点不妥）</p>
+
+<p>网站的服务器之前聊到过可以近似的看为一个<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484542&amp;idx=2&amp;sn=c347f4bc8979a6c3f14b9420a2834818&amp;scene=21#wechat_redirect">主机</a>，我们能访问网页，也就是我们和网站的主机进行了数据通信，并且之前也聊过→数据通信时发出的数据是被划分为一段一段的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484701&amp;idx=2&amp;sn=6fd5c85ea5799b863a5028cd5882e18f&amp;scene=21#wechat_redirect">报文</a>，并且通过查找路由表（可以理解为是地图），找到了收信主机的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484602&amp;idx=2&amp;sn=23820916c45fef1a4b1d9c7246f729ae&amp;scene=21#wechat_redirect">IP</a>地址，之后把数据发给他的（如果放到咱们和网页交互，那么就是我们看到了网页）。</p>
+
+<p>又因为IP地址一般都很长，真TM难记，所以又有了<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484301&amp;idx=2&amp;sn=ef3ac6c1f39916a615a58f33836ca6f5&amp;scene=21#wechat_redirect">域名</a>的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484619&amp;idx=2&amp;sn=98c0343323f2e5a0682120e28c1d5c05&amp;scene=21#wechat_redirect">DNS解析</a>服务</p>
+
+<p>到这里为止，我们就把可以用我们的设备看到某一个网站，具体是怎么样整的，搞清一点了</p>
+
+<hr />
+
+<p>一句话来说就是（用手机举得例子，PC同理）</p>
+
+<p>手机通过浏览器通过家里的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484361&amp;idx=2&amp;sn=b47776532e5b5432f719eae5782a2fd8&amp;scene=21#wechat_redirect">内网</a>访问因特网即<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484368&amp;idx=2&amp;sn=d720ddb9cb20e9b9e6e84ddaf36c3ae6&amp;scene=21#wechat_redirect">外网</a>，输入域名后由DNS解析，发现有对应的IP地址，于是便向这个IP发出要访问的请求，服务器（因为这个IP就是服务器的IP）收到了请求后，也知道了你手机的IP地址，于是把你所请求的网页信息传输给你</p>
+
+<p>这就是我们能看到网页的全过程</p>
+
+:ET

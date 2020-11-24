@@ -1,0 +1,63 @@
+I"�
+<h2 id="主题美化高仿ios1">主题美化｜高仿iOS(1)</h2>
+
+<p>你好吖，这几天水了好几天的浏览器屏蔽广告，，，，，，，今天再来聊点有点技术含量的东东↓</p>
+
+<p><strong>高仿ios</strong></p>
+
+<p>众所周知，安卓和苹果的UI(也就是the user interface→用户操作界面，就是手机的界面)有很大区别**
+**</p>
+
+<p>苹果的ui看上去比目前很多国内厂家的貌似都有点不一样的美</p>
+
+<p>所以就有了安卓系统来高仿苹果的ui的浪潮→不光是觉得好看，也可以去装个逼什么的，，，，这个系列来聊一聊吧</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOqeiadblvHjsHnSppFCAtN4ibVESalcf0Iibj7Pib8ZYEpKYHn9qYjY3hHIOShw0VgaxicA0Hxz8AQzDQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+这就是目前主力机小米8搞完之后的样子，长得跟真正的苹果还是有几分相像</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOqeiadblvHjsHnSppFCAtN4bNOO1epGqIaBMt0EsSQDgoicZBvoTQnLc9nYHg9nMDibs5sRj9vft5UQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+底下是一个真苹果</p>
+
+<p>感觉长得还是挺像</p>
+
+<hr />
+
+<p>我们就观察一下，一个苹果的ui究竟有什么特点？</p>
+
+<p>dock栏</p>
+
+<p>也就是最底下放4个应用的那一栏，普通安卓系统那一栏没有边边框框，也没有背景的高斯虚化(也就是壁纸模糊的那一部分，之前聊过)</p>
+
+<p>图标</p>
+
+<p>图标自然是IOS风格的图标，并且都是圆角方形</p>
+
+<p>字体</p>
+
+<p>苹果用的字体简称苹方</p>
+
+<p>1、中文字体：使用的是STHeiti-Light.ttc 和 STHeiti-Medium.ttc字体 ，中文称呼为黑体。黑体字又称方体或等线体，在笔画的形状上把横画加粗且把宋体字的耸肩角削平为等线状，形成横竖笔画粗细一致，变宋体字的尖头细尾和头尾粗细不一的笔画为方形笔画。</p>
+
+<p>2、英文以及数字字体：使用的是H_Helvetica.ttc 和 _H_HelveticaNeue.ttc 。Helvetica是苹果手机的默认字体。同时是在西方国家广泛使用的的西文字体。Helvetica是由米耶丁格和爱德华德·霍夫曼在瑞士哈斯铸造所作为排版铅字制作的。</p>
+
+<p>3、Lock锁屏时间字体：使用的是ckClock.ttf 字体，这种字体常用于智能闹钟，时钟的数字显示。</p>
+
+<p>为了高仿，更加真实，就需要换字体</p>
+
+<p>状态栏</p>
+
+<p>跟安卓的状态完全不一样，所以需要换主题</p>
+
+<p>桌面控件</p>
+
+<p>有很多不规则的，但是跟图标风格很相近的桌面小部件，很好看</p>
+
+<p>布局</p>
+
+<p>iOS布局，貌似都是横排4个，双排5个</p>
+
+<hr />
+
+<p>这也就是我们之后要改的目标。</p>
+
+:ET

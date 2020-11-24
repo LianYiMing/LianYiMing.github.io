@@ -1,0 +1,50 @@
+I"<<h2 id="主题美化非线性壁纸">主题美化｜非线性壁纸</h2>
+
+<p>你好呀，今天咱来聊一聊IOS最著名的非线性壁纸吧</p>
+
+<p>原来我们聊过<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484413&amp;idx=2&amp;sn=1979c396ce47f074f10bc9eeed3217c9&amp;scene=21#wechat_redirect">非线性</a>动画，总的来说也就是，动画播放不是一条平缓的直线，而是比如先陡后缓的曲线，非线性的壁纸动画可能是IOS桌面最鲜明的特征了</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/tMsLbdfwxoNJoKciaedk7sXfKQ8Km2z2DFeEJKwquAPlfOxF0oJL6wzRe7cW1VIthWx8iaEPGgrZlkAVXajWHttQ/640?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt="img" />
+也就是退出到桌面的时候，壁纸会经历一个缩小和<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484609&amp;idx=2&amp;sn=0b0ad0b3bf1ee5a0efa578789604d835&amp;scene=21#wechat_redirect">高斯模糊的过程</a></p>
+
+<p>高仿IOS如果能做到这一点，就真的有点神似了，但关键是咋搞?</p>
+
+<p>也就是今天聊到的→非线性壁纸(是一个APP)</p>
+
+<hr />
+
+<p>首先还是下载</p>
+
+<p>https://www.coolapk.com/apk/yyc.xk.workshop</p>
+
+<p>点开应用，它会提示要装什么星空壁纸引擎，根据他的提示安装就行。</p>
+
+<p>然后就到了应用的界面</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNJoKciaedk7sXfKQ8Km2z2DVrYmvECRmRgG87tqCgqHibQefr1kK7htdzpVhYI0BG0xOFYfOHOSS8A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+先点上边的获取当前桌面壁纸来选择要设置的壁纸</p>
+
+<p>然后点右上角的三个点导入这一串代码</p>
+
+<p>fxxbz://4XlGw310bBzOmBvBhnP9rZqxZDCfSgibYADuN9ZTxiZbqbtOVg1aCpeMhBk1B36K1vaNT2obAdImd40vKGobIuopqe8WXNZQ0zfoQkEf3axeqJ6F3EWlihHr-l90+PRUP3b0fW8nCOAqCuYZie+27M0AFl03meFobIymwYFR71+9L3W++4Hg9fyQ0CtldQx-Pywn+kePpdfxZN65Ya+JHVBhVZQNnnsBtYRSH+nXIoAAIVpFSSsjhaMacLxom7KX-QTz6rihG+NEIl32PPdujUbvIsVaxdPtbnQSFQSImzp5W0PGjbToUUr+EyX7q7SMHqwg2HBYaNDJ2Vgnsb-y0A==</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+之后点击左边的那个对勾设为壁纸就可以了(锁屏和桌面都可以)</p>
+
+<p>这样就会每次打开锁屏屏幕，会播放一遍刚刚导入的配置所设置的动画，或者是退出应用，回到桌面时也会播放</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" /></p>
+
+<hr />
+
+<p>为啥导入配置</p>
+
+<p>ios的动画很不合群，真的不合群，虚化和缩放的动画曲线会发现都是这样</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNJoKciaedk7sXfKQ8Km2z2DdxHzsNvS63gEK6Tg41TkyVjS3BIVZ78H5ic9k4AicJcL4L78yG2j0kEg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+是一个先快后慢的动画，如果自己摸索的话首先要有iPhone，，，，，，，所以高仿iOS的话还是直接导入整好的配置比较easy</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNJoKciaedk7sXfKQ8Km2z2D406Ae7W8LCsC9mQB0YkrBSux1KaVzXJAzx0jZOia820yFbLTjphS79A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+剩下的几个都顾名思义了</p>
+
+:ET

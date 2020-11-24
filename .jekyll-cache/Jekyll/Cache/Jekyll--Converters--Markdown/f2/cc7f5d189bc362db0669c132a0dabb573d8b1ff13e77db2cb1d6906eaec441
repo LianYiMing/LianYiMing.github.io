@@ -1,0 +1,72 @@
+I"�<h2 id="ip">ip</h2>
+
+<p>前期提要</p>
+
+<p>1.今天聊的ip.是指网络技术中的IP地址而并非ip流量的IP哈</p>
+
+<p>2.<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484556&amp;idx=3&amp;sn=97f7603bc065917ac255beb210da37e9&amp;scene=21#wechat_redirect">虚拟主机</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484556&amp;idx=3&amp;sn=97f7603bc065917ac255beb210da37e9&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s/2yUQjvhjCmMApB0nUyfeog</a></p>
+
+<p>虚拟主机</p>
+
+<p>通俗一点来说就是网页服务器（包括能联网的APP的云服务器），或者网盘之类的咱能通过上网访问到的东西，说它是虚拟主机因为他不是真实存在的一个完整的计算机，而是在服务器提供商的服务器中（服务器提供商提供机房的设备，联网的机房设备也就是服务器）划出了一片区域来执行主机的功能（从而可以让一个网站或之类的正常运行。</p>
+
+<p>当然把自己家的电脑当服务器也行，只是比较（比较！！？）麻烦，之后可以聊聊，咱去租别人的也就是各大论坛教怎么整网页的租服务器）</p>
+
+<p>百度百科：每个虚拟主机都具有独立的域名和完整的互联网服务器功能。一台服务器上的不同虚拟主机是各自独立的，并由用户自行管理。但一台服务器主机只能够支持一定数量的虚拟主机，当超过这个数量时，用户将会感到性能急剧下降（也就会造成服务器的价格有很大的差异）</p>
+
+<p>3.<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484542&amp;idx=2&amp;sn=c347f4bc8979a6c3f14b9420a2834818&amp;scene=21#wechat_redirect">主机</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484542&amp;idx=2&amp;sn=c347f4bc8979a6c3f14b9420a2834818&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s/hhXYr3YjPVRxrzlJSZtbpA</a></p>
+
+<p>1.记得原来有本讲装机的书把机箱（也就是不插任何线）叫做主机</p>
+
+<p>ps：主机（这里是机箱）由CPU、内存、硬盘、光驱组成（之后聊）</p>
+
+<p>2.主机在网络工程里可以理解为每一个连接到inter网上的比如说电脑啊，手机，路由器之类的。</p>
+
+<p>突然想起有本讲计算机网络工程的下过一个定义”习惯上，大家把连接在因特网上的计算机都称为主机（host）”只要联网且关于发送与接收信息的终端设备，辣么都可以算作是主机，so路由器也算主机包括网上能租到的服务器之类的都算。这玩意又叫internet主机～与因特网相连的任何一台计算机｜上面内些都称为主机，每台主机都有一个唯一的Ip地址（but路由器这一块又不一样，下次聊）每台主机在互联网上的地位都是平等的，这一句很重要，as很多兄dei（包括me）都认为咱的权限是要低于一个网页or应用的，但其实在他为咱提供数据的时候我们都属于主机，所以地位是平等的只是他们是发送咱是接收罢了</p>
+
+<p>3.<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484585&amp;idx=5&amp;sn=7fee77f9e617326dcec186e13a718467&amp;scene=21#wechat_redirect">什么是网络</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484585&amp;idx=5&amp;sn=7fee77f9e617326dcec186e13a718467&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s/0_D8ZEa6soMnhRCND6OeoA</a></p>
+
+<p>呼～总算碰到了一个比较重磅的question了</p>
+
+<p>首先先来看看什么是因特网（Internet（介个词是网络的统称，so感觉有点问题））</p>
+
+<p>因特网是最大的网络，由核心部分和边缘部分构成（也就是由边缘的主机和核心的线路构成）</p>
+
+<p>又来了一个问题，什么是网络？</p>
+
+<p>我觉得有本book给的定义挺好的（结果发现百度百科就用的这句）：</p>
+
+<p>网络是由若干节点（主机）和连接这些节点的链路构成（如路由器或者网线），表示诸多对象及其相互联系</p>
+
+<p>（我觉得根据很多大佬写的博文以及另外的一些教材，应该把定义再补上：可以进行数据交换）</p>
+
+<p>用这个定义看咱这几天聊的</p>
+
+<p>『城域网（Metropolitan Area Network，MAN）</p>
+
+<p>局域网（Local Area Network，LAN）</p>
+
+<p>个人区域网（Personal Area Network，PAN）</p>
+
+<p>广域网（Wide Area Network，WAN）』</p>
+
+<p>发现从个人区域网再到广域网好像都是这样：</p>
+
+<p>1.他们都互相相连（不一定非要无线，不然咋解释网线也可以宽带上网（只要上网就算是连接到网络了））</p>
+
+<p>2.她们都可以传输数据（其他的都不用说。蓝牙可能有点恶心，</p>
+
+<p>：就可以想一想，蓝牙耳机就是手机得给耳机传输音频数据，蓝牙鼠标就是鼠标给手机传送他把咱的动作转化成的电信号）</p>
+
+<p><strong>正文</strong></p>
+
+<hr />
+
+<p>IP地址：笼统的来说就可以理解为网络中的家的地址，当主机和网络产生交互的时候，既然是交互，肯定信息得有往有来～主机获得的信息和发送的请求都会以数据包的形式发到对应的另一个主机（这样就产生了交互，包括访问网址），但是又不知道另一个主机的地方（不然咋发……），所以IP地址就相当于是现实中的地址，确保数据包可以送到正确位置</p>
+:ET

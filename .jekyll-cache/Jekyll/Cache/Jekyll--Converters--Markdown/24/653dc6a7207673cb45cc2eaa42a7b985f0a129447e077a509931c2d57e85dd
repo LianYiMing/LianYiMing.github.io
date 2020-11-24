@@ -1,0 +1,24 @@
+I"F<h2 id="favicon">Favicon</h2>
+
+<p>favicon是介个favorites icon的缩写，不过为啥叫这个名没有得到官方的解释，窝猜的应该是最初给一个网站添加到收藏夹时显示favicon，因为添加到收藏夹肯定就是最喜欢的，所以叫这个名。</p>
+
+<p>不过favicon究竟是啥嘞？</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoO3NaDDz51Pk7M62jxgc3e1wteQheOxicv3or10ukW6rZJvg0Sibf3B69ibInfbwYC1huozmSk8O3I4Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+如图，就是网站的logo图标了，也就是平常手机浏览器访问的时候，地址栏最左边大多数情况显示的那个图标。</p>
+
+<p>favicon是个图片（但是后缀不是常见的JPG｜PNG啥的，它的后缀是.ico（小写））的大小一般都是32×30 26×16或者48×48，存在网站的根目录里，索引放在网站的基本文件里（也就是index.html。之后聊建站的时候详细聊叭）</p>
+
+<p>历史：</p>
+
+<p>百度百科→Favicon功能最早由微软创设，而微软公司的Internet Explorer网页浏览器会对每一个网站都请求favicon</p>
+
+<p>ps；favicon又叫urlicon｜page icon</p>
+
+<p>pps：竟然在欧陆词典找到了例句……</p>
+
+<p>This image also interferes with the download sequence, for example in IE when you request extra components in the onload, the favicon will be downloaded before these extra components.</p>
+
+<p>这个图片文件还会影响下载顺序，例如在IE中当你在onload中请求额外的文件时，favicon会在这些额外内容被加载前下载。</p>
+
+:ET

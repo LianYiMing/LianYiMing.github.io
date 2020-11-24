@@ -1,0 +1,57 @@
+I"�<h2 id="internet广告拦截5杀招2">internet｜广告拦截(5)杀招+2</h2>
+
+<p>你好鸭，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485158&amp;idx=1&amp;sn=2f7124d4e86ee47a738d8a2a4dbedafc&amp;scene=21#wechat_redirect">接着上次聊聊屏蔽广告的代码叭</a></p>
+
+<hr />
+
+<p>前情提要→具体咋用https://mp.weixin.qq.com/s/HQ8PRITvWcN_rylL2AIgKQ</p>
+
+<p>就是在via浏览器里，老版本→设置→通用→广告标记，上面填上域名底下填上要拦截的元素，用英文逗号隔开就可以</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMt4H2eUzvAuFuxF3wvknuNMT0qoN3V1QzYPXawGPM0mSV0vx0a4Wde9lSN4aOco8Oxibnwj7sMcYg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<hr />
+
+<p>m.douban.com</p>
+
+<p>.nav-btns, .logo, .btn green, .logo, .logo, .logo, .btn green, .logo,DIV#TalionNav,A.oia-btn,DIV.download-app,SECTION.more_topic,DIV.show-all,BUTTON.confirm,P.text,DIV.opreations</p>
+
+<p>具体如下，精简豆瓣的</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMt4H2eUzvAuFuxF3wvknuNbEIUQRuoGb2lxzZ0ah1YH7q15eNCgl0edKAKBcb9gra9dK1iaH6e71w/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+上边是精简后的
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMt4H2eUzvAuFuxF3wvknuNXfvPe617GNQaTiaVTrOdoNCYHPhgh4dQYR9w2ibeCabKD3wrcr4gV0Tg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<hr />
+
+<p>orxing.top</p>
+
+<p>.pull-left, .hitokoto,DIV.container,DIV.nav_title,DIV.nav_title,DIV#footer,A.site-page.social-icon.search,DIV.toggle-menu.pull-right.open,DIV.scroll-down,DIV.hot_site,BUTTON#search_submit</p>
+
+<p>可以把这个网站当做搜索引擎用</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMt4H2eUzvAuFuxF3wvknuNEdjic3RiaRRERI2gFH6u5NGE5XddTmLgWicc11btSiaTrCRWGTrdTqJWew/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMt4H2eUzvAuFuxF3wvknuNTke8ojib11JFScIeQ1x8FDAoNODJ5Z5W43vjHn0nibuaHGdficl7wbDpQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+第1张图片是精简后的，第2张图片是精简前的，只保留了几个搜索引擎的功能</p>
+
+<hr />
+
+<p>m.youku.com</p>
+
+<p>DIV.h5-detail-ad,DIV.h5-detail-feed,DIV.Corner-container,DIV.yk-footer,</p>
+
+<p>主要是精简优酷手机端的垃圾页面广告</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMt4H2eUzvAuFuxF3wvknuNechG383sFxj4btMfyaEia4LRiaLoYlMk5E8cMcGataJq8xbZUXBicSg9A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMt4H2eUzvAuFuxF3wvknuN26KD5Bffo4kvRbicYQMpRY4Hse50x52xYvYQGwvs3wUCC0fIibSmIC9A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+post.m.smzdm.com</p>
+
+<p>.btn-app-open, .btn-app-open, DIV.foot-banner,A#J_hot_price,DIV.logo-download,HEADER#J_header_top,A.go-focus.J_ota,DIV.btn-open-app,P.title,BUTTON.btn.btn-get.J_ota,DIV.hot-price,A.J_ota.red-btn,DIV.discount-list,DIV.module-like-wrap,DIV.recommend-goods-wrapper,DIV#comments</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMt4H2eUzvAuFuxF3wvknuN8xYM7LvQJUSKh6qSdoMMLBkX2rVcyRAshtD7FpwteLn2ZnGCP8DENA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMt4H2eUzvAuFuxF3wvknuNJjicekzC8udGy3icST3MKmOWs0f9CxhsrxnJIH13pReSbaUImkaqxH2Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+如图，精简了什么值得买的文章post.m.smzdm.com的页面</p>
+:ET

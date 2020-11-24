@@ -1,0 +1,106 @@
+I"�<h2 id="internet搭建个人网站3修改成自己的1">internet｜搭建个人网站（3）｜修改成自己的『1』</h2>
+
+<p>你好鸭，继续聊搭建个人网站，昨天聊完了服务器，通过你的github.io域名应该是可以能访问到我的博客了，下面聊聊咋改成你の叭</p>
+
+<hr />
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484846&amp;idx=2&amp;sn=81738c20469085c2c6c6225b4682d461&amp;scene=21#wechat_redirect">前情提要</a>→</p>
+
+<p>ps→基本的网页文件</p>
+
+<p>_config.yml</p>
+
+<p>博客配置文档（包括博客标题、favicon、博主 ID、头像、描述、联系方式等基本信息都在这个文档添加或修改）；</p>
+
+<p>index.html</p>
+
+<p>博客架构文档；</p>
+
+<p>_include</p>
+
+<p>博客调用的网页模块（比如导航栏、底栏、博文内容显示、评论模块等），一般不需要管；</p>
+
+<p>_layouts</p>
+
+<p>存放博客调用的页面模板文件（比如博客主页、具体博文页）的文件夹；</p>
+
+<p>css</p>
+
+<p>存放博客系统的页面渲染文档文件夹，主要用于调节诸如标题字体、博文字体大小颜色之类；</p>
+
+<p>js 存放博客调用的 JS 文档文件夹</p>
+
+<p>_posts 博客正文存放的文件夹。命名有规定，必须为「日期 + 标题」的模式，即「2020-04-27-扯扯淡-LYM.md」，才能发布到博客里；</p>
+
+<p>images</p>
+
+<p>图片文件夹，存放博客相关素材，包括博客 favicon、博主头像等图片及博文贴图素材；</p>
+
+<p>CNAME 用于绑定个人域名的文档；</p>
+
+<p>404.html</p>
+
+<p>「404 Not Found.」站点链接无法访问时的提示页面。</p>
+
+<p>About.html</p>
+
+<p>博客中的个人说明文档（About Me），以 html、md 格式为主；</p>
+
+<p>feed.xml</p>
+
+<p>博客的 RSS 订阅；</p>
+
+<hr />
+
+<p>现在回到昨天你的仓库里的网站的源码</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMZnCf488LOl8hrjTLSib7ZVX6DE7fHM3UwXPKgJEZCtP1WTaPrmW8j6KelylPD32rXP3RNUTg4bibw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+first→找到_config.yml文件，点击一下并打开它</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMZnCf488LOl8hrjTLSib7ZVfjshQryUJl5a4aObvoTMZY4fSSb0tLEgicib2DEyLNia0rTYnNAGaPTHQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p># Site settings</p>
+
+<p>title: LY Blog           # 你的博客网站标题</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>SEOTitle: lianyiming</td>
+      <td>LY Blog	# SEO 标题（SEO看第二更）</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>description: “Hey”	  # 随便说点，描述一下</p>
+
+<p># SNS settings</p>
+
+<p>github_username: lianyiming   # 你的github账号</p>
+
+<p>jianshu_username:  # 你的简书ID</p>
+
+<p># Build settings</p>
+
+<p># paginate: 10        # 一页你准备放几篇文章</p>
+
+<p>侧边栏→</p>
+
+<p>设置是在 _config.yml文件里面的Sidebar settings那块。</p>
+
+<p># Sidebar settings</p>
+
+<p>sidebar: true  #添加侧边栏</p>
+
+<p>sidebar-about-description: “简单的描述一下你自己”</p>
+
+<p>sidebar-avatar: /img/avatar-by.jpg   #你的大头贴，请使用绝对地址.注意：名字区分大小写！后缀名也是</p>
+
+<p>侧边栏是响应式布局的，当屏幕尺寸小于992px的时候，侧边栏就会移动到底部。具体请见bootstrap栅格系统 http://v3.bootcss.com/css/</p>
+
+<hr />
+
+<p>明天接着聊吧</p>
+
+<p>拜拜</p>
+:ET

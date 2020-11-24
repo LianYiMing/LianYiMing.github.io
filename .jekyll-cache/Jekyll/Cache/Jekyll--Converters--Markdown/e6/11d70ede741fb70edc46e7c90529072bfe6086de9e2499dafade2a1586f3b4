@@ -1,0 +1,51 @@
+I"�<h2 id="internet从零开发app2初级fusionapp玩法">internet｜从零开发APP(2)初级fusionapp玩法</h2>
+
+<p>你好鸭，今天聊聊fusionAPP的实操叭(<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485062&amp;idx=1&amp;sn=36b23e9369724565c81012edb3da5fe2&amp;scene=21#wechat_redirect">前情提要点介个</a>)</p>
+
+<hr />
+
+<p>昨天聊到了他的基本功能，但是没聊具体咋整，so↓</p>
+
+<p>首先打开fusion</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNze3sibQKZLPG4YVqOkP0r18R8icW9WQlPC5v3ognjMWxJnicibfJebqvibjr190e8hPIu9GurlZ1HHIw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+点击右下角后，选择模板创建应用的工程
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNze3sibQKZLPG4YVqOkP0r16JN8u71IqNqSktmEcVA6EzsahicPIMic7g7qlEadTCvIiaGicEX8M3Ad4w/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+基本上用顶栏模板就行，顶栏模板是最常用的一个</p>
+
+<p>具体啥区别→</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNze3sibQKZLPG4YVqOkP0r1opXueN1cIz6wW5BibeG5vBBbtSRHhCzkRyoDa7aib4AAa7BsnY7BaU6g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+最底下的那个叫做底栏
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNze3sibQKZLPG4YVqOkP0r16hTMhopzkHrNPoUwib8Bw947om6Hf9GE9Yl6qyZ3MJ4TibpalAeScJ3g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+最上面的有图标的是顶栏，“看帖”“我”是标签栏</p>
+
+<p>最左边伸出来的这个叫做侧滑栏</p>
+
+<p>右下角的就是悬浮按钮</p>
+
+<hr />
+
+<p>基础组件就是默认带的，不能删掉的，可装卸顾名思义就是可带也可不带的</p>
+
+<p>以顶栏为栗子</p>
+
+<p>点击创建后会弹出</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNze3sibQKZLPG4YVqOkP0r14c01eGWMgpLREdROzBHAt0iazGfibmbX7Nk7OAwib9c7IbouUFcjPosbg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+填入名称和<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484728&amp;idx=2&amp;sn=6f84a16327288eee8dccd1db4d0c84e8&amp;scene=21#wechat_redirect">包名</a></p>
+
+<p>ps：包名格式一般为com.xxx.xxx（xxx一般没见到有数量限制）</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNze3sibQKZLPG4YVqOkP0r1iamNVBaUJbB6mZwy5aANnLeu3petYOficQsGIy9N91nTpUqztUuABwxA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+然后就到了工程编辑里面，点击左上角的那个安卓来更换应用的图标(可以用APP里自带的图标设计器或者本地的图片来当图标)</p>
+
+<p>右上角的三角点击后可以在不打包安装的情况下运行当前的应用</p>
+
+<p>And内三个点点击后可以把应用打包安装(也就是把工程转成可以安装到手机上的APK安装包)</p>
+
+<hr />
+
+<p>底下的配置，明天再聊😊</p>
+
+:ET

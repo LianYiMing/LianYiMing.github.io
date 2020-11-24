@@ -1,2 +1,0 @@
-I"	<p>本文的讨论围绕一个 <code class="language-plaintext highlighter-rouge">java.lang.SecurityException</code> 展开，异常的关键词是权限 <code class="language-plaintext highlighter-rouge">android.permission.INTERACT_ACROSS_USERS_FULL</code>。</p>
-:ET

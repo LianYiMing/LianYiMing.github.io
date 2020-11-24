@@ -1,0 +1,57 @@
+I"�<h2 id="电路交换与分组交换">电路交换与分组交换</h2>
+
+<p>首先先看看前几天咱俩聊的电路交换和分组交换哈</p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484701&amp;idx=2&amp;sn=6fd5c85ea5799b863a5028cd5882e18f&amp;scene=21#wechat_redirect">分组交换1</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484701&amp;idx=2&amp;sn=6fd5c85ea5799b863a5028cd5882e18f&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s/-cwkN4fXAbojyDK5SAb2hA</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484701&amp;idx=4&amp;sn=f9c88200c1059e9d26f95a49870f4768&amp;scene=21#wechat_redirect">分组交换2</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484701&amp;idx=4&amp;sn=f9c88200c1059e9d26f95a49870f4768&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s/v92ZkQuCk0ioX_pWfHTtUg</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484671&amp;idx=2&amp;sn=be452c9d0df7a2c69d935a231641a8da&amp;scene=21#wechat_redirect">电路交换1</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484671&amp;idx=2&amp;sn=be452c9d0df7a2c69d935a231641a8da&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s/0kwWzV7gYjO8au-yx5ul-w</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484678&amp;idx=2&amp;sn=c4a4ac8cac6aaa7cd144c496adb278f8&amp;scene=21#wechat_redirect">电路交换2</a></p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484678&amp;idx=2&amp;sn=c4a4ac8cac6aaa7cd144c496adb278f8&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s/sd8QW2UpBDPwXCT9d8X5Iw</a></p>
+
+<hr />
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoO3YiaLqicAQQwMbSBrjEjblwxR8IvbbmcsOZaWW5sXtshF47Yo2cagqC1NgagGcUlKy0phyx0Gjcgg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>咳咳，如图，分组在从H1向H5传输的过程中，不四像电路交换那样～</p>
+
+<p>自始至终占用整个端到端的电路资源，而是逐段地占用：在哪段链路传输，就占用该链路的资源。这对整个网络资源的利用是有好处的。</p>
+
+<p>分组在从主机H1传送到H5的过程中，就像接力赛跑那样，先传送到一个路由器，然后暂存一下，查找路由表（可以理解为是分组数据包的头部），再转发到下一个路由器。这就是上次咱聊的路由器内存～分组交换的“存储转发”过程。</p>
+
+<p>从这里可以看出，分组交换和电路交换有着很大的区别呢</p>
+
+<p>下一更咱来聊聊具体为(⊙o⊙)啥？</p>
+
+<p>ps：分组交换优越性</p>
+
+<p>优点：</p>
+
+<p>所采用的手段</p>
+
+<p>高效：</p>
+
+<p>在分组传输的过程中动态分配传输带宽，对通信链路是逐段占用的</p>
+
+<p>灵活：</p>
+
+<p>为每一个分组独立地选择转发路由</p>
+
+<p>迅速：</p>
+
+<p>以分组作为传送单位，可以不先建立连接就能向其他主机发送分组</p>
+
+<p>可靠：</p>
+
+<p>分布式多路由的分组交换网，使网络有很好的生存性</p>
+
+:ET

@@ -1,0 +1,44 @@
+I"�<h2 id="internetappopen2share">internet｜app｜open2share</h2>
+
+<p>你好鸭，今天接着聊个app</p>
+
+<p>众所周知，如果在某个应用内分享的话，是需要开发者跟这个应用进行协调，把分享的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484751&amp;idx=2&amp;sn=57b508091df008626e97701e20823d15&amp;scene=21#wechat_redirect">API</a>给这个应用才可以，</p>
+
+<p>But如果直接调用用系统分享的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484751&amp;idx=2&amp;sn=57b508091df008626e97701e20823d15&amp;scene=21#wechat_redirect">API</a>的话，是每个应用都可以调用的，就不用再单独协商，所以这也就造成了很多应用内的分享范围太少，而系统分享界面，却有非常多的分享按钮，比如↓</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMogianu3uE56uepRpyB0EMZF9F85fh32bbJWVxDcmEwGvxMWCuVg5uGh6u0vIFkwJNPU3NxkLBUKg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMogianu3uE56uepRpyB0EMZEZ8k9b45Zulc3yic3iaZfXZm7N5icC5icCib3YaSdAR5ePGwbHABxuKAkRA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+上图是QQ浏览器里的，下图是系统的分享界面，差了好像不止一个数量级，，，，，，（尤其是QQ和微信，文件想要分享到其他APP内很麻烦，官方留的接口太少）</p>
+
+<p>所以，有时候想要分享到某个应用时，官方不给接口（也就是API），就可以来调用系统的分享接口来达到目的，今天聊的介个APP就是起到了这个作用</p>
+
+<p>官方介绍↓</p>
+
+<p>这是一款可以将打开交件（open， ACTION_vew）转换为分享文件（share</p>
+
+<p>ACTIONe）的小工具</p>
+
+<p>本软件已开源 : https: //github.com/linesoft2/open2share用于解决某些App因为一己之私而不提供分享文件功能导致的各种不便（如某讯的两大</p>
+
+<p>社交App）。</p>
+
+<p>使用方法:在打开文件时选择“转换为分享文件，然后再进行分享操作即可。</p>
+
+<hr />
+
+<p><strong>使用</strong></p>
+
+<p>First，下载</p>
+
+<p>http://dl-cdn.coolapkmarket.com/down/apk_upload/2020/0713/app-release-254363-o_1ed1ul6p5ec11h81c891hf71usdr-uid-849989.apk?_upt=b20d28d21598073258</p>
+
+<p>Then，不用打开它，比如说在微信打开文件的时候</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMogianu3uE56uepRpyB0EMZHDgyp5JLyJQPj6ILxNXMoB3ofKbrRDBibENwke6gLRgcTs7gfdMiaibsw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+找到这个</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMogianu3uE56uepRpyB0EMZcnweTOJTueU4ic7Rwj3NlP95xK8hJHU6WibMtqx2bNibPNyyusW6oh4mA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+就可以分享到系统分享界面的选项了</p>
+
+:ET

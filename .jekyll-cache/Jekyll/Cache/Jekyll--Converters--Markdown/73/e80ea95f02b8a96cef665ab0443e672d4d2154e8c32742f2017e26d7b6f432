@@ -1,0 +1,54 @@
+I"<h2 id="internet搭建个人网站1服务器1">internet｜搭建个人网站（1）｜服务器『1』</h2>
+
+<p>你好鸭，今天开始聊搭建网站吧😊</p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484810&amp;idx=2&amp;sn=2787983add73658b7f9908f478992a2c&amp;scene=21#wechat_redirect">前情提要</a>→</p>
+
+<p>网站主要就是分为服务器和域名两部分，一部分负责存储网页上的东西，一部分负责与用户进行交互（不过这么划分也有点不妥）</p>
+
+<p>网站的服务器之前聊到过可以近似的看为一个主机，我们能访问网页，也就是我们和网站的主机进行了数据通信，并且之前也聊过→数据通信时发出的数据是被划分为一段一段的报文，并且通过查找路由表（可以理解为是地图），找到了收信主机的IP地址，之后把数据发给他的（如果放到咱们和网页交互，那么就是我们看到了网页）。</p>
+
+<p>又因为IP地址一般都很长，真TM难记，所以又有了域名的DNS解析服务</p>
+
+<p>到这里为止，我们就把可以用我们的设备看到某一个网站，具体是怎么样整的，搞清一点了</p>
+
+<p>一句话来说就是（用手机举得例子，PC同理）</p>
+
+<p>手机通过浏览器通过家里的内网访问因特网即外网，输入域名后由DNS解析，发现有对应的IP地址，于是便向这个IP发出要访问的请求，服务器（因为这个IP就是服务器的IP）收到了请求后，也知道了你手机的IP地址，于是把你所请求的网页信息传输给你</p>
+
+<p>这就是我们能看到网页的全过程</p>
+
+<hr />
+
+<p>所以说，如果要自己搭网站，需要</p>
+
+<ol>
+  <li>服务器</li>
+  <li>域名（外加域名解析的DNS）</li>
+</ol>
+
+<p>今天先聊聊服务器叭</p>
+
+<hr />
+
+<p>本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。</p>
+
+<p>PS→窝の博客成品</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMmIvN7dBnmfaOjCAI1hDtRGheJeiar1tw8j0krx5WG29xLMGIRWDNLZAnd05TvHylurlE4PAibMJlQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<hr />
+
+<p>服务器一般都是付费的，况且又不便宜，，，，，</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMmIvN7dBnmfaOjCAI1hDtRicfuDwj5uc0iaZuYo67QPycB7qCrrDoahVrSNGU5e1cCdns6bBQnoJnA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+介是一年的阿里云服务…….</p>
+
+<p><strong>But</strong></p>
+
+<p>咱们聊建站要达到0成本，所以就需要用到昨天聊的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484838&amp;idx=2&amp;sn=f344e051044b6ff270008d3053d584d1&amp;scene=21#wechat_redirect">github</a>的gitpage（详见第二更），总之就是一个服务器，访问速度不算慢，并且还有1g的存储空间，写博客的话是够用了（因为图片都放到图床里边，不占地方）</p>
+
+<hr />
+
+<p>具体咋搞明天聊叭</p>
+:ET

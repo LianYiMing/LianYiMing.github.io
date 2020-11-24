@@ -1,0 +1,10 @@
+I"f<h2 id="自己家的宽带不是公网ip">自己家的宽带不是公网IP!!?</h2>
+
+<p>我觉得您可能认为，既然我们都能访问到互联网，也就是<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484368&amp;idx=2&amp;sn=d720ddb9cb20e9b9e6e84ddaf36c3ae6&amp;scene=21#wechat_redirect">外网</a>，肯定我们家里自己的宽带（挖）也是外网的一部分，并且既然<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484810&amp;idx=2&amp;sn=2787983add73658b7f9908f478992a2c&amp;scene=21#wechat_redirect">通讯</a>的实质就是两个<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484542&amp;idx=2&amp;sn=c347f4bc8979a6c3f14b9420a2834818&amp;scene=21#wechat_redirect">主机</a>进行通讯，那么我们家里的宽带肯定也有一个固定的IP地址，从而能让数据包（之前聊过，互联网传输数据是以数据包的形式）正确的发到我们的机子上，但是实际上普通家里的宽带是没有外网<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484602&amp;idx=2&amp;sn=23820916c45fef1a4b1d9c7246f729ae&amp;scene=21#wechat_redirect">IP</a>的。，往往是在宽带服务商那里→好几户，甚至是好几十户共用一个外网IP这几十个人里的其中一个都共用这一个IP来向目的地的IP地址发送数据，这样虽然很安全并且也省成本（因为外网IP很贵。，，，）</p>
+
+<p>但是如果要远程开机的话，也是得通过发开机的数据包来让想要开机的电脑开机。</p>
+
+<p>地址必须明确。而这几十户人共用一个IP，所以就可能会发错（因为如果自家的宽带没有外网IP的话，IP会动态分配的），所以如果用这几天聊的采用远程开机的第1种方法，就必须要外网IP</p>
+
+<p>关于路由器是怎么动态分配IP的之后聊</p>
+:ET

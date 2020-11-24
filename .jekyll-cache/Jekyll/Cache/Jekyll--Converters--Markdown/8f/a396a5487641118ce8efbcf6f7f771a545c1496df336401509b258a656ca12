@@ -1,0 +1,58 @@
+I"<h2 id="internet搞机miui高级设置">internet｜搞机｜MIUI高级设置</h2>
+
+<p>Hello大家好啊，今天来聊一个NBAPP～MIUI高级设置</p>
+
+<p>吧</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoOAF71cPHCwJ2rmNuFts9sNiaibz0Tmfib8jHAdDaoK5bbV0Uuh62S6BS7nm8dWzD6LnmsQicr268Apag/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+盗の图</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoNr19BkJJ802uHqUwMTCa8sHP2wo5cZWH6lBLJTQBZnlT8FkhbmoBnLhxNP7Jc2KhZHPWvu6XlsAQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoNr19BkJJ802uHqUwMTCa8syC58LVemoq3TEyfkBuSdBrSH5zPKdHuHOtKDK9RuSnoMHMg62ic35jg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoM12GmQGZYFy7azn1RM2IznldnbaicFIpNnKejI3fo2HevqRhvWHQ8k8TXI8CgyfSN0qVGbqWJj3Wg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><strong><em>能干啥</em></strong></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoM12GmQGZYFy7azn1RM2IznibrWgBLOicIoeicsg3LGoSS6wTeO5SJomic3dofibictDVGkkudHjOHZekDA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+前情提要：</p>
+
+<p>原生与类原生</p>
+
+<p>各家厂商所定制的系统UI等都是基于安卓开源计划</p>
+
+<p>AOSP(Android Open-Source Project)</p>
+
+<p>这是谷歌开源的安卓源代码，可供各厂商修改定制使用。安卓系统的另一部分是GMS(Google Mobile Service)，也就是GAPPS，（之前咱好像聊到过open gapps的卡刷包，可以上车谷歌服务）</p>
+
+<p>通俗说就是谷歌全家桶。</p>
+
+<p>GMS部分是收费的服务(非常强大实用)。</p>
+
+<p>AOSP和GMS加在一起就是人原生安卓</p>
+
+<p>相对的，所谓类原生安卓就比如说像EMUI或者MIUI之类的各手机厂商，根据自己的手机定制出来的</p>
+
+<p>but</p>
+
+<p>有些非原生的系统会把原生的一些<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247483881&amp;idx=2&amp;sn=d76db1ea24440efa813c210e274fb949&amp;scene=21#wechat_redirect">接口</a>隐藏掉换成他们的，原来有方法是用“创建快捷方式”来调用，今天讲的这个应用跟那个类似，只不过是专门针对MIUI隐藏的设置的，比嘞个方便</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoOAF71cPHCwJ2rmNuFts9sNiant94wv3ibMpzTaw6zIclh1GH5Uc9CsvmJicrhSnlJXuKdUwwrmLRJDA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+盗图快乐……</p>
+
+<p>ps：咱原来讲护眼模式的时候聊过<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484270&amp;idx=1&amp;sn=d0e838ea2605b75b1200417accf06a2f&amp;scene=21#wechat_redirect">一个</a>，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484261&amp;idx=1&amp;sn=e13c789fe735b03d79f72cd00b88198b&amp;scene=21#wechat_redirect">两个</a></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoNr19BkJJ802uHqUwMTCa8sSp3hOnFoDHTkbD7VvvWxBZDUCaJJicnFloaNozOn9ghH7gaMN47c1PA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoM12GmQGZYFy7azn1RM2Iznj8Q2gQs4btqOD1edLs4NiaCEfe3CkKjKAKKcDsnGESOuQfhkHY4r5Hw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><strong>*咋整*</strong></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoM12GmQGZYFy7azn1RM2IznibrWgBLOicIoeicsg3LGoSS6wTeO5SJomic3dofibictDVGkkudHjOHZekDA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>下载：https://www.coolapk.com/apk/com.miui.gaojishezhi</p>
+
+<p>装了之后进去就能找到安卓原生的设置了<strong>*<img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoM12GmQGZYFy7azn1RM2IznibrWgBLOicIoeicsg3LGoSS6wTeO5SJomic3dofibictDVGkkudHjOHZekDA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />*</strong></p>
+
+:ET

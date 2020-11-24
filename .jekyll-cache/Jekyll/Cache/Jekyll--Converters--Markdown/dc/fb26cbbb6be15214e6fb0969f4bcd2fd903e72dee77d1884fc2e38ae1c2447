@@ -1,3 +1,0 @@
-I"Ÿ<div class="language-coq highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">From</span><span class="w"> </span><span class="no">PLF</span><span class="w"> </span><span class="k">Require</span><span class="w"> </span><span class="k">Import</span><span class="w"> </span><span class="no">LibTactics</span><span class="pi">.</span><span class="w">
-</span></code></pre></div></div>
-:ET

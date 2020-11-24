@@ -1,0 +1,10 @@
+I"<h2 id="dns">DNS</h2>
+
+<p>Dns. 总的来说就是把一个<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484301&amp;idx=2&amp;sn=ef3ac6c1f39916a615a58f33836ca6f5&amp;scene=21#wechat_redirect">域名</a>和一个<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484602&amp;idx=2&amp;sn=23820916c45fef1a4b1d9c7246f729ae&amp;scene=21#wechat_redirect">IP</a>地址绑定，从而可以只在浏览器中输入域名，就可以访问某个网站</p>
+
+<p>解释：因为原来讲<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484542&amp;idx=2&amp;sn=c347f4bc8979a6c3f14b9420a2834818&amp;scene=21#wechat_redirect">主机</a>的时候也聊了嘛，一个网站可以把他笼统的当做主机，当咱的计算机向一个网站提出访问请求的时候，肯定得知道对方的IP地址，（也就是上次讲IP的时候比做的门牌号）才能把数据包发给他捏，这样才能产生交互，所以说如果要访问一个网站，必须得知道他的IP地址，不过因为有这么多网站，就会产生一堆IP，soip地址往往都会贼他喵长，一个一个记根本记不住，所以这就有了DNS～Domain Name System 域名系统，把一个域名和IP地址相互映射（至于为什么不是单向的映射有点布吉岛），从而可以在访公网时，输入一个域名就可以访问一个固定的网站（.当然自己注册网站的时候也需要搞一搞，挖……）</p>
+
+<p>之后聊的内网映射也是这个原理</p>
+
+<p>拜拜</p>
+:ET

@@ -1,0 +1,70 @@
+I"�<h2 id="internet搭建个人网站2服务器2">internet｜搭建个人网站（2）｜服务器『2』</h2>
+
+<p>大家好啊，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484846&amp;idx=1&amp;sn=70aedfb1a08418b2de11a390726b0e5f&amp;scene=21#wechat_redirect">昨天</a>聊了用<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484846&amp;idx=2&amp;sn=81738c20469085c2c6c6225b4682d461&amp;scene=21#wechat_redirect">Gitpage</a>当服务器，今天聊聊实操叭</p>
+
+<hr />
+
+<p>要使用 GitHub Pages，首先need注册一个GitHub账号</p>
+
+<p>First，访问网页</p>
+
+<p>https://github.com/</p>
+
+<p>ps→有可能要挂梯子</p>
+
+<p>Second，点击内个sign up 也就是注册</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6nH7ibZuAkFUXMZkiaXpWOzz1pRtib1viciahMrCGxHpHZJOIicRTEzj8VXfw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+Third，填写用户名→密码→邮箱→点击人机测试</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY64yfzoPjdjRUCaFVy4SMu08LjibFPwWVhEIoBHAxggflIEsiao6CX4kDA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>内个选项的打勾就是”偶尔给我发送产品更新，公告和优惠。”，建议不用选
+之后点击create account</p>
+
+<p>4.到绑定的邮箱里去康康</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6bckoUNNvBKRoIIHiaUGg0by69h1Ukd1W1nXPInibTHTJbVuCCZ1tXGibw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+点击内个verify，也就是验证是你的邮箱</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6kqg0qJ3m5HAFguzEVFZfaUVEwg0QM0ic0LflcDZtFb9jdxBkYGPfqyQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+点击之后再输入一遍账号密码就会出现这个</p>
+
+<p>这时候回到浏览器，刷新一下，会发现注册成功了</p>
+
+<p>5.点击左上角，到搜索界面</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6fobGHUDfDd3aPO9NafMFCwADk90j1fEKO1VicCBSh40EfPT5M4eKsoA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+输入lianyiming.github.io</p>
+
+<p>会看到</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6x1xzgtDf3glQ2TRw7IKWujROCdediaJJWVic1lG84ZhRJDQISSywRVOQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+点一下就可以看到我网站的源码了呢</p>
+
+<p>Then，点上图的内个再击这个图里的fork</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6puZ4S1G2YnsX1SficibeMkpOTRaVn3KpHzaKafeRgicj3F9BtcY9fg7YQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+会发现↓，再点击右上角的fork
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6fF5oF9gyJ4LcGsqhy2usjibK7aEsoZZrkdEMHwCUrZOQBUEBd6BLOhA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+就会把网站放到你的存储库里了↓
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY65SM8pCeytwdicHMxgAYcxbiaY5Yy6cArphUUkCNLyngF59nsuDZWXv8g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>等一会儿后刷新一下网页，点击settings进入设置</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6hhn9TI4YeZP7ljZbGjBpLcnnTQko6dMeZictunZQSTibBB2nelYmo8UA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>修改仓库名为 你的Github账号名.github.io，然后 Rename</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6fF5oF9gyJ4LcGsqhy2usjibK7aEsoZZrkdEMHwCUrZOQBUEBd6BLOhA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY6AJlpNQuS35A9T2gKlzKHB62BGZQmq3b1aeaLJWbKlO630HOQMrZTPw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>这时你在在浏览器中输入 你的Github账号名.github.io ↓</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPpn7cvJnib22DYIeLRaQHY60ZWIEucZupM30ZoQkWxIBlFGNwxqsWLRCsOODG9amQEiawexPIUlQFQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+就能看到我的网站了呢</p>
+
+<p>明天聊聊怎么改成你的的说</p>
+
+:ET

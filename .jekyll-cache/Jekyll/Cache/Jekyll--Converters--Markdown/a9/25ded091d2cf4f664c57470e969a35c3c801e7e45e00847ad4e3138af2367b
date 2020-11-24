@@ -1,0 +1,32 @@
+I"v	<h2 id="internet搭建个人网站7评论区1">internet｜搭建个人网站（7）｜评论区(1)</h2>
+
+<p>你好呀，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484946&amp;idx=1&amp;sn=a33216bfb027237964481ac21c216477&amp;scene=21#wechat_redirect">之前我们聊到了建站的基本内容</a></p>
+
+<p>但是会发现光有代码，没有评论，感觉跟大佬们的博客还是差了一大截</p>
+
+<p>所以这几天来聊聊，怎么样给自己的网站加入评论</p>
+
+<hr />
+
+<p>原来聊<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485144&amp;idx=2&amp;sn=8db27f56bbc0a0558a4a53bb5b2d7d71&amp;scene=21#wechat_redirect">后端</a>的时候提到过，只要是跟用户有交集的，基本都可以算作是动态网页，如果我们要自己建出来一个评论区的话，还需要知道点PHP(可以理解为是开发动态网页的一种语言)的知识，并且，还需要会整后端，得让评论变得易于管理，不过这样貌似学完时间就长了</p>
+
+<p>And，在中国，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484870&amp;idx=2&amp;sn=b83cc3c517259fc3d599c8846536b470&amp;scene=21#wechat_redirect">动态网页</a>，只要用户数据存储在中国的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484810&amp;idx=2&amp;sn=2787983add73658b7f9908f478992a2c&amp;scene=21#wechat_redirect">服务器</a>，就需要备案，一个流程下来又得一个来月</p>
+
+<p>Anyway</p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484846&amp;idx=2&amp;sn=81738c20469085c2c6c6225b4682d461&amp;scene=21#wechat_redirect">Gitpage</a>不支持PHP和后端，所以又需要买服务器，买中国的服务器，又必须得备案，才能给<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484619&amp;idx=2&amp;sn=98c0343323f2e5a0682120e28c1d5c05&amp;scene=21#wechat_redirect">DNS解析</a>，if不备案，就访问不了，，，</p>
+
+<p>所以自建评论区就变得很恶心</p>
+
+<hr />
+
+<p>But</p>
+
+<p>这时候第三方的评论，用处就大了</p>
+
+<p>如果我们只是在网页里留下评论的地方，而把评论的数据库后端放在一个第3方的平台上，最终看起来还跟自建评论区长得一模一样</p>
+
+<p>就是正解</p>
+
+<p>所以之后就会聊一聊几个比较好用的第3方的评论服务</p>
+:ET

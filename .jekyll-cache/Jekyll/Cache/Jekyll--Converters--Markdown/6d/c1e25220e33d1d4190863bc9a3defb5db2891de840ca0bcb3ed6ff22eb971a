@@ -1,0 +1,94 @@
+I"�<h2 id="internet从零开发app3初级fusionapp玩法附录">internet｜从零开发APP(3)初级fusionapp玩法(附录)</h2>
+
+<p>你好鸭，昨天我们聊了用fusionAPP，把一个网页封装成一个应用</p>
+
+<p>今天再聊一聊其他可以调的参数叭</p>
+
+<hr />
+
+<ol>
+  <li>组件</li>
+</ol>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOjyUkY6ib6cEuOq9q52kibTAibXf61BRm6YsMM1VZoBEFKDMcCIPAu8ticL7pWEIth1UqHcqdex4XP9g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+菜单项目也就是点开右上角会弹出来的东东</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOjyUkY6ib6cEuOq9q52kibTAxBlXja3jQ7rHicpGDs9VFoAj9jFxnpgGLwpbziaKddXgDVQhOHrRx4aQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />点击加号后</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOjyUkY6ib6cEuOq9q52kibTAFUYz376w0C0IXGT6Ju8fOMUQ2N0qGEtDdtYLPIV9hbkI3HWb8uiahdw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+项目名称就是显示的文字，点击事件也就是要填入lua的代码，虽然说作者内置了很多，但是还是很不友好，，，，进阶的时候聊</p>
+
+<p>搜索模式同样之后聊</p>
+
+<p>顶栏图标</p>
+
+<p>比如说这些</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+<img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+点击之后发现，还是要添加点击事件，跟上面一样，需要学一点<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484791&amp;idx=3&amp;sn=60b4a45d56f88dbee6e04301289a72a9&amp;scene=21#wechat_redirect">lua</a>知识，所以这也是之后要聊的，右边的三个点可以选择作者在应用里内置的一些<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485062&amp;idx=2&amp;sn=503c195d337c92c98246dbd513eec90b&amp;scene=21#wechat_redirect">矢量图</a></p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+侧滑栏，侧滑栏顶部图片如图</p>
+
+<p>列表项目还有悬浮球，都可以参照刚刚的顶栏图标的设置，都是先定义文字，图标</p>
+
+<p>再设置点击事件</p>
+
+<p>点击事件理论上懂得越多，能够实现目的的方法就越多，等到时候聊进阶的时候详细聊一聊叭</p>
+
+<p>作者在点击事件里内置了这几个选项</p>
+
+<p>进入子页面</p>
+
+<p>加载Js(之前聊过，是Javascript)</p>
+
+<p>加载网页</p>
+
+<p>停止加载</p>
+
+<p>刷新网页</p>
+
+<p>网页前进</p>
+
+<p>网页后退(也就是相当于按了返回键)</p>
+
+<p>返回网页顶部</p>
+
+<p>阅读模式(也就是只看网页文字)</p>
+
+<p>显示对话框</p>
+
+<p>显示泡沫对话框</p>
+
+<p>弹出消息</p>
+
+<p>退出程序</p>
+
+<p>退出页面</p>
+
+<p>复制文本</p>
+
+<p>分享文本</p>
+
+<p>分享链接</p>
+
+<p>发送邮件</p>
+
+<p>联系QQ</p>
+
+<p>加QQ群</p>
+
+<p>页内查找</p>
+
+<p>点击元素</p>
+
+<p>下载文件</p>
+
+<p>执行 Shell</p>
+
+<hr />
+
+<p>明天聊属性!</p>
+
+:ET

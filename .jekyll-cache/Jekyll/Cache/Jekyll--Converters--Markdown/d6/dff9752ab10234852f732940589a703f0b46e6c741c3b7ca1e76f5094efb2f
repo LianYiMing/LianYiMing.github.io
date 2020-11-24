@@ -1,0 +1,36 @@
+I"�	<h2 id="internet从零开发app1初识fusionapp">internet｜从零开发APP(1)初识fusionapp</h2>
+
+<p>你好鸭，从今天开始，咱们来聊一聊怎么样从0开发一款APP叭</p>
+
+<hr />
+
+<p>今天先来聊一个貌似跟这个没什么关系的应用→fusionapp</p>
+
+<p>(⊙o⊙)啥？</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP6vucSMiah4lzaRHqyM8MWnA7ns5Sag5hOYib860c1pjoWHB6wmYA7oTLMvU47LRicMy5bpaseYicdow/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>其实介是个网页转应用的APP，在里面输入网址，它会自动打包成APP来安装，打开这个应用就会看到输入的网页了，但它兼容<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484791&amp;idx=3&amp;sn=60b4a45d56f88dbee6e04301289a72a9&amp;scene=21#wechat_redirect">lua</a>的语法，所以就可以在这上边用Lua写应用，最后再用他的打包功能来安装</p>
+
+<p>今天就来先熟悉一下fusion叭，，，，，</p>
+
+<hr />
+
+<p>first，下载</p>
+
+<p>https://www.coolapk.com/apk/cn.coldsong.fusionapp</p>
+
+<p>second基本功能:</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP6vucSMiah4lzaRHqyM8MWnUY4esUz5BlCYK6a8QXz1ia4oG68Rpibr6qfHoUKOX2faib3dRJ0n69hew/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+应用里内置了很有用的矢量图，这一点在之后用处非常大(不然找矢量图很浪费时间)</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP6vucSMiah4lzaRHqyM8MWnu0KWoT3I4KWbXX6t2SkaBe51xXzSLlp5lj9cVZcWzq6dnqklkD8CKg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+图标制作也就是可以用它的图标制作工具来给你的应用制作图标</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP6vucSMiah4lzaRHqyM8MWnt3mdzF68yvJDblOmdORUXYWsZXNhOpeO20gyRU4Qib255EJczbE46Mg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+配色之墙，提供了很多很漂亮的配色，开发应用的时候非常实用，直接复制粘贴(复制粘贴实际上就是复制下来颜色对应的代码，至于为什么是代码，那就是之后要聊的了呢)</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP6vucSMiah4lzaRHqyM8MWn7iajepXyqFj6faSC8JtHCHZXCU95drU1FDgf1Ticx6uNUAfciaMx75C8g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+剩下的都顾名思义，明天继续聊一聊怎么样把网页转成应用叭</p>
+:ET

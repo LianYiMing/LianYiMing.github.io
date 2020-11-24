@@ -1,0 +1,37 @@
+I"M<h2 id="玩机毒瘤应用大屠杀4杀死比尔的后台4">玩机｜毒瘤应用大屠杀(4)杀死比尔的后台(4)</h2>
+
+<p>你好吖，原来我们聊到了，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485052&amp;idx=1&amp;sn=00fba65c9533449cd81fa954c87ccbcd&amp;scene=21#wechat_redirect">用绿色守护来杀死第三方应用的后台来省电</a></p>
+
+<p>但是手机之后用着用着就会发现启动应用的时候要<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485209&amp;idx=1&amp;sn=7f726f4f5166bb2ce75034b41c45258b&amp;scene=21#wechat_redirect">卡两秒</a>，and放音乐的时候关屏会莫名其妙的被杀掉进程，所以这就是绿色守护的休眠机制设置出了问题，今天就来聊一聊改善</p>
+
+<hr />
+
+<p>首先还是打开应用找到设置</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOC7kibL1OCibNEtiaj8QJrq2dcZHb4QQgibTC0gm0L7FcTv82sGCLVLPqJX6zcKEMFGtm3xVeQ2J6sRQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+看一看设置，会发现有几项设置可能会导致介种问题</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOC7kibL1OCibNEtiaj8QJrq2dJe5t3IkLxiaqRP8bGXQCHpAWDHm7m70zg5nkiaQd5WPib8MqfZaibiboEpA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+1.智能休眠，原来聊过→也就是会检测正在放音乐的应用，不会让他被杀死，但是会发现有时候往往放着放着还是会停，说明一定是其他设置干扰到了↓</p>
+
+<p>也就是底下的始终忽略<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485209&amp;idx=2&amp;sn=d46b7be70e9335b94d4c0465d396da77&amp;scene=21#wechat_redirect">后台纯净</a>，昨天聊到了后台纯净，大体上来说就是应用到了后台就会自己限制自己的运行，所以就不需要绿色守护来休眠，如果打开始终忽略后的纯净的话(也就是不管你后台纯不纯净，到了后台我先把你进程杀了)，有一定几率上。会让绿色守护把音乐播放器应用也当成后台纯净给一并杀掉</p>
+
+<p>所以忽略后台纯净不用勾</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOC7kibL1OCibNEtiaj8QJrq2d5m9Z8xJ35WBUaDVXThME6ib9cEkxnHPPIsTf9YjfwsL2XibBVctTN3Yw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>2.忽略后台纯净，如果不够选的话相对需要休眠的应用就很少，也会减轻工作负担，并且因为在休眠的时候手机会卡一下，这样让体验也好了很多</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" /></p>
+
+<p>3.会卡一下咋整?</p>
+
+<p>用了之后会发现点开应用，不能像之前一样秒开，也就是绿色守护杀死应用默认的是深度睡眠，而睡眠又分浅睡眠和深睡眠，顾名思义浅睡眠，也就是留有应用的缓存，可以在下次打开的时候变得更快，所以在主界面设置应用睡眠的时候，可以对需要秒开的应用设置浅睡眠，或者干脆去绿色化，也就是不让绿色守护休眠</p>
+
+<p>4.为什么有时候休眠的不是当前前台的应用，但是点击一键休眠后前台的应用也会被休眠?</p>
+
+<p>跟第1条差不多，还是要取消勾选，忽略后台纯净，绿色守护更新到最新的版本，再取消勾选的问题就解决了，还是老版本绿色守护的智能休眠和忽略后台纯净对前后台应用的判断有问题</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoOC7kibL1OCibNEtiaj8QJrq2dJdtkxTI6I6fjR0wsoASgzrsRFmX6wA88SZ19NhGmXzibGTMlvkvAF5A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+这样设置完就会not only搞掉应用的后台，又能让使用的时候很方便了呢</p>
+:ET

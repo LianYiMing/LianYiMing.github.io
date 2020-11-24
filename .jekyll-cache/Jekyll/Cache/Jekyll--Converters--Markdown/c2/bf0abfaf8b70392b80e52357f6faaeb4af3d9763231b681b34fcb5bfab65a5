@@ -1,0 +1,48 @@
+I"�<h2 id="kwgt2初识2">KWGT(2)｜初识(2)</h2>
+
+<p>原创 AGZX <a href="javascript:void(0);">廉一鸣</a> <em>4天前</em></p>
+
+<p>收录于话题</p>
+
+<p>#玩机｜KWGT</p>
+
+<p>5个</p>
+
+<p>你好鸭，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484383&amp;idx=1&amp;sn=d3a4c05d8cebd90b1a96e04e44dd5ef4&amp;scene=21#wechat_redirect">今天来填老早之前挖的一个坑。。。。。</a></p>
+
+<p>原来我们聊过<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484383&amp;idx=2&amp;sn=2b8230beb153066a3807a764548d6961&amp;scene=21#wechat_redirect">kwgt</a>是可以自己制作桌面小部件的一个应用</p>
+
+<p>今天聊一聊具体怎么搞⑧</p>
+
+<hr />
+
+<p>首先还是下载(是破解版，因为如果不是破解版的话会少很多重要的功能😅)</p>
+
+<p>链接： https://zhuheyu0715.lanzous.com/b0dka3h5e</p>
+
+<p>密码:9iyb</p>
+
+<hr />
+
+<p>下载之后，在桌面添加一个他的小部件</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMetkp7fzJTykTCWG3y9AGVxArXcRVGmZL9LNa3Tbb0VoxlFO0KgWicCoKNlfQ8jcy0sV7EXe5l9tA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMetkp7fzJTykTCWG3y9AGVYB9Oibzre3QwUamibceFw9fUBArWPq1uNcL4qju9rmElgibEb8E8xWU0w/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+然后桌面会出来一个这个东西，点一下之后发现就到了kustom的编辑页面了</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMetkp7fzJTykTCWG3y9AGV8mm2sVIsHMY3IlVCz8g4EUtorLyweajxsAg6iaicW0BcFzO83zGCliccQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+首先这个installed的标签页是已经安装的kwgt所提供的小部件(提一句哈，就是说有些大佬制作完小控间件之后，可以用另一个kwgt系列的的kapk来把小部件打包成应用，这样只要安装的应用就可以在如图的这个页面导入作者制作的插件了)</p>
+
+<p>然后exported是已导入的，也就是右上角那个文件夹样式的，可以导入手机里，后缀为kwgt的文件(也就是大佬们制作好控件导出后的文件)，</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMetkp7fzJTykTCWG3y9AGV2VU4p6SQWxudCf0OdCEDM8vrCdibssnZnybpoLqJYHAJiaoiafibGoDvYQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+backup是已经载入，或者载入桌面之后在桌面被移除的控件，kwgt会自动保存在这里</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMetkp7fzJTykTCWG3y9AGV0GdiaXuZUciaib5hgUFZd2fIdwRBMJpic14FhiaeVxuQcNibSVQO6VaVBfcQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+点击一下控件，然后再点左上角的保存，就会发现桌面出现了呢</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMetkp7fzJTykTCWG3y9AGV9DS2aiaChISOYfcpKttFGzTVhXkFk6Dicm3udia8dRYJ31DQoGia6MUM1A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMetkp7fzJTykTCWG3y9AGV9S3dJNmczQhDYHD2IE5KrCDmYwLqGhep4fibaMXwDqhoIuxWiaZEpTpg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+:ET

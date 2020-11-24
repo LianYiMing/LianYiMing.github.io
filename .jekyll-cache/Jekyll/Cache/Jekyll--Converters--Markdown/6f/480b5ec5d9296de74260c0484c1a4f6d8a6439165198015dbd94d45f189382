@@ -1,0 +1,25 @@
+I"f<h2 id="分组交换机">分组交换机</h2>
+
+<p>什么是交换机呢？</p>
+
+<p>可以类比之前咱聊<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484671&amp;idx=2&amp;sn=be452c9d0df7a2c69d935a231641a8da&amp;scene=21#wechat_redirect">电路交换</a>中的电话交换机，就是可以安排通信渠道给哪个主机使用（. 上次聊路交换的时候也聊到了，总不可能把世界所有的主机之间都要有线分别连通，这样就太耗资源了</p>
+
+<p>in order to节省资源也就有了因特网的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484556&amp;idx=4&amp;sn=b59c54a7d3df69d2b68f31b608445545&amp;scene=21#wechat_redirect">主干部分和边缘部分</a>，边缘部分想要和边缘部分通话，必须要经过主干部分（比如说从城市的西郊到东郊去烤面筋，尽管在开始和结束的那十几分钟要走一会儿土路，但都会经过城市的主干道，这样就比直接在两个地方建一条唯一的通路要方便的多））</p>
+
+<p>ps：也因为这样，所以也就呼应了咱原来聊城域网的时候惊讶的这玩意带宽竟然有1T/秒。因为毕竟是主干道嘛，所以要修的宽一点（有些道路一次只能让一辆车通过，所以就要有交换机来决定什么时候分配给什么车（车这里指的是主机））</p>
+
+<p>因特网中，最重要的分组交换机就是<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484565&amp;idx=2&amp;sn=ef2b2603415197fa07280f7bc358d9f3&amp;scene=21#wechat_redirect">路由器（router）</a>（toute不是方向，路线的意思嘛？所以这也就能理解为啥分组交换机叫路由器）</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/tMsLbdfwxoNicUAEZuHonjhCr1uicpZDtvlWjd0xyZg1wJe4dxDnHB85ibPatpKMocleApibDwfdGNuPaT5HGdHqHw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>如图，因特网的核心部分是由许多网络和把它们互连起来的路由器组成的，而主机处在因特网的边缘部分。在因特网核心部分的路由器之间一般都用高速链路相连接（起码1T/s的说……），而在网络边缘的主机接入到核心部分则通常以相对较低速率的链路相连接（这也就是平常整路由器的师傅问的咱家带宽是100兆还是50兆（兆就是M，其实t和m都省略了个bit（也就是tb和mb） ，之后聊））</p>
+
+<p>位于网络边缘的主机和位于网络核心部分的路由器都是计算机（这里指的计算机就包括路由器和主机了，所以路由器严格意义上来说不算主机，布吉岛为啥）</p>
+
+<p>但它们的作用很不一样。</p>
+
+<p>主机的用途是为用户进行信息处理的，并且可以和其他主机通过网络交换信息</p>
+
+<p>路由器的用途则是用来转发分组的，也就是嗦进行分组交换的</p>
+
+:ET

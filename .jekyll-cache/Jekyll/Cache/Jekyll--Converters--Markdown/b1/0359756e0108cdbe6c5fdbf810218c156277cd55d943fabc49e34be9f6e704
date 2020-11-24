@@ -1,0 +1,32 @@
+I"N	<h2 id="一条龙专治miui掉后台">一条龙专治MIUI掉后台</h2>
+
+<p>你好吖～众所周知，MIUI的内核管理机制经常莫名其妙的杀后台，虽然说聊天工具之类的专门做了优化，但是针对没优化过的软件：打开多任务界面，再点进去软件，上次的进程就基本被杀掉了，关键是没保存的文档也没了，十分恶心，除了多任务进程加锁，今天再聊一个更极端的APP～进程锁</p>
+
+<hr />
+
+<p>下载</p>
+
+<p>https://www.coolapk.com/apk/top.fols.aapp.eternalprocessxposed</p>
+
+<p>打开后</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPWKpAqoWibpFkXHYUvyv8I8PCmVUiaelhibO8xu0ibZMLdrazkpF8dTq64QzwLBlicD3gMA2CCJrtI7CA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+之后到模块管理器去激活一下（因为本质上这也是个XP模块）</p>
+
+<p>PS：xposed框架教程可以去看看公众号最早的几篇文章👀</p>
+
+<p>激活后再打开</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPWKpAqoWibpFkXHYUvyv8I8JnennoJTBN5ZhDW2x5KGS1iaK89N6zefOkXFZwknOQp6c5oBnFQzoEw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+如果刚刚那个提示激活没有了，就说明激活成功了，之后点击最右边的那个方框会弹出来</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPWKpAqoWibpFkXHYUvyv8I8aKINt1K7DT83X6Lw7HClEzrPzPg3lXibUlKHiaUVqsCxkFIC2CdFhibGA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+解释一下这有啥区别：</p>
+
+<p>＊普通锁:在系统内存低的时候自动清理应用可以不被清理（这是咱原来聊到的安卓内核调度）</p>
+
+<p>你可以手动强制停止这个应用（也就是在应用设置里边）</p>
+
+<p>＊永恒锁:无论在什么情况下系统都无法清理你的应用（应用后台线程被强制运行即使你卸载应用，，，也就是说卸载了他也可以运行进程跟不卸载没啥区别）测试永恒锁是否被锁住了可以试试音乐播放器：在设置里边强制停止测试应用，如果还在放音乐说明实锤被锁了。并且想要取消永恒锁的话，还是点击右边的方框，and重启后才能生效，把应用卸载了之后，即使永恒锁还锁着，重启完，那个进程也某了（详见第二更『软重启』）</p>
+
+:ET

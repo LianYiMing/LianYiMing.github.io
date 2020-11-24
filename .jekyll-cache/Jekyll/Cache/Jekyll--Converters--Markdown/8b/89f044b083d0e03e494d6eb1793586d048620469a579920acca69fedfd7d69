@@ -1,0 +1,32 @@
+I"�<h2 id="internet玩机毒瘤应用大屠杀3杀死比尔的后台3">internet｜玩机｜毒瘤应用大屠杀(3)杀死比尔的后台(3)</h2>
+
+<p>原创 AGZX <a href="javascript:void(0);">扯扯淡</a> <em>前天</em></p>
+
+<p>你好鸭，接着<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485045&amp;idx=1&amp;sn=2865eacd27a5d3dfebbd9be6a8cf6140&amp;scene=21#wechat_redirect">昨天</a>来</p>
+
+<hr />
+
+<p>现在应该是能够通过在绿色守护的应用内，点击休眠按钮来杀死应用后台了，关键是应用之间能相互唤醒，每一次用完手机都要进入这个应用点休眠，效率极低，今天来聊聊解决方法叭</p>
+
+<hr />
+
+<p>创建快捷方式</p>
+
+<p>点右上角创建绿色守护立即休眠的快捷方式，点一下之后就会自动执行清理后台应用的命令</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNA9ibtTuRpcK3ZNW9wSnYRSoyjib0UtBpibsibXhwh3IumEQKJYyv5ia8UvXR1NawVhnJ35sukDcFHAug/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+智能休眠｜全自动化休眠</p>
+
+<p>点击右上角设置打开→也就是在关闭屏幕后自动清理后台应用，直接打开全自动化休眠会导致听的歌突然断掉，也就是绿色守护判断播放器应用在后台，就给杀了小，，，所以要开智能休眠→会自动识别媒体播放器应用来不杀</p>
+
+<p>通知栏｜导航栏快捷控制</p>
+
+<p>通知栏快捷控制。也就是下拉通知栏会看到绿色守护的提示，点击后在提示中的应用就会被杀掉</p>
+
+<p>导航栏快捷控制是长按Home</p>
+
+<p>两者都是触发之后会把首页的“将在关屏不久后休眠”的应用杀死</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNA9ibtTuRpcK3ZNW9wSnYRSWn18LAYUbgicCoF1QUL0xOZ1u9ZfLst8Vjw535rQlldxBjOQz4gKUxQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+:ET

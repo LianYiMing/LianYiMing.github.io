@@ -1,0 +1,23 @@
+I"�<h2 id="dock">Dock</h2>
+
+<p>也就是平常启动器的底栏</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMkwts5WOj43VS1OTHQ9THGLibWYup1uYHXm9Am6WUHj9f7XOhNT8pppR1TkYXUnLicFdeIrh77FcRQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+退出这个词是专指iPhone桌面上的底栏，但是说着说着也就安卓，iPhone，包括一切能放应用的底部的小框框，都叫他dock栏了</p>
+
+<p>iPhone的dock跟安卓的最明显的区别就是有高斯虚化</p>
+
+<p>高斯是啥</p>
+
+<p>提一个词应该就想起来了～高斯求和，对，没错，就是那货。一个数学家，但关键是这是图形的处理技巧啊，怎么跟数学扯上关系了？</p>
+
+<p>搜了搜资料才发现原来高丝虚化的原理就是通过滤波来造成焦外成像</p>
+
+<p>emmm. 理解起来有点困难，滤波可以理解为就是降低图片的分辨率并且让他有一种毛玻璃的效果，而焦外成像就比如说玩单反的时候手动对焦有时候会让像点没有落在焦距内，于是就会让拍的这个物象虚化，这就叫做焦外成像</p>
+
+<p>所以高斯虚化的效果就可以理解为</p>
+
+<p>毛玻璃or手动对焦的虚化</p>
+
+<p>高斯虚化可能算是ios最鲜明的特征了，无论是dock，还是通知栏或者是弹窗通知，都是以高斯虚化为主的元素，所以如果要高仿IOS最重要的就是虚化</p>
+:ET

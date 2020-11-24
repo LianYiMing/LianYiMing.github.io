@@ -1,0 +1,35 @@
+I"<h2 id="html">HTML</h2>
+
+<p>HTML 指的是超文本标记语言 (Hyper Text Markup Language)</p>
+
+<p>TA不是一种编程语言，而是一种标记语言 (markup language)</p>
+
+<p>As～标记语言是一套标记标签 (markup tag)（并且长得也很像tag（tag～标签）↓）</p>
+
+<p><strong><em>HTML 标签</em></strong></p>
+
+<p>HTML 标记标签通常被称为 HTML 标签 (HTML tag)↑</p>
+
+<p>HTML 标签是由尖括号包围的关键词，比如 &lt;html&gt;（所以↑）</p>
+
+<p>HTML 标签通常是成对出现的，比如 &lt;html&gt; …… &lt;/html&gt;指的是这个HTML的开头和结尾“”……“”里是正文</p>
+
+<p>标签对（一对儿的对）中的第一个标签是开始标签，第二个标签是结束标签，&lt;/&gt;，中间加一个斜杠一般表示结尾</p>
+
+<p>开始和结束标签也被称为开放标签和闭合标签（鬼知道这么多名字）</p>
+
+<p><strong><em>应用</em></strong></p>
+
+<p>HTML 文档 = 网页</p>
+
+<p>HTML 文档描述网页（文档也就是一个文件，跟txt差不多）</p>
+
+<p>HTML 文档包含 HTML 标签和纯文本（标签可以理解为是各种的编程语言，纯文本一般就是用户可以看到的）</p>
+
+<p>HTML 文档也被称为网页（因为↓）</p>
+
+<p>Web 浏览器（也就是咱用的各种浏览器）的作用是读取 HTML 文档（通过因特网发到你的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484542&amp;idx=2&amp;sn=c347f4bc8979a6c3f14b9420a2834818&amp;scene=21#wechat_redirect">主机</a>上）并以网页的形式显示出它们。</p>
+
+<p>浏览器不会显示 HTML 标签，而是使用标签来解释页面的内容（所以打开一个html 基本上长得和程序界面差不多～全是代码，刚才看到的网页都只有userinterface（<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484221&amp;idx=2&amp;sn=6182e46f0342d53f24b93e25f9033650&amp;scene=21#wechat_redirect">ui</a>），把代码转换成人话，这就是“使用标签来解释页面的内容”）</p>
+
+:ET

@@ -1,0 +1,55 @@
+I"<h2 id="手机变电脑安卓windows模拟器1网页的win93">手机变电脑｜安卓Windows模拟器(1)网页的win93！！？</h2>
+
+<p>你好呀，今天接着来聊一聊手机变电脑这个专辑吧。</p>
+
+<p>前几天包括之后要聊的大多数都是以通过一些软件和骚操作，让手机达到跟电脑一样的效率，但是还会有另一个小分支，就是专门聊一聊更直接的→直接给手机刷windows或者在手机上用一些windows模拟器来达到同样的效果</p>
+
+<p>今天先来讲一个算是半个模拟器的玩意儿→win93模拟器</p>
+
+<p>http://www.windows93.net/</p>
+
+<hr />
+
+<p>首先这是一个网站，并且貌似是一个无<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485144&amp;idx=2&amp;sn=8db27f56bbc0a0558a4a53bb5b2d7d71&amp;scene=21#wechat_redirect">后端的网站</a></p>
+
+<p>原来在网页上模拟一个windows是几乎不可能的，但是随着<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485487&amp;idx=2&amp;sn=84352e973a492e849eaf6fa788e8ee06&amp;scene=21#wechat_redirect">html和j</a>s这类语言标准的更替，它的功能已经可以实现了这一点。</p>
+
+<p>所以就很nb</p>
+
+<p>不过如果直接在浏览器打开的话，可能会发现报错</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPgbmph3SU7uene9BHlz5u2z50cTpRH5RPHOhb657BVzARLZqpDBTc0Xld0K6qnZFTAeH5EYArJdA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+用一般的浏览器貌似还不能解决，所以直接用大佬封装的一个应用就行</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPgbmph3SU7uene9BHlz5u22q19XJINIBfTTMhcHFrQYNWVdydWyo0kiboXwJfB4ptSKQYKYlUqtbg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+https://www.coolapk.com/apk/com.android.Windows93</p>
+
+<p>下载打开之后，就发现成功地在手机上运行一个windows93的系统了呢</p>
+
+<hr />
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPgbmph3SU7uene9BHlz5u2QKkc0txsOnxiaRYyr8rEreMucStZJKODM2q3DiaWXoJz3fao3qyAmdag/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+代码运行完之后，就会发现是windows93的开机页面了
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPgbmph3SU7uene9BHlz5u2p9uGPXsCoTtjEzDlC3698xYu6icWRFoejFuAQzjldunM0X7fo5fKT6A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+貌似还可以下载软件，并且还有很多win93的游戏是内置进去的呢</p>
+
+<p>点击就可以开始玩了ヾ(Ő∀Ő)ﾉ(并且c盘和b盘里貌似还有一些奇奇怪怪的东西。。。。)</p>
+
+<p>http://v1.windows93.net/</p>
+
+<p>这玩意儿是可以直接在浏览器里打开的</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPgbmph3SU7uene9BHlz5u2FF5afYAbXW2cOnqOibUpZdUwedcc7ibQyDN14utvQLM7usG8fWKxvV7A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+在打开应用的时候代码还没有消失的时候，可以点击一下屏幕，就可以找到几个设置</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPgbmph3SU7uene9BHlz5u2bE3rNibhRHXicLqC0jcZtaRcWbZj9cgI9U6SFJlmVmzmTqtxWjTTr3ww/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+第1个也就是可以在网页版运行的，第2个也就是在网页版不能运行的</p>
+
+<p>具体的区别也就是因为他底下的那几行字，v1版本是没有文件系统并且有更少的游戏，但是对浏览器有更好的支持</p>
+
+<p>也就是你第2次访问网页的时候，你的所有数据会完全消失，但是如果你的系统启动项坏了可以修好</p>
+
+<p>第3个也就是不用script和style，启动要在a/boot文件夹里</p>
+
+<p>不过无所谓，正常的安装就可以呢</p>
+:ET

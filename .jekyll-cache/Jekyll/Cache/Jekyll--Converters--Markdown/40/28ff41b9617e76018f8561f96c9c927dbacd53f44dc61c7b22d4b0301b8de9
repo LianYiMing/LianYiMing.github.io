@@ -1,0 +1,43 @@
+I"�<h2 id="internet广告拦截6杀招3">internet｜广告拦截(6)杀招+3</h2>
+
+<p>你好鸭，<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485176&amp;idx=1&amp;sn=4ec3361a63e903df9194996e8f2364ab&amp;scene=21#wechat_redirect">接着上次聊聊屏蔽广告的代码叭</a>(继续氵一天哈哈哈)</p>
+
+<p>前情提要→具体咋用https://mp.weixin.qq.com/s/HQ8PRITvWcN_rylL2AIgKQ</p>
+
+<p>就是在via浏览器里，老版本→设置→通用→广告标记，上面填上域名底下填上要拦截的元素，用英文逗号隔开就可以</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPOZicDGOO39psW4xIibeeicFaz0aHic2Yn6SpIIxGzia2kxmzMSJaIOYSTum4tLAJib69iaeYJQTALR7mVw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<hr />
+
+<p>www.dogedoge.com</p>
+
+<p>.header__logo-wrap js-header-logo, .header__logo-wrap js-header-logo, .header__logo-wrap js-header-logo,SPAN.result__url__domain,DIV.result__snippet.js-result-snippet,DIV.result__snippet.js-result-snippet,DIV.result__extras.js-result-extras,DIV.search-filters-wrap</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPOZicDGOO39psW4xIibeeicFa4ovERX2wD1OeibzCA7IibEq3uiaESybbhxl8S2bMgzv3iasU4vO46NenBg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPOZicDGOO39psW4xIibeeicFauDYjJicNAicics0RuxBfKzHm0xFPJmW8ZZiaJN1mD7f2D84oLurmiarOS2A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+多吉是一个非常简洁的搜索引擎，没有任何的广告，上面的精简就是除了搜出来的结果的题目，剩下的一切全部屏蔽掉，最大化的简洁</p>
+
+<hr />
+
+<p>weixin.sogou.co</p>
+
+<p>.box-header, .back-top, .back-top, .n-hd-box, #wap_0_1_0,DIV.pic-list,DIV#type_tab,DIV.footer2</p>
+
+<p>精简了微信搜狗搜出来的东西还是除了基本的内容，剩下一律屏蔽。</p>
+
+<hr />
+
+<p>baike.baidu.com</p>
+
+<p>.top-icon home-icon, .top-icon home-icon, .top-icon home-icon, #J-superLayer-main, DIV.BK-content-load,DIV#J-extra-info,SPAN.tool-right-btn.J-lemma-edit.J-active,DIV.tool-right-btn.part-audio-play.audio-play,DIV.rt-head,DIV#ymczCVq10,DIV.second-mask,DIV.play-title,DIV.second-play-container,DIV.top-component.J-top-component,UL#J-summary-dots</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPOZicDGOO39psW4xIibeeicFa2azH2Y87SkU2PdU8wPKVRGUjb1y7XHkeDDPV3lGX6K0hNRVicv3eEjw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoPOZicDGOO39psW4xIibeeicFaaP2HbKY4TUhhY4725aKXicK4b6P8bKANib6B9o5Y04Fgxtb7hFLNcictA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+除了词条的基本内容，屏蔽掉了秒懂百科的播放，以及科普中国的logo，还有下拉滑动时上面的顶栏，and悬浮广告之类的</p>
+
+<hr />
+
+:ET

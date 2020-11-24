@@ -1,0 +1,80 @@
+I"Z<h2 id="kwgt4基本改动">KWGT(4)｜基本改动</h2>
+
+<p>收录于话题</p>
+
+<p>#玩机｜KWGT 5</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>#玩机</td>
+      <td>主题美化 17</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>你好呀，昨天我们聊到了，去哪里找别的大佬做好的kwgt预设</p>
+
+<p>到此为止就可以算是kwgt的入门了，不过会发现有些大佬发的东西，导入之后会只显示一半或者变成这样</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNDmzwdjaHE3w1CGaXbNDGVNW6zr7MIN5veD52gkPZq1Hx28D84QOiarK9QKhYpvIE1Vtrk94IuHibA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+今天就来聊一聊怎么样基本的微调</p>
+
+<hr />
+
+<p>平常会发现基本就是几类问题</p>
+
+<ol>
+  <li>
+    <p>载入预设后会发现跟上面这张图一样→只载入了一部分，还有另一部分是没有显示的</p>
+  </li>
+  <li>
+    <p>控件太大或者太小，想要调大or小一点</p>
+  </li>
+</ol>
+
+<p>首先第1个问题</p>
+
+<p>一般都是控件的长宽比不合适</p>
+
+<p>调整的方法肯定就只有俩:</p>
+
+<ol>
+  <li>调整桌面小工具长宽比</li>
+  <li>直接改预设</li>
+</ol>
+
+<p>今天先来讲一讲第1种调整的方法叭，，</p>
+
+<p>比如说要载入的控件是一个竖着的长方形，但是桌面的空间大小却是一个横着的长方形，同样大小本来是可以完美契合的，但是就是因为这样，所以就会有了上图的情况，这种方法应该能想出来呢→也就是直接调整桌面的控件长宽比</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNDmzwdjaHE3w1CGaXbNDGV779mFNyCBPpu1Dh0hfvpbbQg6yzNtW4g4NRXhicQtSZzmyptQsPry3g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNDmzwdjaHE3w1CGaXbNDGVExU9RosdBcVic7WqJCjQtgibSOjD1D7TUT3k5n0RWJetp9LUCjiaicXibqg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNDmzwdjaHE3w1CGaXbNDGVDqicuTPWx18rk7JD8tVT5S4mntLvNdgnVgCQcXTANV06jaq1MjgRjBg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+这样再回到kwgt的页面，会发现就正常了</p>
+
+<p>并且桌面上的控件也正常了</p>
+
+<hr />
+
+<p>然后就是第2个问题</p>
+
+<p>比如说介个:</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNDmzwdjaHE3w1CGaXbNDGVEqPRbicE8JjVA8Hiahkeibhy18e6nQVeYia4uCjbQIIDgibIWnXaXMbW3bQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p>载入预设后会发现超级大。。。</p>
+
+<p>所以这时候就要到他的编辑器界面→层</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNDmzwdjaHE3w1CGaXbNDGVneYO5I15Wuc1VVBP5HgQ0uiccpcPOg8AFY6r8Nr7OpQzwxdIibzwzT7Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+第1个的辣个，就是这个控件总体的大小了呢</p>
+
+<p>所以调小一点就可以显示正常了(两个箭头的是一次调节20个单位，中间的加和减就是一次增加一个单位或者减少一个单位)</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoNDmzwdjaHE3w1CGaXbNDGV0zU7V7Rmg3ANmWlFy3mcRd0J7Z4hnRicym8icPfDrLmlNqUMxPcgyr6Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+200多改成100多，立马就正常了呢</p>
+
+<p>迄今为止，咱们聊过的内容已经可以把桌面大幅美化了，基本的问题也都能完全解决，只不过如果继续追求完美，就需要再搞一搞进阶内容了，也就是之后我们要聊的东东。</p>
+:ET

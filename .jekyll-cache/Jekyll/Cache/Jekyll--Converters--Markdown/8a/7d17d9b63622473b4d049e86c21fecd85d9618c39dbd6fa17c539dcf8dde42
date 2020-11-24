@@ -1,0 +1,53 @@
+I"<h2 id="internet从零开发app5进阶1初识androlua">internet｜从零开发APP(5)进阶(1)初识Androlua</h2>
+
+<p>你好呀，前几天聊到了，用fusionAPP来简单把一个网页组装成一个应用</p>
+
+<p>But</p>
+
+<p>这貌似跟自己开发APP一点关系都没有，，，，</p>
+
+<p>所以进阶篇就来聊一聊用<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484791&amp;idx=3&amp;sn=60b4a45d56f88dbee6e04301289a72a9&amp;scene=21#wechat_redirect">androlua</a>+fusionapp来真正开发应用吧</p>
+
+<hr />
+
+<p>我们前几天在聊组装网页应用的时候，好像忽略了首页下方的几个选项</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMqoHzhpxqrjZmHnzehkSVpNzgDW8yviaj5xdVyqFNV54J3P3ZG86wkVWoZ5sCTnHNFBxw1wqJQaAg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+首先先看网页控制</p>
+
+<p>点一下会发现是这个</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoMqoHzhpxqrjZmHnzehkSVpMZhrXZyPEvw8OZ5eOvFbEHFmMvYDTwohYkiaTtAfkuOnyrfwpnic1WJw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+也就是可以理解为在对应<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484306&amp;idx=1&amp;sn=5a76bc655dbf817d6c04146eaa26c0ed&amp;scene=21#wechat_redirect">网站添加对应的脚本</a></p>
+
+<p>删除元素</p>
+
+<p>跟原来咱聊到的去广告原理一样，都是执行一个js脚本来去公告</p>
+
+<p>也可以选择当浏览到一个网页的时候执行<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484288&amp;idx=2&amp;sn=56321e910ebb95ae84b6ec3151bf8726&amp;scene=21#wechat_redirect">Javascript</a></p>
+
+<p>来达到各种各样骚操作(比如说换字体和去广告或者破解视频VIP等等)(具体要找好用的js脚本，还是可以去<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484248&amp;idx=2&amp;sn=18e4e9a3bf8cf88f279d736269945b88&amp;scene=21#wechat_redirect">油猴</a>上去找)</p>
+
+<p>and可以添加多个网页</p>
+
+<hr />
+
+<p>然后就是子页面</p>
+
+<p>聊初级玩法的时候可能有疑惑，万一要浏览多个网页呢，一个应用只能看一个网页，是不是太low了，所以就有了子页面功能</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+点加号后后会跳出来跟创建工程时一样的界面，创建之后会发现能调的参数也完全一样(除了不可以子页面里创建子页面)，所以就可以和之前聊到的一样，在工程里嵌套子页面，再通过顶栏和侧边栏的点击事件，就可以用一个应用浏览所有常用的网站</p>
+
+<hr />
+
+<p>自定义事件</p>
+
+<p>也就是要用androlua语法，写出自定义事件发生时会执行的程序，比如说第1次使用应用弹出隐私协议</p>
+
+<p>全局js，也就是不再单独针对网页，然后在这个应用里打开的网页，都会被执行一遍介个js</p>
+
+<hr />
+
+<p>拜拜</p>
+:ET

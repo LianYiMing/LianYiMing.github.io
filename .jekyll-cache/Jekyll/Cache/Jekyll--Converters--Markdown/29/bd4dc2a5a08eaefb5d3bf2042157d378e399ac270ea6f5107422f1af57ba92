@@ -1,0 +1,56 @@
+I"f
+<h2 id="internet捷径rss4wemp2制作rss链接">internet｜捷径｜rss（4）『wemp（2）制作rss链接』</h2>
+
+<p>大家好啊，今天的文章模板貌似死了，所以贼TM简陋 将就下⑧😭</p>
+
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247484484&amp;idx=1&amp;sn=58a6b44d7f43aa10f4e79320484d6a52&amp;scene=21#wechat_redirect">上次咱聊了wemp的功能</a>，but鸽了咋进and so on，所以今天就来聊聊吧</p>
+
+<hr />
+
+<p><strong>*1/咋进*</strong></p>
+
+<p>直接某度搜会发现</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP7eNic2QFMqRNzLNLjcqo92QVwFK2hzZr7NCzibsNcVBZr1cibjTxYxViaVPrwo9rajA2LJiaCcczqmWw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+并且上次貌似还被他屏蔽ip了
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP7eNic2QFMqRNzLNLjcqo92HHXxevOGaC9HyXm7hPkN6eKHIbqZZ5iaFiasDcH5JrlcUAfn1RFAo7gw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+点进去发现除了这个界面和登陆就啥也没有……</p>
+
+<p>所以入口不是这个……</p>
+
+<p>正确的：</p>
+
+<p>公众号名称 site:wemp.app</p>
+
+<p>比如：扯扯淡：wemp.app</p>
+
+<p>就可以看到</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP7eNic2QFMqRNzLNLjcqo92juibBPmG9U2rHXSfhrGFHpw5ZFPxiaeRQbx9DTaaicQlrjcA98wHpo7YQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+垃圾百度……</p>
+
+<p>so用除了百度的其他基本都可以（比如说必应和搜狗or谷歌（要梯子，所以算了）就成功了）</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoP7eNic2QFMqRNzLNLjcqo92DiaSVaosTOicdJiblrT3YYicZsPH1LhOXkB4MQfsqbgBSicDrFicPa3Fk2Gg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+必应亲测可以，then，点进去就可以下载历史文章了</p>
+
+<p>拜拜～</p>
+
+<p>哎不对，是聊rss来着，所以再聊聊咋订阅（感谢@rsshub）</p>
+
+<p>点进去后复制此时的网址</p>
+
+<p>比如：https://wemp.app/accounts/eff24363-9c4c-4bf8-af30-5c27291d6d07</p>
+
+<p>之后把accounts/后的东东写到</p>
+
+<p>https://rsshub.app/wechat/wemp/复制到这里</p>
+
+<p>这样上面的域名时rsshub的内个连接就是rss订阅链接了，之后咋订阅就知道了叭</p>
+
+<p>拜拜</p>
+
+<p>测试一下下↓</p>
+
+<p>[跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳][跳跳]</p>
+:ET

@@ -1,0 +1,45 @@
+I"�<h2 id="internet广告拦截4杀招1">internet｜广告拦截(4)杀招+1</h2>
+
+<p>你好吖，今天接着老早之前聊的<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485016&amp;idx=1&amp;sn=85e83a84983a056e4c27c4b80fa9dc7c&amp;scene=21#wechat_redirect">广告拦截</a>，分享几个平常积累的屏蔽广告的元素代码叭</p>
+
+<p>前情提要→具体咋用<a href="https://mp.weixin.qq.com/s?__biz=MzI4Nzc2MzA3OQ==&amp;mid=2247485016&amp;idx=1&amp;sn=85e83a84983a056e4c27c4b80fa9dc7c&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s/HQ8PRITvWcN_rylL2AIgKQ</a></p>
+
+<p>就是在vi浏览器里，老版本→设置→通用→广告标记，上面填上域名底下填上要拦截的元素，用英文逗号隔开就可以</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM1ccofIOicMDw1kfQWA962iabx1RFcicJzxbxXSLhlCBEePb6ea4ttQoo6VcLByNicYZXGlRUJMojHCw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<hr />
+
+<p>blog.csdn.net</p>
+
+<p>DIV.button-box,DIV#operate,DIV.rightmenu.floatR.clearfix.unlogin,SPAN.feed-Sign-span,DIV.read_more_mask,A#detailFollow,DIV#recommend,DIV#first_recommend_list,DIV.tip-massege,DIV.tip-text</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM1ccofIOicMDw1kfQWA962iaRmlyxoo48uELic6Xr51My4uictUzUrjibtCVpm95cx0LFzicE9wLMpdjLw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM1ccofIOicMDw1kfQWA962iaEPgLD1guEPibDI3u8fr7wdZHqfnbBYjiaEIiambqOhkibogvNDHqBOiaRDA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+添加后如上图的对比，除了简洁的看文章不会受到任何的骚扰</p>
+
+<p>这是csdn博客</p>
+
+<hr />
+
+<p>wk.baidu.com</p>
+
+<p>.author-name, DIV.bottom-bar-global,SPAN.pgc,DIV.suiwen-wrap.fc-wenku-ad,DIV.card,DIV.card,DIV.video-rec-wrap,DIV.b-bigpic-root,DIV.QsvRXg,DIV.QsvRXg,DIV.left-panel,DIV.fc-box-root.wk-container,DIV.reader-pop-manager-view-containter,DIV#baiduAppStyle,DIV.rec-text-root,DIV.setting-mask-root,DIV.doc-info-wrap,DIV.view-knowlege-shop-container,DIV.top-bar-root.rtcs,DIV.top-bar-placeholder,DIV.gain-doc-block-root.wk-container,DIV.bottombarwg-root.border-none,DIV.guidetowkvipwg-root.vip-guide-contanier,DIV.guidetowkappwg-root,DIV.goto-wkapp-mask,DIV.doc-tags</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" /></p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+如图也是只能看到正文，剩下包括分享的按钮全部去掉。</p>
+
+<hr />
+
+<p>www.jianshu.com</p>
+
+<p>.baidu-app-download-3vYbY_1, .info, BUTTON.call-app-btn,DIV.note-graceful-button,FOOTER#footer,DIV#recommended-notes,DIV.comment-open-app-btn-wrap,DIV#free-reward-panel,HEADER#jianshu-header,DIV.header-shim</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM1ccofIOicMDw1kfQWA962iaCAOlSeksm5bqI53dYRbiakJ7o3fcNknK7CcAQ25MLEGhaIy9JBtx94Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM1ccofIOicMDw1kfQWA962iaTEs3RymjIrZZDMQO7BgP7DuJ5YicsWPJe0eR6Mho7nbHvtqSzblbhBw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+如图，也是屏蔽掉了除了阅读以外的其余任何功能，包括页脚的文章分享</p>
+:ET

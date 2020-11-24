@@ -1,0 +1,63 @@
+I"5<h2 id="kwgt5进阶改动1">KWGT(5)｜进阶改动(1)</h2>
+
+<p>你好呀，昨天我们聊到了kwgt的基本改动，到现在为止你应该可以对一些导入预设后的大小问题或者显示不全的问题自如的解决了</p>
+
+<p>但是我们会发现，有时候导入预设的时候，它只显示了一半</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM60tAPpqps7frU04jPja5DQ9wsePySoib9sjnEw5VShSyeTp7p0LMqCIHl9IksL0ZEHB0MKl6FQOw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+比如说像这样，也就是导入之后会发现屏幕中只有一部分，剩下一部分因为控件的大小原因没有显示，如果按昨天的方法来讲的话，就需要把控件调小一点，但是就会出现这种情况</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM60tAPpqps7frU04jPja5DiahxcEEwbQArkQQicGoQdaP42s0LpbG7leXzu6Ob8ncPmnADsHPAU4XA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+小是小了，但关键是还是偏的，所以这也就是今天要聊的第1个点→整体调节控件的位置</p>
+
+<p>在预设的高级编辑器里，把每一个控件后边的小方框都打上✓</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM60tAPpqps7frU04jPja5DGQuPI4kTnePs4RkIjVNLDvWqrW6MSNiaruPibxCL7LP7sjXw1TSO6IbA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+然后会发现右上角神奇的多出来了一个介个东东</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+点进去后发现就可以调节已打✓的空间整体移动的幅度了</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+第1个是x轴的偏移范围，第2个是y轴的偏移范围，两个箭头的跟昨天聊的一样↓</p>
+
+<p>是增加或者减少20个单位，一个箭头的则是增加或减少一个</p>
+
+<p>调节之后就会发现总算到了屏幕中间了呢</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+然后再来看看第2个问题</p>
+
+<p>第1个问题解决之后会发现总算能让他到中间了</p>
+
+<p>But有时候因为控件的长宽高跟屏幕的长宽高不是特别合适，或者是因为桌面图标的排列跟控件不匹配，即使到中间了，也会有这样的情况。</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+这时候就该聊一聊详细的修改了</p>
+
+<p>回到应用的高级编辑器主界面会发现第1个控件的组成部分是一个叫做shape的东西</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+解释一下，这里就是kwgt可以让我们创建的控件的其中一个→也就是几何图形，比如说可以创建三角形，矩形，圆形，弧形之类的，然后就可以当控间的背景用，比如说上面这个图的黑底</p>
+
+<p>点进去后发现是这样的</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+默认的就会打开第1个标签页，也就是shape的基本设置</p>
+
+<p>第1个也就是这个图形的形状，可以选择矩形， 三角形，正方形，弧形和圆形</p>
+
+<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img" />
+选择完了之后就会发现ship底下的属性会有变化，比如说正方形只有一个属性，也就是边长</p>
+
+<p>而长方形就有width和height宽长两个属性</p>
+
+<p>然后就可以调节了，刚刚发现背景在宽度上是够了，但是长度可能短了一点，于是我们就增加长度
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM60tAPpqps7frU04jPja5D8KxmM4RWlx9mlyAOFIVKr8TNPmrwfkuticANK54ncdfQwqlofOmabKg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" />
+增加了大概100之后，就会发现刚刚好贴合屏幕了</p>
+
+<p>这时候就完美的与桌面融为一体了!</p>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/tMsLbdfwxoM60tAPpqps7frU04jPja5DS7Dib9MG3cu5p8d42OQvia9qTrTZrzHcLJzrlHkzZq3cibqzcB4AUL9ibg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" /></p>
+
+:ET
