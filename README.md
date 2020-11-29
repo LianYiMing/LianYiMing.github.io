@@ -29,10 +29,11 @@
 ### 网站
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-介是一个高度集成的，统一控制的网站模板
-将源代码fork到你的仓库里
-只用动一动config文件里的几个参数。
-就可以迅速自定义出你想要的博客了呢 ฅ( ̳• ◡ • ̳)ฅ
+是魔改的黄玄Hux大佬的`pwa`
+介是一个高度集成的，统一控制的`Jekyll`网站
+将源代码`fork`到你的仓库里
+只用动一动`config文件`里的几个参数。
+就可以迅速自定义出很好看的博客
 
 
 ### 开始
@@ -40,10 +41,10 @@
 
 修改 `_config.yml`来搭建自己的博客:
 
-```
+```less
 # Site settings
 title:
-等等等等....
+AND so on....
 ```
 总之在这个文件里会有每一条详细的注释，根据它修改就可以了呢
 ### 写博文
@@ -51,6 +52,7 @@ title:
 
 要发表的文章一般以 **Markdown** 的格式放在`_posts/`文件夹里
 可以去学一学markdown的语法，但是会发现每一篇markdown上面还有几行这个↓
+
 ```
 ---
 layout:     post //不能动
@@ -93,11 +95,6 @@ tags:
 > 可以使用 `jekyll -s` 命令在本地实时配置博客，提高效率。详见 [Jekyll.com](http://jekyllcn.com/)
 
 参考文档：[using jekyll with pages](https://help.github.com/articles/using-jekyll-with-pages/) & [Upgrading from 2.x to 3.x](http://jekyllrb.com/docs/upgrading/2-to-3/)
-
-
-## 致谢
-1.感谢 IOS工程师大佬——邱百莹
-2.感谢 大佬H-u-x
 
 ## License
 
