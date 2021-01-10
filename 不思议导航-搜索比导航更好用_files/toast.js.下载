@@ -1,0 +1,92 @@
+// 弹窗 第一次使用时弹出
+$(document).ready(function() {
+    const notice_v = "notice_5"
+    Cookies.remove('notice_4')
+    let first_use = Cookies.get("firstuse") || true
+    let notice = Cookies.get(notice_v) || true
+    if (first_use == true) {
+        $.fancybox.open({
+            type: 'html',
+            src: `<div class="fc-content">
+                <div  class="fc-title">欢迎来到不思议导航</div>
+                <div class="fc-container">
+                    <p>
+                    为了不让您错过一些好用的功能<br>
+                    使用之前<b>强烈建议</b>阅读使用指南<br>
+                    如果<b>点击关闭</b>可能会<b>一直</b>弹出窗口<br>
+                    希望您能理解和支持<br>
+                    点击头像或导航名称打开设置</p>
+                    <button data-value="1" class="fancybox_button button_firstuse"><a href="/post/4f453275.html" target="_blank">查看</a></button>
+                    <div class="gap"> </div>
+                    <button data-value="1" data-fancybox-close class="fancybox_button button_firstuse_close">关闭</button><p>
+                </div>
+                <p>
+            </div>`,
+            opts: {
+                animationDuration: 350,
+                animationEffect: 'material',
+                modal: true,
+                baseTpl: '<div class="fancybox-container fc-container" role="dialog" tabindex="-1">' +
+                    '<div class="fancybox-bg"></div>' +
+                    '<div class="fancybox-inner">' +
+                    '<div class="fancybox-stage"></div>' +
+                    '</div>' +
+                    '</div>',
+            }
+        })
+        Cookies.set(notice_v, false, {
+            expires: 10000,
+            path: '/'
+        })
+    }
+
+    // 更新提醒
+    else if (notice == true) {
+        $.fancybox.open({
+            type: 'html',
+            src: `<div class="fc-content"> 
+                <div  class="fc-title">不思议导航提醒您</div>
+                <div class="fc-container">
+                <p>
+                对于不能通过搜索框搜索的网站<br>
+                修改为通过默认搜索引擎进行站内搜索<br>
+                不思议导航正在准备下一版本的升级<br>
+                会增加用户系统，以及更方便的卡片><br>
+                <b>更多细节，请阅读设计方案</b>
+                </p>
+                <button data-value="1" class="fancybox_button button_notice"><a href="https://www.yuque.com/docs/share/2f4d3ab6-9728-4e34-8a2c-0b71835948bf?# 《不思议导航设计方案》" target="_blank">查看</a></button>
+                <div class="gap"> </div>
+                <button data-value="1" data-fancybox-close class="fancybox_button botton_notice_close">关闭</button>
+                </div>
+                <p>
+            </div>`,
+            opts: {
+                animationDuration: 350,
+                animationEffect: 'material',
+                modal: true,
+                baseTpl: '<div class="fancybox-container fc-container" role="dialog" tabindex="-1">' +
+                    '<div class="fancybox-bg"></div>' +
+                    '<div class="fancybox-inner">' +
+                    '<div class="fancybox-stage"></div>' +
+                    '</div>' +
+                    '</div>',
+            }
+        })
+        Cookies.set(notice_v, false, {
+            expires: 10000,
+            path: '/'
+        })
+    }
+
+    $('.button_firstuse').on('click', function() {
+        $('.button_firstuse_close').trigger('click')
+        Cookies.set('firstuse', false, {
+            expires: 10000,
+            path: '/'
+        })
+    })
+
+    $('.button_notice').on('click', function() {
+        $('.botton_notice_close').trigger('click')
+    })
+})

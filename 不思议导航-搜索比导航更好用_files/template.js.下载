@@ -1,0 +1,76 @@
+let T_base=`
+                <div class="fancybox-container fc-container" role="dialog" tabindex="-1">
+                    <div class="fancybox-bg"></div>
+                        <div class="fancybox-inner">
+                    <div class="fancybox-stage"></div></div>
+                </div>`
+let T_editsite=`
+        <div class="fc-content">
+            <div class='fc-title-small'>自定义网站，仅保存在本地</div>
+            <div class="add-site-info">
+                <div class="diysite-wrap">
+                    <span>网站名称：</span>
+                    <input type="text" class="diysite" placeholder="不思议导航" id="diysite-name"></div>
+                <div class="diysite-wrap">
+                    <span>网站地址：</span>
+                    <input type="text" class="diysite" placeholder="请使用https://" id="diysite-address"></div>
+                <div class="diysite-wrap">
+                    <span>网站搜索：</span>
+                    <input type="text" class="diysite" placeholder="选填，搜索词用%keyword%代替" id="diysite-search"></div>
+                <div class="diysite-wrap">
+                    <span>网站描述：</span>
+                    <input type="text" class="diysite" placeholder="选填，不超过10个字" id="diysite-description"></div>
+            </div>
+            <div class="diysite-delete">点击删除该网站，不可恢复</div>
+            <button data-value="1" data-fancybox-close class="diysite-no fancybox_button">取消</button>
+            <div class="gap"> </div>
+            <button data-value="1" class="diysite-sure fancybox_button">确定</button><p>
+            </div>`
+let T_addsite=`
+    <div class="fc-content">
+        <div class='fc-title-small'>添加自定义网站，仅保存在本地</div>
+        <div class="add-site-info">
+            <div class="diysite-wrap">
+                <span>网站名称：</span>
+                <input type="text" class="diysite" placeholder="不思议导航" id="diysite-name"></div>
+            <div class="diysite-wrap">
+                <span>网站地址：</span>
+                <input type="text" class="diysite" placeholder="请使用https://" id="diysite-address"></div>
+            <div class="diysite-wrap">
+                <span>网站搜索：</span>
+                <input type="text" class="diysite" placeholder="选填，搜索词用%keyword%代替" id="diysite-search"></div>
+            <div class="diysite-wrap">
+                <span>网站描述：</span>
+                <input type="text" class="diysite" placeholder="选填，不超过10个字" id="diysite-description"></div>
+        </div>
+        <button data-value="1" data-fancybox-close class="diysite-no fancybox_button">取消</button>
+        <div class="gap"> </div>
+        <button data-value="1" class="diysite-sure fancybox_button">确定</button><p>
+        </div>`
+let T_setting=`
+        <div class="fc-content">
+            <div class="nav-setting">
+                <div class = "setting_1 setting">还原布局</div>
+                <div class = "setting_3 setting">清除最近使用</div>
+                <div class = "setting_2 setting">清除搜索记录</div>
+                <div class = "wallpaper_setting">
+                    <div class = 'custom'>自定义壁纸</div>
+                    <div class = 'recover'>恢复默认壁纸</div>
+                </div>
+                <div class = "logo_setting">
+                    <div class = 'custom logo_custom'>自定义logo</div>
+                    <div class = 'recover logo_recover'>恢复默认logo</div>
+                </div>
+                <div class = "config_out config_setting">
+                    <div class = 'all_conf'>导出全部配置</div>
+                    <div class = 'card_conf'>导出自定义卡片</div>
+                </div>
+                <div class = "config_in setting">导入配置</div>
+            </div>
+            <input type="file" id="wallpaper_file" accept="image/*" style="display:none"> 
+            <input type="file" id="logo_file" accept="image/*" style="display:none"> 
+            <input type="file" id="conf_file" accept="application/json" style="display:none"> 
+            <button class="fancybox_button"><a href="javascript:location.reload();">刷新</a></button>
+            <div class="gap"> </div>
+            <button data-value="1" data-fancybox-close class="fancybox_button">关闭</button><p>
+        </div>`

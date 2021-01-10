@@ -1,0 +1,206 @@
+custom_ajax(json_url)
+searchbar.on("input propertychange",$.debounce(200,function(){text=$(this).val()
+Cookies.set('lastkey',text,{path:'/'})}))
+function all_sites(){let items=$(".items")
+let arr_=[]
+$.each(items,function(){$this=$(this)
+let arr_new=[]
+$.each($this.children(),function(){arr_new.push(Pinyin.convertToPinyin($(this).text().trim(),"",true).toLowerCase())})
+arr_.push(arr_new)})
+console.log(arr_)}
+function search_all_on_link(item){let items=searchURL[item].websites
+$.each(items,function(key,value){search_on_link(value,text)})}
+const newWin=(url)=>{let a=document.createElement('a')
+a.setAttribute('href',url)
+a.setAttribute('target','_blank')
+a.setAttribute('id','newwin')
+if(!document.getElementById('newwin'))document.body.appendChild(a)
+a.click()}
+function search_on_link(item,text){let home=searchURL[item].home
+let search=searchURL[item].search
+let link="";if(text=='打开'||!text){newWin(home)}else{if(search.search("%keyword%")==-1)
+link=`${url}site:${home} ${encodeURIComponent(text)}`
+else
+link=search.replace("%keyword%",encodeURIComponent(text))
+newWin(link)}
+history_keys_json=recordHistory(history_keys,text)
+Cookies.set('historykeys',history_keys_json,{expires:10000,path:'/'})
+history_keys=history_keys_json.split(",")
+recentuse(item)
+recentItems.unshift(item)
+recentItems=unique(recentItems).slice(0,5)
+recentItems_json=recentItems.join(",")
+Cookies.set('recent_items',recentItems_json,{expires:10000,path:'/'})
+if(hot_item_list[item]!=undefined&&hot_item_list[item]!=null){hot_item_list[item]={'name_e':item,'name':$(`.${item}:last`).text().trim(),'frequency':hot_item_list[item].frequency+1,}}else{hot_item_list[item]={'name_e':item,'name':$(`.${item}:last`).text().trim(),'frequency':1}}
+hot_item_json=JSON.stringify(hot_item_list)
+localStorage.setItem("hot_items",hot_item_json)}
+let searchEngine={"duoji":{"name":"多吉搜索","url":`https://www.dogedoge.com/results?q=`},"miji":{"name":"秘迹搜索","url":'https://mijisou.com/?q='},"google":{"name":"Google","url":'https://www.google.com.hk/search?newwindow=1&hl=zh-cn&q='},"bing":{"name":"Bing","url":'https://cn.bing.com/search?q='},"goobe":{"name":"goobe","url":'https://goobe.io/search.aspx?k='}}
+let searchengineNow=Cookies.get("searchengine")||'bing'
+if(searchEngine[searchengineNow]==undefined||searchEngine[searchengineNow]==null){searchengineNow="bing"
+Cookies.set('searchengine','bing',{expires:10000,path:'/'})}
+let name=searchEngine[searchengineNow].name
+let url=searchEngine[searchengineNow].url
+let backgroundColor=$("."+searchengineNow).css("background-color")
+function changeColor(){$(".search_submit").css("background-color",backgroundColor)
+$(".fa-remove-logo").css("color",rgb2rgba(backgroundColor,0.4))
+$(".fa-search-logo").css("color",rgb2rgba(backgroundColor,0.8))}
+changeColor()
+$(".fa-remove-logo").on({mouseover:function(){$(this).css("color",rgb2rgba(backgroundColor,0.6))},mouseout:function(){$(this).css("color",rgb2rgba(backgroundColor,0.2))},click:function(){searchbar.val("")
+searchbar.focus()
+text=""
+Cookies.set('lastkey',text,{path:'/'})
+$(this).css('display',"none")
+history_keys_json=Cookies.get("historykeys")||""
+item_array=history_keys_json.split(",")}})
+$(".search_engine li").click(function(e){let clickTarget=e.target.className
+Cookies.set('searchengine',clickTarget,{expires:10000,path:'/'})
+name=searchEngine[clickTarget].name
+url=searchEngine[clickTarget].url
+backgroundColor=$(e.target).css("background-color")
+changeColor()
+if(text){newWin(url+encodeURIComponent(text))
+Cookies.set('lastkey',text,{path:'/'})
+Cookies.set('historykeys',recordHistory(history_keys,text),{expires:10000,path:'/'})}else{searchbar.attr("placeholder","请输入搜索内容")
+searchbar.focus()}})
+$("#search_submit").click(function(){text=searchbar.val()
+if(text){newWin(url+encodeURIComponent(text))
+Cookies.set('lastkey',text,{path:'/'})
+Cookies.set('historykeys',recordHistory(history_keys,text),{expires:10000,path:'/'})}else{searchbar.attr("placeholder","请输入搜索内容")
+searchbar.focus()}})
+searchbar.keydown(function(event){if(event.keyCode=="13"){if(text){let _text=text.trim().split(/\s+/)
+if(verifyLink(text)[0]){verifyLink(text)[0]=='http_yes'?newWin(text):newWin(verifyLink(text)[1])}else if(_text.length>1){let _pinyin=Pinyin.convertToPinyin(_text[_text.length-1],"",true).toLowerCase()
+let T_F
+$.each(searchURL,function(key){if(_pinyin==key){T_F='T'
+return false}
+T_F="F"})
+T_F=='T'?search_on_link(_pinyin,_text[0]):newWin(url+encodeURIComponent(text))
+Cookies.set('historykeys',recordHistory(history_keys,text),{expires:10000,path:'/'})}else{newWin(url+encodeURIComponent(text))
+Cookies.set('historykeys',recordHistory(history_keys,text),{expires:10000,path:'/'})}
+Cookies.set('lastkey',text,{path:'/'})}else{newWin("/")}}})
+function verifyLink(_text){if(/^((ht|f)tps?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-.,@?^=%&:\/~+#]*[\w\-@?^=%&\/~+#])?$/.test(_text)){return["http_yes",false]}else if(/^(((ht|f)tps?):\/\/)?[\w\-]+(\.[\w\-]+)+([\w\-.,@?^=%&:\/~+#]*[\w\-@?^=%&\/~+#])?$/.test(_text)){_text='http://'+_text
+return["http_no",_text]}else{return[false,false]}}
+function levenshtein(str1,str2){if(str1===str2)return 0
+if(!str1||!str2)return Math.max(str1.length,str2.length)
+var prevRow=new Array(str2.length+1)
+for(var i=0;i<prevRow.length;++i){prevRow[i]=i}
+for(i=0;i<str1.length;++i){var nextCol=i+1
+for(var j=0;j<str2.length;++j){var curCol=nextCol
+nextCol=prevRow[j]+((str1.charAt(i)===str2.charAt(j))?0:1);var tmp=curCol+1;if(nextCol>tmp){nextCol=tmp}
+tmp=prevRow[j+1]+1;if(nextCol>tmp){nextCol=tmp}
+prevRow[j]=curCol}
+prevRow[j]=nextCol}
+return nextCol}
+function verifyWebName(_text){_text=_text.trim().split(/\s+/)
+if(_text.length>1){let _pinyin=Pinyin.convertToPinyin(_text[_text.length-1],"",true).toLowerCase()
+let arr=[]
+if(_pinyin.length>2){$.each(searchURL,function(key,value){if(value.home!=null&&key.match(_pinyin)!=null){arr.push(key)}})
+if(arr.length){arr.sort(function(a,b){if(a.length==b.length){return b.localeCompare(a);}else{return b.length-a.length;}})
+return arr.splice(-4)}}
+return[false]}
+return[false]}
+let search_result=$("#search_result")
+let result_items=$(".result_item")
+let suggest_arr=[]
+let item_array=[]
+inputAction()
+take_advice()
+function formatJson(arr){let json=arr.slice(1).map(vals=>{let obj={};vals.forEach((val,index)=>{obj[arr[0][index]]=val})
+return obj})
+return json}
+function clear_item_style(){$.each(result_items,function(){$(this).css('background','none')})}
+function inputAction(){searchbar.on('input propertychange click',$.debounce(200,()=>{$('.fa-remove-logo').css('display','none')
+if(text){baidu_advice()}else if(!text){history_keys_json=Cookies.get("historykeys")||""
+item_array=history_keys_json.split(",")
+showHistory()}}))}
+function baidu_advice(){let baidu_api="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=#content#&cb=window_baidu_sug"
+let old_script=$("#baidu_script")
+if(old_script){old_script.remove()}
+let script_src=baidu_api.replace("#content#",text)
+let baidu_script=document.createElement("script")
+baidu_script.src=script_src
+baidu_script.id="baidu_script"
+$('head').append(baidu_script)
+$('.fa-remove-logo').css('display',"inline")
+suggest_arr=verifyWebName(text)}
+function window_baidu_sug(result){let arr=result.s
+let text_list=[]
+let new_arr=[]
+$.each(arr,function(_i,value){new_arr.push([value,false])})
+if(verifyLink(text)[0]){new_arr.unshift([text,'打开链接'])}
+if(suggest_arr[0]){let _text=text.split(/\s+/)[0]
+$.each(suggest_arr,function(_i,value){new_arr.unshift([_text,$('.'+value).last().text().trim()])})}
+new_arr.unshift(['text','info'])
+arr=formatJson(new_arr)
+clear_item_style()
+if(arr.length>0){let info=''
+search_result.css('display','block')
+$.each(result_items,function(i){if(i<arr.length){let result_text=""
+if(!arr[i].info){info=""
+arr[i].text.indexOf(text)>=0?result_text=text+"<b>"+arr[i].text.replace(text,"")+"</b>":result_text=arr[i].text}else if(arr[i].info){result_text=arr[i].text
+info="<div class='result_after' style='background-color:"+rgb2rgba(backgroundColor,0.9)+"'>"+arr[i].info+"</div>"}
+$(this).css('display','block')
+$(this).html(result_text+info)}else{$(this).css('display','none')
+$(this).html("")}})
+$.each(result_items,function(){if($(this).contents().not($(this).children('div')).text()!=""){if($(this).children('div').text()&&$(this).children('div').text().trim()!="打开链接"){text_list.push($(this).contents().not($(this).children('div')).text()+" "+$(this).children('div').text())}else if($(this).children('div').text()&&$(this).children('div').text().trim()=="打开链接"){text_list.push($(this).contents().not($(this).children('div')).text()).trim()}else{text_list.push($(this).text().trim())}}})
+text_list.push(searchbar.val())}else{search_result.css('display','none')
+$.each(result_items,function(i){$(this).html("")})}
+item_index=-1
+item_array=text_list
+if(!text){showHistory()
+history_keys_json=Cookies.get("historykeys")||""
+item_array=history_keys_json.split(",")}}
+$(document).on('click',function(){if(searchbar.is(":focus")==true&&!text){showHistory()}else{search_result.css('display','none')}})
+function showHistory(){if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)){}else{history_keys_json=Cookies.get("historykeys")||""
+history_keys=history_keys_json.split(",")
+if(history_keys.length-1){let arr=[]
+$.each(history_keys,function(_i,value){arr.push([value,"历史记录"])})
+arr.unshift(['text','info'])
+arr=formatJson(arr)
+clear_item_style()
+if(arr.length>0){let info=''
+search_result.css('display','block')
+$.each(result_items,function(i){if(i<arr.length){let result_text=arr[i].text
+info="<div class='result_after' style='background-color:"+rgb2rgba(backgroundColor,0.9)+"'>"+arr[i].info+"</div>"
+$(this).css('display','block')
+$(this).html(result_text+info)}else{$(this).css('display','none')}})}else{search_result.css('display','none')
+$.each(result_items,function(i){$(this).html("")})}
+item_index=-1}}}
+function take_advice(){if(verifyLink(text)[0]){item_array=[text]}
+$.each(result_items,function(i){let $this=$(this)
+$this.index=i
+$this.on({click:function(){let _info=$(this).children('div').text().trim()
+let _text=$(this).contents().not($(this).children('div')).text().trim()
+searchbar.val(_text).focus()
+if(_info&&_info!="历史记录"&&_info!="打开链接"){let _pinyin=Pinyin.convertToPinyin(_info,"",true).toLowerCase()
+let T_F=""
+$.each(searchURL,function(key){if(_pinyin==key){T_F='T'
+return false}
+T_F="F"})
+T_F=='T'?search_on_link(_pinyin,_text):console
+searchbar.val(_text+" "+_info).focus()
+Cookies.set('historykeys',recordHistory(history_keys,_text+" "+_info),{expires:10000,path:'/'})}else if(verifyLink(text)[0]){verifyLink(text)[0]=='http_yes'?newWin(text):newWin(verifyLink(text)[1])}
+text=searchbar.val()
+baidu_advice()
+$('.fa-remove-logo').css('display','inline')
+searchbar.focus()
+Cookies.set('lastkey',text,{path:'/'})},mouseover:function(){$(this).css('background',rgb2rgba(backgroundColor,0.2))
+item_index=$this.index},mouseout:function(){clear_item_style()}})})
+$(document).on('click',function(){search_result.css('display','none')})
+$(document).on('keydown',function(e){let key_code=e.keyCode
+if(search_result.css('display')=="block"){if(key_code==27){clear_item_style()
+search_result.css('display','none')}
+if(key_code==38||key_code==40){clear_item_style()
+$('.fa-remove-logo').css('display',"inline")
+if(key_code==38){item_index=(item_array.length+item_index-1)%item_array.length}else if(key_code==40){item_index=(item_array.length+item_index+1)%item_array.length}
+searchbar.val(item_array[item_index])
+text=searchbar.val()
+Cookies.set('lastkey',text,{path:'/'})
+if(item_index<result_items.length){result_items.eq(item_index).css('background',rgb2rgba(backgroundColor,0.2))}
+return false;}}
+else{if(key_code==27&&search_result.css('display')=='none'){searchbar.val("")
+text=''
+$('.fa-remove-logo').css('display','none')
+history_keys_json=Cookies.get("historykeys")||""
+item_array=history_keys_json.split(",")
+Cookies.set('lastkey',text,{path:'/'})
+showHistory()}}})}
